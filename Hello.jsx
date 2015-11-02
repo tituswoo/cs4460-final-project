@@ -1,12 +1,9 @@
-/** @jsx React.DOM */
+import React from 'react';
 
-'use strict'
-
-var React = require('react');
-
-module.exports = React.createClass({
-	displayName: 'HelloReact',
-	render: function() {
-		return <div>Hello React</div>
+class Hello extends React.Component {
+	render() {
+		return <h1>Hello React</h1>
 	}
-})
+}
+
+export default Hello

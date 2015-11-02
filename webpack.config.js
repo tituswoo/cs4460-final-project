@@ -7,13 +7,18 @@ module.exports = {
 	module: {
 		loaders: [
 			{
-				test: /\.jsx$/,
-				loader: 'jsx-loader?insertPragma=React.DOM&harmony'
+				test: /\.jsx?$/,
+				loader: 'babel',
+				query: {
+					presets: ['react', 'es2015']
+				},
+				exclude: /(node_modules|bower_components)/
 			}
 		]
 	},
 	externals: {
-		'react': 'React'
+		'react': 'React',
+		'react-dom': 'ReactDOM'
 	},
 	resolve: {
 		extensions: ['', '.js', '.jsx']
