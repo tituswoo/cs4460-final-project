@@ -1,11 +1,14 @@
 {
+  "scripts": {
+    "start": "npm run serve | npm run dev",
+    "serve": "./node_modules/.bin/http-server -p 8080",
+    "dev": "webpack-dev-server --progress --colors --port 8090",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "name": "cs4460-final-project",
   "version": "1.0.0",
   "description": "Final CS 4460 info viz project",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tituswoo/cs4460-final-project.git"
@@ -17,9 +20,11 @@
   },
   "homepage": "https://github.com/tituswoo/cs4460-final-project#readme",
   "dependencies": {
-    "react": "^0.14.1"
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2"
   },
   "devDependencies": {
+    "http-server": "^0.8.5",
     "jsx-loader": "^0.13.2",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1"
