@@ -5,9 +5,9 @@ class NavBar extends React.Component {
 	render() {
 		return (
 			<div>
-				<ul>
-					<li class="general"><a style={navStyles.a} href="#">General View</a></li>
-		 			<li class="detailed"><a href="#">Detailed View</a></li>
+				<ul style={navStyles.ul}>
+					<li style={navStyles.li}><a style={navStyles.a} href="#">General View</a></li>
+		 			<li style={navStyles.li}><a href="#">Detailed View</a></li>
 				</ul>
 			</div>			
 		);
