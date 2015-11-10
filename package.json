@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "npm run serve | npm run dev",
-    "serve": "./node_modules/.bin/http-server -p 8080",
+    "serve": "./node_modules/.bin/http-server -p 8080 -o",
     "dev": "webpack-dev-server --progress --colors --port 8090 --config ./config/webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
