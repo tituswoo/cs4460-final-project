@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 class NavBar extends React.Component {
 	render() {
@@ -15,4 +15,4 @@ class NavBar extends React.Component {
 	}
 }
 
-export default NavBar
+export default NavBar;
