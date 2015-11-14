@@ -30,8 +30,8 @@ class Hello extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log('HELLO WOLRD');
+
 	}
 }
 
-export default Hello
+export default Hello;
