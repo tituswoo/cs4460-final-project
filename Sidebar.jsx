@@ -8,6 +8,7 @@ class Sidebar extends React.Component {
         <input type='text' className='input input--full' placeholder='Address 1' />
         <FormDivider text='vs'/>
         <input type='text' className='input input--full' placeholder='Address 2' />
+        <button className='button button--primary button--full'>COMPARE LOCATIONS</button>
       </div>
     );
   }
