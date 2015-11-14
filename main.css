@@ -11,17 +11,17 @@ html, body {
   height: 100%;
 }
 
-.Hello {
+.App {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-.Hello > .SimpleMap {
+.App > .SimpleMap {
   flex-grow: 1;
 }
 
-.Hello > .NavBar {
+.App > .NavBar {
   padding: 10px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   z-index: 2;

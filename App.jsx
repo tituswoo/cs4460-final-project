@@ -15,10 +15,10 @@ var state = {
 	}]
 };
 
-class Hello extends React.Component {
+class App extends React.Component {
 	render() {
 		return (
-			<div className='Hello'>
+			<div className='App'>
 				<NavBar />
 				<div className='Main'>
 					<SimpleMap
@@ -34,4 +34,4 @@ class Hello extends React.Component {
 	}
 }
 
-export default Hello;
+export default App;
