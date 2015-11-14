@@ -22,14 +22,14 @@ class SimpleMap extends React.Component {
         }}
         defaultZoom={this.props.defaultZoom}
         center={this.state.currentLocation}
-        onClick={this.props.onMapClick}
+        onClick={this.onMapClick}
         ref='map'
       >
         {this.props.markers.map((marker, index) => {
           return (
             <Marker
               {...marker}
-              onRightclick={() => props.onMarkerRightclick(index)} />
+              onRightclick={() => this.props.onMarkerRightclick(index)} />
           );
         })}
       </GoogleMap>
@@ -38,13 +38,13 @@ class SimpleMap extends React.Component {
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((location) => {
-      console.log(location);
       this.setState({
         currentLocation: {
           lat: location.coords.latitude,
           lng: location.coords.longitude
         }
       });
+
     });
   }
 
