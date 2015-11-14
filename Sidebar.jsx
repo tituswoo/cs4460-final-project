@@ -13,11 +13,18 @@ class Sidebar extends React.Component {
       <div className='Sidebar'>
         <input type='text'
           value={this.state.locationA}
+          onChange={this._onChange('locationA')}
           className='input input--full'
           placeholder='Address 1' />
         <FormDivider text='vs'/>
-        <input type='text' className='input input--full' placeholder='Address 2' />
-        <button className='button button--primary button--full'>COMPARE LOCATIONS</button>
+          <input type='text'
+            value={this.state.locationB}
+            onChange={this._onChange('locationB')}
+            className='input input--full'
+            placeholder='Address 2' />
+        <button
+          onClick={this._compareLocations.bind(this)}
+          className='button button--primary button--full'>COMPARE LOCATIONS</button>
       </div>
     );
   }
@@ -46,6 +53,17 @@ class Sidebar extends React.Component {
         }
       });
     });
+  }
+
+  _compareLocations() {
+    console.info('Comparing', this.state.locationA, 'with', this.state.locationB);
+    alert('Take these two addresses and do shenanigans with it! Hopefully with cool APIs');
+  }
+
+  _onChange(key) {
+    return (event) => {
+      this.setState({[key]: event.target.value});
+    };
   }
 }
 
