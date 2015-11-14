@@ -33,7 +33,7 @@ class SimpleMap extends React.Component {
   }
 
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(function (location) {
+    navigator.geolocation.getCurrentPosition((location) => {
       console.log(location);
       this.setState({
         currentLocation: {
@@ -41,7 +41,7 @@ class SimpleMap extends React.Component {
           lng: location.coords.longitude
         }
       });
-    }.bind(this));
+    });
   }
 
   onMapClick() {
