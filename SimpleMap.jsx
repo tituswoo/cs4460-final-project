@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {GoogleMap, Marker} from 'react-google-maps';
 
 class SimpleMap extends React.Component {
@@ -20,6 +21,7 @@ class SimpleMap extends React.Component {
         defaultZoom={12}
         center={this.state.currentLocation}
         onClick={this.props.onMapClick}
+        ref='map'
       >
         {this.props.markers.map((marker, index) => {
           return (
@@ -42,6 +44,11 @@ class SimpleMap extends React.Component {
         }
       });
     });
+  }
+
+  componentDidUpdate() {
+    var map = ReactDOM.findDOMNode(this.refs.map);
+    window.google.maps.event.trigger(map, 'resize');
   }
 
   onMapClick() {
