@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {GoogleMap, Marker} from 'react-google-maps';
@@ -18,7 +20,7 @@ class SimpleMap extends React.Component {
       <GoogleMap containerProps={{
           className: 'SimpleMap'
         }}
-        defaultZoom={12}
+        defaultZoom={this.props.defaultZoom}
         center={this.state.currentLocation}
         onClick={this.props.onMapClick}
         ref='map'
