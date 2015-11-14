@@ -1,15 +1,16 @@
 import React from 'react'
-import navStyles from './mainStyles'
 
 class NavBar extends React.Component {
 	render() {
 		return (
-			<div>
-				<ul style={navStyles.ul}>
-					<li style={navStyles.li}><a style={navStyles.a} href="#">General View</a></li>
-		 			<li style={navStyles.li}><a href="#">Detailed View</a></li>
-				</ul>
-			</div>			
+			<ul className='NavBar'>
+				<li>
+					<h3>Cool App</h3>
+				</li>
+				<li>
+					<a href='#'>Test</a>
+				</li>
+			</ul>
 		);
 	}
 }

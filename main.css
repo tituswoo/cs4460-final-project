@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Helvetica, sans-serif, Arial;
+}
+
+html, body {
+  height: 100%;
+}
+
+.Hello {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.Hello > .SimpleMap {
+  flex-grow: 1;
+}
+
+.Hello > .NavBar {
+  padding: 10px;
+}
+
+.NavBar li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.NavBar .NavBar__hamburger {
+  text-align: right;
+}
+
+.Main {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.Main > .SimpleMap {
+  flex: 1;
+}
+
+.Main > .Sidebar {
+  background-color: white;
+  width: 250px;
+}

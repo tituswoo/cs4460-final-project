@@ -1,13 +1,11 @@
-import React from 'react'
-import {GoogleMap, Marker} from 'react-google-maps'
+import React from 'react';
+import {GoogleMap, Marker} from 'react-google-maps';
 
 class SimpleMap extends React.Component {
   render() {
     return (
       <GoogleMap containerProps={{
-          style: {
-            height: '250px',
-          },
+          className: 'SimpleMap'
         }}
         defaultZoom={3}
         defaultCenter={{lat: -25.363882, lng: 131.044922}}
@@ -29,4 +27,4 @@ class SimpleMap extends React.Component {
   }
 }
 
-export default SimpleMap
+export default SimpleMap;
