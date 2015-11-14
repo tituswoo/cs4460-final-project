@@ -13,18 +13,11 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: {
+      locationA: {
         lat: 0,
         lng: 0
       },
-      markers: [{
-        position: {
-          lat: 25.0112183,
-          lng: 121.52067570000001,
-        },
-        key: 'Taiwan',
-        defaultAnimation: 2
-      }]
+      markers: []
     };
   }
 
@@ -34,7 +27,7 @@ class Main extends React.Component {
         <SimpleMap
           markers={this.state.markers}
           defaultZoom={14} />
-        <Sidebar />
+        <Sidebar locationA={this.state.locationA}/>
       </div>
     );
   }
@@ -47,11 +40,12 @@ class Main extends React.Component {
       };
 
       this.setState({
-        location: pos,
+        locationA: pos,
         markers: this.state.markers.concat([{
           position: pos,
-          key: 'TESTING',
-          defaultAnimation: 2
+          key: pos.lat + pos.lng,
+          defaultAnimation: 2,
+          label: 'A'
         }])
       });
     });

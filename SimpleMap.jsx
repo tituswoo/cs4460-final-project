@@ -44,7 +44,6 @@ class SimpleMap extends React.Component {
           lng: location.coords.longitude
         }
       });
-
     });
   }
 
@@ -57,5 +56,9 @@ class SimpleMap extends React.Component {
     console.info('Bam! Clicked on the map, yo.');
   }
 }
+
+SimpleMap.defaultProps = {
+  markers: []
+};
 
 export default SimpleMap;
