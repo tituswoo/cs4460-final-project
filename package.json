@@ -22,7 +22,8 @@
   "dependencies": {
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
-    "react-google-maps": "^4.2.0"
+    "react-google-maps": "^4.2.0",
+    "reflux": "^0.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.0.17",
