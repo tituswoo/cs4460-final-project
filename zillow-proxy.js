@@ -28,10 +28,12 @@ function onRequest(request, response) {
   var proxy = http.request(options, (res) => {
 
     res.on('data', (chunk) => {
+      console.log(chunk.toString());
       // console.log(chunk.toString());
       //console.log(chunk.toString());
 
-      //var json = parser.toJson(chunk.toString());
+      var json = parser.toJson(chunk.toString());
+      console.log(json);
 
     });
 

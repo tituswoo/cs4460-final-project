@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "npm run proxy-server | npm run serve | npm run dev",
+    "start": "npm run serve | npm run dev",
     "serve": "./node_modules/.bin/http-server -p 8080 -cors -o",
     "proxy-server": "node zillow-proxy.js",
     "dev": "webpack-dev-server --progress --colors --port 8090 --config ./config/webpack.config.js",
