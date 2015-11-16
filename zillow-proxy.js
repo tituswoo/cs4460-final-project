@@ -9,6 +9,7 @@
 // code from http://stackoverflow.com/questions/20351637/how-to-create-a-simple-http-proxy-in-node-js
 
 var http = require('http');
+var parser = require('xml2json');
 
 http.createServer(onRequest).listen(3000);
 
@@ -25,6 +26,15 @@ function onRequest(request, response) {
   };
 
   var proxy = http.request(options, (res) => {
+
+    res.on('data', (chunk) => {
+      // console.log(chunk.toString());
+      //console.log(chunk.toString());
+
+      //var json = parser.toJson(chunk.toString());
+
+    });
+
     res.pipe(response, {
       end: true
     });
