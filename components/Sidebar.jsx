@@ -1,5 +1,6 @@
 import React from 'react';
 import FormDivider from './FormDivider';
+import AddressAutocomplete from './AddressAutocomplete';
 import CompareActions from '../actions/CompareActions';
 import CompareStore from '../stores/CompareStore';
 
