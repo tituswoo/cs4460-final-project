@@ -5,7 +5,8 @@ import Reflux from 'reflux';
 let CompareActions = Reflux.createActions([
   'getAddress',
   'compareLocations',
-  'updateLocation'
+  'updateLocation',
+  'compareStoreUpdate'
 ]);
 
 export default CompareActions;

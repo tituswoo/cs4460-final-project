@@ -26,23 +26,28 @@ class Sidebar extends React.Component {
         <button
           onClick={this._compareLocations.bind(this)}
           className='button button--primary button--full'>COMPARE LOCATIONS</button>
+        <div className ='QuickInfo'>
+          <p>{this.state.locations.locationA.crime_index}</p>
+          <p>{this.state.locations.locationB.crime_index}</p>
+        </div>
       </div>
     );
   }
 
-  onCompareStoreUpdate(test) {
-    console.log('listener fired.', test);
+  onCompareStoreUpdate(locations) {
+    console.log('listener fired.', locations);
+    this.setState({locations: locations});
  
   }
 
   componentDidMount() {
-    this.unsubscribe = CompareStore.listen(this.onCompareStoreUpdate);
+    this.unsubscribe = CompareStore.listen(this.onCompareStoreUpdate.bind(this));
 
     // testing the zillow api here:
-    let url = 'http://localhost:3000/webservice/GetRateSummary.htm?zws-id=X1-ZWz1f0n3blazuz_a2eph&output=json';
-    $.get(url, (result) => {
-      console.info(result);
-    });
+    // let url = 'http://localhost:3000/webservice/GetRateSummary.htm?zws-id=X1-ZWz1f0n3blazuz_a2eph&output=json';
+    // $.get(url, (result) => {
+    //   console.info(result);
+    // });
   }
 
   componentWillUnmount() {

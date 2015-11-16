@@ -21,8 +21,8 @@ let CompareStore = Reflux.createStore({
   listenables: [CompareActions],
   init: function() {
     this.locations = {
-      locationA: '',
-      locationB: ''
+      locationA: {},
+      locationB: {}
     };
   },
   getInitialState: function() {
@@ -35,8 +35,20 @@ let CompareStore = Reflux.createStore({
     console.log('KEY IS:', config.numeoKey);
   },
   onCompareLocations: function() {
-    console.info('COMPARING LOCATIONS', this.locations.locationA, this.locations.locationB);
-    console.log('key:', config.numeoKey);
+    // console.info('COMPARING LOCATIONS', this.locations.locationA, this.locations.locationB);
+
+    $.get("http://localhost:3000/api/indices?api_key=5nng85zgjskdxo&query=" + this.locations.locationA, (data) => {
+      this.locations.locationA = data;
+
+      this.trigger(this.locations);
+      console.log(this.locations.locationA);
+    });
+    $.get("http://localhost:3000/api/indices?api_key=5nng85zgjskdxo&query=" + this.locations.locationB, (data) => {
+      this.locations.locationB = data;
+      
+      this.trigger(this.locations);
+      console.log(this.locations.locationB);
+    });
   },
   onUpdateLocation: function(key, value) {
     this.locations[key] = value;
