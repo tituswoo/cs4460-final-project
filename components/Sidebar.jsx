@@ -42,12 +42,16 @@ class Sidebar extends React.Component {
 
     return (
       <div>
-        <h4>Quality of Life</h4>
+        <h4 className='header__label header__label--no-margin'>Quality of Life</h4>
         <p>
           <strong> {this.state.locations.comparisons.quality_of_life}% </strong>
-          {qualityPreposition} than locationB.</p>
-        <p>{this.state.locations.locationA.data.name}</p>
-        <p>{this.state.locations.locationB.data.name}</p>
+          {qualityPreposition} than {this.state.locations.locationA.data.name.split(',')[0]}.
+        </p>
+
+        <h4 className='header__label'>Safety</h4>
+        <p>
+          <strong>33%</strong> safer than {this.state.locations.locationA.data.name.split(',')[0]}.
+        </p>
       </div>
     );
   }

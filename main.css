@@ -116,3 +116,18 @@ html, body {
   border: none;
   border-bottom: 2px solid #0773e8;
 }
+
+.header__label {
+  text-transform: uppercase;
+  color: gray;
+  font-weight: bold;
+  font-size: 11px;
+  border-bottom: 2px solid lightgray;
+  letter-spacing: 0px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.header__label--no-margin {
+  margin-top: 0;
+}
