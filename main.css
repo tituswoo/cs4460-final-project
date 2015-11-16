@@ -107,6 +107,7 @@ html, body {
 .button--full {
   width: 100%;
   box-sizing: border-box;
+  margin-bottom: 5px;
 }
 
 .button--primary {
