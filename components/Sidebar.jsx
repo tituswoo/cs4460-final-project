@@ -38,9 +38,7 @@ class Sidebar extends React.Component {
   }
 
   onCompareStoreUpdate(locations) {
-    console.log('listener fired.', locations);
     this.setState({locations: locations});
-
   }
 
   componentDidMount() {

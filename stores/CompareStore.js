@@ -39,22 +39,17 @@ let CompareStore = Reflux.createStore({
     console.log('KEY IS:', config.numeoKey);
   },
   onCompareLocations: function() {
-    // console.info('COMPARING LOCATIONS', this.locations.locationA, this.locations.locationB);
-    console.log('For A:', this.locations.locationA.locationString);
-    $.get('http://localhost:3000/api/indices?api_key=5nng85zgjskdxo&query=' + this.locations.locationA.locationString, (data) => {
-      this.locations.locationA.data = data;
+    $.get(['http://localhost:3000/api/indices?api_key=5nng85zgjskdxo&query=',
+      this.locations.locationA.locationString].join(''), (data) => {
+        this.locations.locationA.data = data;
+        this.trigger(this.locations);
+      });
 
-      this.trigger(this.locations);
-      console.log(this.locations.locationA);
-    });
-
-    console.log(this.locations.locationB.locationString);
-    $.get('http://localhost:3000/api/indices?api_key=5nng85zgjskdxo&query=' + this.locations.locationB.locationString, (data) => {
-      this.locations.locationB.data = data;
-
-      this.trigger(this.locations);
-      console.log(this.locations.locationB);
-    });
+    $.get(['http://localhost:3000/api/indices?api_key=5nng85zgjskdxo&query=',
+      this.locations.locationB.locationString].join(''), (data) => {
+        this.locations.locationB.data = data;
+        this.trigger(this.locations);
+      });
   },
   onUpdateLocation: function(key, value) {
     this.locations[key].locationString = value;
