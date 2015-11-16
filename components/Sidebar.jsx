@@ -1,5 +1,7 @@
 import React from 'react';
 import FormDivider from './FormDivider';
+import CompareActions from '../actions/CompareActions';
+import CompareStore from '../stores/CompareStore';
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -29,11 +31,17 @@ class Sidebar extends React.Component {
   }
 
   componentDidMount() {
+    //this.unsubscribe = CompareStore.listen(this.onCompareChange);
+
     // testing the zillow api here:
     let url = 'http://localhost:3000/webservice/GetRateSummary.htm?zws-id=X1-ZWz1f0n3blazuz_a2eph&output=json';
     $.get(url, (result) => {
       console.info(result);
     });
+  }
+
+  componentWillUnmount() {
+    //wthis.unsubscribe();
   }
 
   componentWillUpdate() {
@@ -62,13 +70,12 @@ class Sidebar extends React.Component {
   }
 
   _compareLocations() {
-    console.info('Comparing', this.state.locationA, 'with', this.state.locationB);
-    alert('Take these two addresses and do shenanigans with it! Hopefully with cool APIs');
+    CompareActions.compareLocations();
   }
 
   _onChange(key) {
     return (event) => {
-      this.setState({[key]: event.target.value});
+      CompareActions.updateLocation(key, event.target.value);
     };
   }
 }
