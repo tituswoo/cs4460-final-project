@@ -2,7 +2,7 @@
 
 import Reflux from 'reflux';
 import CompareActions from '../actions/CompareActions';
-import config from '../config';
+import config from '../config.js';
 
 function _convertLatLngToAddress(pos) {
   return new Promise((resolve, reject) => {
