@@ -8,7 +8,6 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    this.updateState();
     return (
       <div className='Sidebar'>
         <input type='text'
@@ -29,12 +28,11 @@ class Sidebar extends React.Component {
     );
   }
 
+  componentWillUpdate() {
+    
+  }
+
   updateState() {
-    this.getAddressFromLatLng(this.props.locationA, (result) => {
-      this.setState({
-        locationA: result
-      });
-    });
     this.getAddressFromLatLng(this.props.locationA).then((result) => {
       this.setState({locationA: result});
     }).catch((error) => {
