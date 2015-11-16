@@ -9,7 +9,7 @@ Make sure you have `nodejs 4.0+` installed. Once you do, type:
 
 ## Numbeo API key
 
-To use the key, make a config file called `config.js`, and put this in there:
+To use the key, make a config file called `config.js` inside the `config` folder, and put this in there:
 
 ```js
 let config = {
