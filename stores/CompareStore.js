@@ -2,7 +2,7 @@
 
 import Reflux from 'reflux';
 import CompareActions from '../actions/CompareActions';
-import numbeoKey from '../numbeoKey';
+import config from '../config';
 
 function _convertLatLngToAddress(pos) {
   return new Promise((resolve, reject) => {
@@ -32,11 +32,11 @@ let CompareStore = Reflux.createStore({
   },
   onGetAddress: function() {
     console.log('GETTING THE ADDRESS, PUNK!');
-    console.log('KEY IS:', numbeoKey);
+    console.log('KEY IS:', config.numeoKey);
   },
   onCompareLocations: function() {
     console.info('COMPARING LOCATIONS', this.locations.locationA, this.locations.locationB);
-    console.log('key:', numbeoKey);
+    console.log('key:', config.numeoKey);
   },
   onUpdateLocation: function(key, value) {
     this.locations[key] = value;
