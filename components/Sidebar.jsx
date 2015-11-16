@@ -1,5 +1,6 @@
 import React from 'react';
 import FormDivider from './FormDivider';
+import AddressAutocomplete from './AddressAutocomplete';
 import CompareActions from '../actions/CompareActions';
 import CompareStore from '../stores/CompareStore';
 
@@ -23,6 +24,8 @@ class Sidebar extends React.Component {
             onChange={this._onChange('locationB')}
             className='input input--full'
             placeholder='Address 2' />
+          <AddressAutocomplete
+            placeholder='Address 2'/>
         <button
           onClick={this._compareLocations.bind(this)}
           className='button button--primary button--full'>COMPARE LOCATIONS</button>
@@ -32,7 +35,7 @@ class Sidebar extends React.Component {
 
   onCompareStoreUpdate(test) {
     console.log('listener fired.', test);
- 
+
   }
 
   componentDidMount() {
