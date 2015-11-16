@@ -21,8 +21,12 @@ let CompareStore = Reflux.createStore({
   listenables: [CompareActions],
   init: function() {
     this.locations = {
-      locationA: {},
-      locationB: {}
+      locationA: {
+        data: {}
+      },
+      locationB: {
+        data: {}
+      }
     };
   },
   getInitialState: function() {
@@ -36,22 +40,25 @@ let CompareStore = Reflux.createStore({
   },
   onCompareLocations: function() {
     // console.info('COMPARING LOCATIONS', this.locations.locationA, this.locations.locationB);
-
-    $.get("http://localhost:3000/api/indices?api_key=5nng85zgjskdxo&query=" + this.locations.locationA, (data) => {
-      this.locations.locationA = data;
+    console.log('For A:', this.locations.locationA.locationString);
+    $.get('http://localhost:3000/api/indices?api_key=5nng85zgjskdxo&query=' + this.locations.locationA.locationString, (data) => {
+      this.locations.locationA.data = data;
 
       this.trigger(this.locations);
       console.log(this.locations.locationA);
     });
-    $.get("http://localhost:3000/api/indices?api_key=5nng85zgjskdxo&query=" + this.locations.locationB, (data) => {
-      this.locations.locationB = data;
-      
+
+    console.log(this.locations.locationB.locationString);
+    $.get('http://localhost:3000/api/indices?api_key=5nng85zgjskdxo&query=' + this.locations.locationB.locationString, (data) => {
+      this.locations.locationB.data = data;
+
       this.trigger(this.locations);
       console.log(this.locations.locationB);
     });
   },
   onUpdateLocation: function(key, value) {
-    this.locations[key] = value;
+    this.locations[key].locationString = value;
+    this.trigger(this.locations);
   }
 });
 
