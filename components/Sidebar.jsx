@@ -14,26 +14,26 @@ class Sidebar extends React.Component {
     return (
       <div className='Sidebar'>
         <input type='text'
-          value={this.state.locationA}
+          value={this.state.locations.locationA.locationString}
           onChange={this._onChange('locationA')}
           className='input input--full'
           placeholder='Address 1' />
         <FormDivider text='vs'/>
           <input type='text'
-            value={this.state.locationB}
+            value={this.state.locations.locationB.locationString}
             onChange={this._onChange('locationB')}
             className='input input--full'
             placeholder='Address 2' />
         <button
           onClick={this._compareLocations.bind(this)}
           className='button button--primary button--full'>COMPARE LOCATIONS</button>
-        <div className ='QuickInfo'>
-          <h1>{this.state.locations.locationA.locationString}</h1>
-          <h1>{this.state.locations.locationB.locationString}</h1>
-          <p>{this.state.locations.locationA.data.crime_index}</p>
-          <p>{this.state.locations.locationB.data.crime_index}</p>
-        </div>
-      </div>
+        <h4>Quality of Life</h4>
+        <p>
+          <strong> {this.state.locations.comparisons.quality_of_life}% </strong>
+          better/worse than locationB.</p>
+        <p>{this.state.locations.locationA.data.name}</p>
+        <p>{this.state.locations.locationB.data.name}</p>
+    </div>
     );
   }
 

@@ -26,7 +26,8 @@ let CompareStore = Reflux.createStore({
       },
       locationB: {
         data: {}
-      }
+      },
+      comparisons: {}
     };
   },
   getInitialState: function() {
@@ -39,17 +40,33 @@ let CompareStore = Reflux.createStore({
     console.log('KEY IS:', config.numeoKey);
   },
   onCompareLocations: function() {
-    $.get(['http://localhost:3000/api/indices?api_key=5nng85zgjskdxo&query=',
+    let call1 = $.get(['http://localhost:3000/api/indices?api_key=5nng85zgjskdxo&query=',
       this.locations.locationA.locationString].join(''), (data) => {
         this.locations.locationA.data = data;
         this.trigger(this.locations);
+        console.log(data);
       });
 
-    $.get(['http://localhost:3000/api/indices?api_key=5nng85zgjskdxo&query=',
+    let call2 = $.get(['http://localhost:3000/api/indices?api_key=5nng85zgjskdxo&query=',
       this.locations.locationB.locationString].join(''), (data) => {
         this.locations.locationB.data = data;
         this.trigger(this.locations);
+        console.log(data);
       });
+
+    $.when(call1, call2).done(() => {
+      let qualityA = this.locations.locationA.data.quality_of_life_index;
+      let qualityB = this.locations.locationB.data.quality_of_life_index;
+
+      let bComparedToA = (1 - (qualityA / qualityB)) * 100;
+
+      this.locations.comparisons.quality_of_life = bComparedToA.toPrecision(3);
+
+      this.locations.locationA.locationString = this.locations.locationA.data.name;
+      this.locations.locationB.locationString = this.locations.locationB.data.name;
+
+      this.trigger(this.locations);
+    });
   },
   onUpdateLocation: function(key, value) {
     this.locations[key].locationString = value;
