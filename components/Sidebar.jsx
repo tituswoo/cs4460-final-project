@@ -28,6 +28,14 @@ class Sidebar extends React.Component {
     );
   }
 
+  componentDidMount() {
+    // testing the zillow api here:
+    let url = 'http://localhost:3000/webservice/GetRateSummary.htm?zws-id=X1-ZWz1f0n3blazuz_a2eph&output=json';
+    $.get(url, (result) => {
+      console.info(result);
+    });
+  }
+
   componentWillUpdate() {
 
   }
