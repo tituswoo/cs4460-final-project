@@ -2,7 +2,7 @@
 
 import Reflux from 'reflux';
 import NumbeoActions from '../actions/NumbeoActions';
-import numbeoApiKey from '../numbeoKey'
+import config from '../config/config.js';
 
 let NumbeoStore = Reflux.createStore({
   listenables: [NumbeoActions],
@@ -16,7 +16,7 @@ let NumbeoStore = Reflux.createStore({
   },
   getApiKey: function() {
     console.log('getting the API key');
-    console.log('key is:, numbeoApiKey');
-    return numbeoApiKey;
+    console.log('key is:, config.numeoKey');
+    return config.numeoKey;
   }
 });
