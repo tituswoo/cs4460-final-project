@@ -12,8 +12,6 @@ class Sidebar extends React.Component {
 
   render() {
 
-    let qualityPreposition = this.state.locations.comparisons.quality_of_life > 0 ? 'better' : 'worse';
-
     return (
       <div className='Sidebar'>
         <input type='text'
@@ -30,13 +28,27 @@ class Sidebar extends React.Component {
         <button
           onClick={this._compareLocations.bind(this)}
           className='button button--primary button--full'>COMPARE LOCATIONS</button>
+        {this._renderVisualizations()}
+    </div>
+    );
+  }
+
+  _renderVisualizations() {
+    let qualityPreposition = this.state.locations.comparisons.quality_of_life > 0 ? 'better' : 'worse';
+
+    if (Object.keys(this.state.locations.comparisons).length < 1) {
+      return;
+    }
+
+    return (
+      <div>
         <h4>Quality of Life</h4>
         <p>
           <strong> {this.state.locations.comparisons.quality_of_life}% </strong>
           {qualityPreposition} than locationB.</p>
         <p>{this.state.locations.locationA.data.name}</p>
         <p>{this.state.locations.locationB.data.name}</p>
-    </div>
+      </div>
     );
   }
 
