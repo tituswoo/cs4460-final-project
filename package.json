@@ -21,7 +21,8 @@
   "homepage": "https://github.com/tituswoo/cs4460-final-project#readme",
   "dependencies": {
     "react": "^0.14.2",
-    "react-dom": "^0.14.2"
+    "react-dom": "^0.14.2",
+    "react-google-maps": "^4.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.0.17",
