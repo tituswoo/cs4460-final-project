@@ -57,6 +57,7 @@ html, body {
   width: 250px;
   box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.1);
   z-index: 1;
+  overflow: hidden;
 }
 
 .input {
@@ -138,4 +139,5 @@ html, body {
   margin: -10px;
   margin-top: 10px;
   padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
