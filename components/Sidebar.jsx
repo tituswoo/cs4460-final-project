@@ -36,6 +36,7 @@ class Sidebar extends React.Component {
   _renderVisualizations() {
     let qualityPreposition = this.state.comparisons.quality_of_life > 0 ? 'better' : 'worse';
     let safetyPreposition = this.state.comparisons.safety_comparison > 0 ? 'safer' : 'sketchier';
+    let costPreposition = this.state.comparisons.cost_of_living > 0 ? 'pricier' : 'cheaper';
 
     if (Object.keys(this.state.comparisons).length < 1) {
       return;
@@ -43,7 +44,12 @@ class Sidebar extends React.Component {
 
     return (
       <div className='sidebar-visualization-panel'>
-        <h4 className='header__label header__label--no-margin'>Quality of Life</h4>
+        <h4 className='header__label header__label--no-margin'>Cost of Living</h4>
+        <p>
+          <strong>{this.state.comparisons.cost_of_living}% {costPreposition} </strong>
+          than {this.state.locations.locationA.data.name.split(',')[0]}.
+        </p>
+        <h4 className='header__label'>Quality of Life</h4>
         <p>
           <strong>{this.state.comparisons.quality_of_life}% {qualityPreposition} </strong>
           than {this.state.locations.locationA.data.name.split(',')[0]}.

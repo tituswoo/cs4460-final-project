@@ -66,11 +66,12 @@ let CompareStore = Reflux.createStore({
       let safetyA = locationA.safety_index;
       let safetyB = locationB.safety_index;
 
-      let bComparedToA = _computeQualityComparison(qualityA, qualityB);
-      let safetyComparison = _computeSafetyComparison(safetyA, safetyB);
+      let cpiA = locationA.cpi_index;
+      let cpiB = locationB.cpi_index;
 
-      this.comparisons.quality_of_life = bComparedToA;
-      this.comparisons.safety_comparison = safetyComparison;
+      this.comparisons.quality_of_life = _computeIndexComparison(qualityA, qualityB);
+      this.comparisons.safety_comparison = _computeIndexComparison(safetyA, safetyB);
+      this.comparisons.cost_of_living = _computeIndexComparison(cpiA, cpiB);
 
       this.locations.locationA.locationString = this.locations.locationA.data.name;
       this.locations.locationB.locationString = this.locations.locationB.data.name;
@@ -84,12 +85,8 @@ let CompareStore = Reflux.createStore({
   }
 });
 
-function _computeQualityComparison(qualityA, qualityB) {
-  return ((1 - (qualityA / qualityB)) * 100).toPrecision(3);
-}
-
-function _computeSafetyComparison(safetyA, safetyB) {
-  return ((1 - (safetyA / safetyB)) * 100).toPrecision(3);
+function _computeIndexComparison(a, b) {
+  return ((1 - (a / b)) * 100).toPrecision(3);
 }
 
 export default CompareStore;
