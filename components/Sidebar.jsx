@@ -57,14 +57,14 @@ class Sidebar extends React.Component {
         </p>
         <h4 className='header__label'>Quality of Life</h4>
         <p>
-          <strong>{this.state.comparisons.quality_of_life}% {qualityPreposition} </strong>
+          <strong>{Math.abs(this.state.comparisons.quality_of_life)}% {qualityPreposition} </strong>
           than {this.state.locations.locationA.data.name.split(',')[0]}.
         </p>
 
         <h4 className='header__label'>Safety</h4>
         <p>
           <strong>
-            {this.state.comparisons.safety_comparison}% {safetyPreposition} </strong>
+            {Math.abs(this.state.comparisons.safety_comparison)}% {safetyPreposition} </strong>
            than {this.state.locations.locationA.data.name.split(',')[0]}.
         </p>
       </div>
