@@ -26,13 +26,14 @@ let CompareStore = Reflux.createStore({
       },
       locationB: {
         data: {}
-      },
-      comparisons: {}
+      }
     };
+    this.comparisons = {};
   },
   getInitialState: function() {
     return {
-      locations: this.locations
+      locations: this.locations,
+      comparisons: this.comparisons
     };
   },
   onGetAddress: function() {
@@ -60,7 +61,7 @@ let CompareStore = Reflux.createStore({
 
       let bComparedToA = (1 - (qualityA / qualityB)) * 100;
 
-      this.locations.comparisons.quality_of_life = bComparedToA.toPrecision(3);
+      this.comparisons.quality_of_life = bComparedToA.toPrecision(3);
 
       this.locations.locationA.locationString = this.locations.locationA.data.name;
       this.locations.locationB.locationString = this.locations.locationB.data.name;
