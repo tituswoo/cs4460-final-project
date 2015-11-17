@@ -59,7 +59,7 @@ let CompareStore = Reflux.createStore({
       let qualityA = this.locations.locationA.data.quality_of_life_index;
       let qualityB = this.locations.locationB.data.quality_of_life_index;
 
-      let bComparedToA = (1 - (qualityA / qualityB)) * 100;
+      let bComparedToA = _computeQualityComparison(qualityA, qualityB);
 
       this.comparisons.quality_of_life = bComparedToA.toPrecision(3);
 
@@ -74,5 +74,9 @@ let CompareStore = Reflux.createStore({
     this.trigger(this.locations);
   }
 });
+
+function _computeQualityComparison(qualityA, qualityB) {
+  return (1 - (qualityA / qualityB)) * 100;
+}
 
 export default CompareStore;
