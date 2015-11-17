@@ -41,7 +41,7 @@ class Sidebar extends React.Component {
     }
 
     return (
-      <div>
+      <div className='sidebar-visualization-panel'>
         <h4 className='header__label header__label--no-margin'>Quality of Life</h4>
         <p>
           <strong> {this.state.locations.comparisons.quality_of_life}% </strong>

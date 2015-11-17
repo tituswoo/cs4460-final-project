@@ -108,6 +108,7 @@ html, body {
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 .button--primary {
@@ -125,9 +126,16 @@ html, body {
   border-bottom: 2px solid lightgray;
   letter-spacing: 0px;
   margin-bottom: 5px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .header__label--no-margin {
   margin-top: 0;
+}
+
+.sidebar-visualization-panel {
+  background-color: white;
+  margin: -10px;
+  margin-top: 10px;
+  padding: 10px;
 }
