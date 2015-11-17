@@ -5,10 +5,7 @@ class NavBar extends React.Component {
 		return (
 			<ul className='NavBar'>
 				<li>
-					<h3>Cool App</h3>
-				</li>
-				<li>
-					<a href='#'>Test</a>
+					<h3>Should I move to...</h3>
 				</li>
 			</ul>
 		);
