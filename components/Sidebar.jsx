@@ -12,6 +12,10 @@ class Sidebar extends React.Component {
 
   render() {
 
+    let isCompareButtonDisabled = (function () {
+      return false;
+    })();
+
     return (
       <div className='Sidebar'>
         <input type='text'
@@ -27,6 +31,7 @@ class Sidebar extends React.Component {
             placeholder='Address 2' />
         <button
           onClick={this._compareLocations.bind(this)}
+          disabled={isCompareButtonDisabled}
           className='button button--primary button--full'>COMPARE LOCATIONS</button>
         {this._renderVisualizations()}
     </div>
@@ -46,7 +51,7 @@ class Sidebar extends React.Component {
       <div className='sidebar-visualization-panel'>
         <h4 className='header__label header__label--no-margin'>Cost of Living</h4>
         <p>
-          <strong>{this.state.comparisons.cost_of_living}% {costPreposition} </strong>
+          <strong>{Math.abs(this.state.comparisons.cost_of_living)}% {costPreposition} </strong>
           than {this.state.locations.locationA.data.name.split(',')[0]}.
         </p>
         <h4 className='header__label'>Quality of Life</h4>
