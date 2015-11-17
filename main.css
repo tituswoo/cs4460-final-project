@@ -119,6 +119,12 @@ html, body {
   border-bottom: 2px solid #0773e8;
 }
 
+.button:disabled {
+  opacity: 0.5;
+  -webkit-filter: brightness(1);
+  cursor: default;
+}
+
 .header__label {
   text-transform: uppercase;
   color: gray;

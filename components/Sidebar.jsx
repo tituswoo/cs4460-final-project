@@ -12,8 +12,9 @@ class Sidebar extends React.Component {
 
   render() {
 
-    let isCompareButtonDisabled = (function () {
-      return false;
+    let isCompareButtonDisabled = (() => {
+      let loc = this.state.locations;
+      return !(loc.locationA.locationString && loc.locationB.locationString);
     })();
 
     return (
