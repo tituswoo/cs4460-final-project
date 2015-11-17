@@ -56,12 +56,21 @@ let CompareStore = Reflux.createStore({
       });
 
     $.when(call1, call2).done(() => {
-      let qualityA = this.locations.locationA.data.quality_of_life_index;
-      let qualityB = this.locations.locationB.data.quality_of_life_index;
+
+      let locationA = this.locations.locationA.data;
+      let locationB = this.locations.locationB.data;
+
+      let qualityA = locationA.quality_of_life_index;
+      let qualityB = locationB.quality_of_life_index;
+
+      let safetyA = locationA.safety_index;
+      let safetyB = locationB.safety_index;
 
       let bComparedToA = _computeQualityComparison(qualityA, qualityB);
+      let safetyComparison = _computeSafetyComparison(safetyA, safetyB);
 
-      this.comparisons.quality_of_life = bComparedToA.toPrecision(3);
+      this.comparisons.quality_of_life = bComparedToA;
+      this.comparisons.safety_comparison = safetyComparison;
 
       this.locations.locationA.locationString = this.locations.locationA.data.name;
       this.locations.locationB.locationString = this.locations.locationB.data.name;
@@ -76,7 +85,11 @@ let CompareStore = Reflux.createStore({
 });
 
 function _computeQualityComparison(qualityA, qualityB) {
-  return (1 - (qualityA / qualityB)) * 100;
+  return ((1 - (qualityA / qualityB)) * 100).toPrecision(3);
+}
+
+function _computeSafetyComparison(safetyA, safetyB) {
+  return ((1 - (safetyA / safetyB)) * 100).toPrecision(3);
 }
 
 export default CompareStore;

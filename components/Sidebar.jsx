@@ -35,6 +35,7 @@ class Sidebar extends React.Component {
 
   _renderVisualizations() {
     let qualityPreposition = this.state.comparisons.quality_of_life > 0 ? 'better' : 'worse';
+    let safetyPreposition = this.state.comparisons.safety_comparison > 0 ? 'safer' : 'sketchier';
 
     if (Object.keys(this.state.comparisons).length < 1) {
       return;
@@ -44,14 +45,15 @@ class Sidebar extends React.Component {
       <div className='sidebar-visualization-panel'>
         <h4 className='header__label header__label--no-margin'>Quality of Life</h4>
         <p>
-          <strong>{this.state.comparisons.quality_of_life}% </strong>
-          {qualityPreposition} than {this.state.locations.locationA.data.name.split(',')[0]}.
+          <strong>{this.state.comparisons.quality_of_life}% {qualityPreposition} </strong>
+          than {this.state.locations.locationA.data.name.split(',')[0]}.
         </p>
 
         <h4 className='header__label'>Safety</h4>
         <p>
-          <strong>{this.state.comparisons.safety_index}%</strong> safer than
-            {this.state.locations.locationA.data.name.split(',')[0]}.
+          <strong>
+            {this.state.comparisons.safety_comparison}% {safetyPreposition} </strong>
+           than {this.state.locations.locationA.data.name.split(',')[0]}.
         </p>
       </div>
     );
