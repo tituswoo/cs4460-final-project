@@ -11,7 +11,6 @@ class Sidebar extends React.Component {
   }
 
   render() {
-
     let isCompareButtonDisabled = (() => {
       let loc = this.state.locations;
       return !(loc.locationA.locationString && loc.locationB.locationString);
@@ -22,12 +21,14 @@ class Sidebar extends React.Component {
         <AddressAutocomplete
           placeholder='Address 1'
           types={['(cities)']}
-          onChange={this._onChange('locationA')} />
+          onChange={this._onChange('locationA')}
+          autoFocus={true}
+          tabIndex={0}/>
         <FormDivider text='vs'/>
         <AddressAutocomplete
           placeholder='Address 2'
           types={['(cities)']}
-          onChange={this._onChange('locationB')} />
+          onChange={this._onChange('locationB')}/>
         <button
           onClick={this._compareLocations.bind(this)}
           disabled={isCompareButtonDisabled}

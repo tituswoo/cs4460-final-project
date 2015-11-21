@@ -14,7 +14,9 @@ class AddressAutocomplete extends React.Component {
         type='text'
         ref={(c) => this._autocomplete = c}
         className='input input--full'
-        placeholder={this.props.placeholder} />
+        placeholder={this.props.placeholder}
+        autoFocus={this.props.autoFocus}
+        tabIndex={this.props.tabIndex}/>
     );
   }
 
@@ -31,7 +33,8 @@ class AddressAutocomplete extends React.Component {
 }
 
 AddressAutocomplete.defaultProps = {
-  types: []
+  types: [],
+  autoFocus: false
 };
 
 AddressAutocomplete.propTypes = {
