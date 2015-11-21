@@ -10,7 +10,6 @@
 
 var http = require('http');
 
-
 http.createServer(onRequest).listen(3000);
 
 function onRequest(request, response) {
