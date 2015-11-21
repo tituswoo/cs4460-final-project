@@ -19,17 +19,15 @@ class Sidebar extends React.Component {
 
     return (
       <div className='Sidebar'>
-        <input type='text'
-          value={this.state.locations.locationA.locationString}
-          onChange={this._onChange('locationA')}
-          className='input input--full'
-          placeholder='Address 1' />
+        <AddressAutocomplete
+          placeholder='Address 1'
+          types={['(cities)']}
+          onChange={this._onChange('locationA')} />
         <FormDivider text='vs'/>
-          <input type='text'
-            value={this.state.locations.locationB.locationString}
-            onChange={this._onChange('locationB')}
-            className='input input--full'
-            placeholder='Address 2' />
+        <AddressAutocomplete
+          placeholder='Address 2'
+          types={['(cities)']}
+          onChange={this._onChange('locationB')} />
         <button
           onClick={this._compareLocations.bind(this)}
           disabled={isCompareButtonDisabled}
@@ -113,8 +111,9 @@ class Sidebar extends React.Component {
   }
 
   _onChange(key) {
-    return (event) => {
-      CompareActions.updateLocation(key, event.target.value);
+    return (place) => {
+      console.info(place);
+      CompareActions.updateLocation(key, place.name);
     };
   }
 }
