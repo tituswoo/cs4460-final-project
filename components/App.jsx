@@ -28,8 +28,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.unsubscribe = CityStore.listen((cities) => {
-      console.log('LISTENED TO CITIES FROM APP.JS');
-      console.log(cities);
       this.setState({cities: cities});
     });
 

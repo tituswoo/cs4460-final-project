@@ -10,7 +10,6 @@ let CityStore = Reflux.createStore({
     this.cities = [];
   },
   getInitialState: function() {
-    console.log('giving initial state.');
     return this.cities;
   },
   onGetCities: function() {
@@ -21,7 +20,6 @@ let CityStore = Reflux.createStore({
         config.numeoKey
       ].join('')).done((cities) => {
         this.cities = cities;
-        console.log('I GOT THE CITIES!', cities);
         this.trigger(this.cities);
       }).fail((error) => {
         console.error('COULD NOT GET CITIES!');
