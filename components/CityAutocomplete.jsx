@@ -99,6 +99,7 @@ CityAutocomplete.defaultProps = {
 };
 
 CityAutocomplete.propTypes = {
+  showHint: React.PropTypes.bool,
   onOptionSelected: React.PropTypes.func
 };
 
