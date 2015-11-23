@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {GoogleMap, Marker} from 'react-google-maps';
+// import {GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
 
 class SimpleMap extends React.Component {
   constructor(props) {
@@ -17,14 +17,22 @@ class SimpleMap extends React.Component {
 
   render() {
     return (
-      <GoogleMap containerProps={{
-          className: 'SimpleMap'
-        }}
-        defaultZoom={this.props.defaultZoom}
-        center={this.state.currentLocation}
-        onClick={this.onMapClick}
-        ref='map'
-      >
+      <div>TEst</div>
+    );
+    /*return (
+      <GoogleMapLoader
+        containerElement={
+          <div className='SimpleMap'>
+          </div>
+        }
+        googleMapElement={
+          <GoogleMap
+            defaultZoom={this.props.defaultZoom}
+            defaultCenter={this.state.currentLocation}
+            onClick={this.onMapClick}
+            ref={(map) => {this._map = map;}}>
+          </GoogleMap>
+        }>
         {this.props.markers.map((marker, index) => {
           return (
             <Marker
@@ -32,8 +40,8 @@ class SimpleMap extends React.Component {
               onRightclick={() => this.props.onMarkerRightclick(index)} />
           );
         })}
-      </GoogleMap>
-    );
+      </GoogleMapLoader>
+    );*/
   }
 
   componentDidMount() {
@@ -48,12 +56,12 @@ class SimpleMap extends React.Component {
   }
 
   componentDidUpdate() {
-    var map = ReactDOM.findDOMNode(this.refs.map);
-    window.google.maps.event.trigger(map, 'resize');
+    //var map = ReactDOM.findDOMNode(this.refs.map);
+    //window.google.maps.event.trigger(map, 'resize');
   }
 
   onMapClick() {
-    console.info('Bam! Clicked on the map, yo.');
+    //console.info('Bam! Clicked on the map, yo.');
   }
 }
 
