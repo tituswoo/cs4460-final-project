@@ -38,17 +38,27 @@ class CityAutocomplete extends React.Component {
       this.setState({
         cities: cities
       });
+      if (this.props.showHint) {
+        this._generateRandomPlaceholder();
+      }
       this.setState({
         placeholder: this._getRandomCity()
       });
     });
   }
 
+  _generateRandomPlaceholder() {
+    setInterval(() => {
+      this.setState({
+        placeholder: this._getRandomCity()
+      });
+    }, 3000);
+  }
+
   _getRandomCity() {
     if (this.props.showHint) {
       var index = Math.floor(Math.random() * (this.state.cities.length - 1));
-      var option = this.state.cities[index];
-      return this._normalizeQueryName(option);
+      return this._normalizeQueryName(this.state.cities[index]);
     } else {
       return '';
     }
