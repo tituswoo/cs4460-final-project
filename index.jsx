@@ -6,14 +6,6 @@ import ReportPage from './components/ReportPage';
 import Step1 from './components/Step1';
 import {Router, Route, IndexRoute, Link, Redirect} from 'react-router';
 
-class Dashboard extends React.Component {
-  render() {
-    return (
-      <div>Dashboard page!</div>
-    );
-  }
-}
-
 class Report extends React.Component {
   render() {
     return (
