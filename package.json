@@ -26,6 +26,7 @@
     "react-dom": "^0.14.2",
     "react-google-maps": "^4.2.0",
     "react-router": "^1.0.0",
+    "react-typeahead": "^1.1.5",
     "reflux": "^0.3.0"
   },
   "devDependencies": {

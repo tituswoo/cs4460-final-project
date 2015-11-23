@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import CityAutocomplete from '../components/CityAutocomplete';
 
 class Step1 extends React.Component {
   render() {
@@ -8,11 +9,12 @@ class Step1 extends React.Component {
       <div className='step-1'>
         <h1 className='step-1__question'>
           <span className='step-1__question-text'>Should I move from</span>
-          <p className='step-1__question-segment'>
-            <input className='input' type='text' />
+          <div className='step-1__question-segment'>
+            <CityAutocomplete className='input' />
+
             <span style={{marginRight: 10}}>to</span>
             <input className='input' type='text' />?
-          </p>
+          </div>
         </h1>
       </div>
     );

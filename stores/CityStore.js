@@ -18,8 +18,8 @@ let CityStore = Reflux.createStore({
         'http://localhost:3000/api/cities?',
         'api_key=',
         config.numeoKey
-      ].join('')).done((cities) => {
-        this.cities = cities;
+      ].join('')).done((response) => {
+        this.cities = response.cities;
         this.trigger(this.cities);
       }).fail((error) => {
         console.error('COULD NOT GET CITIES!');
