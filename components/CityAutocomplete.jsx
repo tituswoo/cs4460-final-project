@@ -15,17 +15,19 @@ class CityAutocomplete extends React.Component {
   render() {
     return (
       <Typeahead
-        defaultValue='Seattle'
         options={this.state.cities}
-        maxVisible={5}
+        maxVisible={4}
         filterOption='city'
         displayOption={this._displayOption.bind(this)}
         onOptionSelected={this._onOptionSelected.bind(this)}
         customClasses={{
-          input: 'city-autocomplete__input',
+          input: 'city-autocomplete__input input',
           results: 'city-autocomplete__results',
-          listItem: 'city-autocomplete__list-item'
-        }}/>
+          listItem: 'city-autocomplete__list-item',
+          listAnchor: 'city-autocomplete__list-item-anchor',
+          hover: 'city-autocomplete__list-item--hover'
+        }}
+        className='city-autocomplete'/>
     );
   }
 

@@ -179,19 +179,55 @@ html, body {
 .step-1__question-text {
   background-color: black;
   color: white;
+  padding: 0 5px;
+  font-weight: bold;
+  margin-left: 2vh;
 }
 
 .step-1__question-segment {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
+  margin-bottom: 2vh;
 }
 
-.step-1__question-segment > .input {
+.step-1__question-segment .input {
   flex: 1;
-  margin-right: 10px;
   border: 0;
   border-bottom: 3px solid black;
   border-radius: 0;
   font-size:  3.5vw;
+}
+
+.city-autocomplete {
+  position: relative;
+}
+
+.city-autocomplete__input {
+  display: flex;
+  margin-bottom: 0;
+}
+
+.city-autocomplete__list-item--hover {
+  background-color: #3C3C3C;
+}
+
+.city-autocomplete__list-item-anchor {
+  display: block;
+  padding: 5px;
+  color: white;
+  text-decoration: none;
+}
+
+.city-autocomplete__results {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  font-size: 16px;
+  text-align: left;
+  list-style: none;
+
+  background-color: black;
+  color: white;
 }

@@ -7,15 +7,22 @@ class Step1 extends React.Component {
   render() {
     return (
       <div className='step-1'>
-        <h1 className='step-1__question'>
-          <span className='step-1__question-text'>Should I move from</span>
+        <div className='step-1__question'>
           <div className='step-1__question-segment'>
-            <CityAutocomplete className='input' />
-
-            <span style={{marginRight: 10}}>to</span>
-            <input className='input' type='text' />?
+            <span style={{fontWeight: 'bold'}}>Should I move</span>
+            <span className='step-1__question-text'>from</span>
           </div>
-        </h1>
+          <div className='step-1__question-segment'>
+            <CityAutocomplete />
+            <span
+              className='step-1__question-text'>to</span>
+          </div>
+          <div className='step-1__question-segment'>
+            <CityAutocomplete />
+            <span
+              className='step-1__question-text'>?</span>
+          </div>
+        </div>
       </div>
     );
   }
