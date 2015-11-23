@@ -198,12 +198,15 @@ html, body {
   border-bottom: 3px solid black;
   border-radius: 0;
   font-size:  3.5vw;
-  width: 97%;
+  width: 100%;
+  display: inline-flex;
+  box-sizing: border-box;
 }
 
 .city-autocomplete {
   position: relative;
   flex: 1;
+  text-align: left;
 }
 
 .city-autocomplete__input {
