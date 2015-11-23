@@ -13,12 +13,12 @@ class Step1 extends React.Component {
             <span className='step-1__question-text'>from</span>
           </div>
           <div className='step-1__question-segment'>
-            <CityAutocomplete />
+            <CityAutocomplete showHint={true} />
             <span
               className='step-1__question-text'>to</span>
           </div>
           <div className='step-1__question-segment'>
-            <CityAutocomplete />
+            <CityAutocomplete showHint={true} />
             <span
               className='step-1__question-text'>?</span>
           </div>

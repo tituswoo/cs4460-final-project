@@ -9,7 +9,8 @@ class CityAutocomplete extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cities: CityStore.getInitialState()
+      cities: CityStore.getInitialState(),
+      placeholder: ''
     };
   }
   render() {
@@ -18,6 +19,7 @@ class CityAutocomplete extends React.Component {
         options={this.state.cities}
         maxVisible={4}
         filterOption='city'
+        placeholder={this.state.placeholder}
         displayOption={this._displayOption.bind(this)}
         onOptionSelected={this._onOptionSelected.bind(this)}
         customClasses={{
@@ -33,8 +35,23 @@ class CityAutocomplete extends React.Component {
 
   componentDidMount() {
     this.unsubscribe = CityStore.listen((cities) => {
-      this.setState({cities: cities});
+      this.setState({
+        cities: cities
+      });
+      this.setState({
+        placeholder: this._getRandomCity()
+      });
     });
+  }
+
+  _getRandomCity() {
+    if (this.props.showHint) {
+      var index = Math.floor(Math.random() * (this.state.cities.length - 1));
+      var option = this.state.cities[index];
+      return this._normalizeQueryName(option);
+    } else {
+      return '';
+    }
   }
 
   _onOptionSelected(option) {
@@ -42,11 +59,20 @@ class CityAutocomplete extends React.Component {
   }
 
   _displayOption(option, index) {
+    return this._normalizeQueryName(option);
+  }
+
+  _normalizeQueryName(option) {
     if (option.city.split(',').length < 2) {
       return option.city + ', ' + option.country;
+    } else {
+      return option.city;
     }
-    return option.city;
   }
 }
+
+CityAutocomplete.defaultProps = {
+  showHint: false
+};
 
 export default CityAutocomplete;
