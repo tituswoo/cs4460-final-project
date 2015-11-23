@@ -22,7 +22,7 @@ let CityStore = Reflux.createStore({
         this.cities = response.cities;
         this.trigger(this.cities);
       }).fail((error) => {
-        console.error('COULD NOT GET CITIES!');
+        console.error('COULD NOT GET CITIES!', error);
       });
     }
   }

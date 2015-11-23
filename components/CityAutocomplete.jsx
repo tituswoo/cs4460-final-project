@@ -47,12 +47,19 @@ class CityAutocomplete extends React.Component {
     });
   }
 
+  componentWillUnmount() {
+    if (this._rndPlaceholderInterval) {
+      console.log('unmounting it');
+      clearInterval(this._rndPlaceholderInterval);
+    }
+  }
+
   _generateRandomPlaceholder() {
-    setInterval(() => {
+    this._rndPlaceholderInterval = setInterval(() => {
       this.setState({
         placeholder: this._getRandomCity()
       });
-    }, 3000);
+    }, (Math.floor(Math.random() * (5000 - 3000)) + 3000));
   }
 
   _getRandomCity() {
