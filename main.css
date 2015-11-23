@@ -198,10 +198,12 @@ html, body {
   border-bottom: 3px solid black;
   border-radius: 0;
   font-size:  3.5vw;
+  width: 97%;
 }
 
 .city-autocomplete {
   position: relative;
+  flex: 1;
 }
 
 .city-autocomplete__input {
