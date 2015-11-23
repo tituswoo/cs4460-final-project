@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 let Typeahead = require('react-typeahead').Typeahead;
 
 import CityStore from '../stores/CityStore';
@@ -29,7 +30,8 @@ class CityAutocomplete extends React.Component {
           listAnchor: 'city-autocomplete__list-item-anchor',
           hover: 'city-autocomplete__list-item--hover'
         }}
-        className='city-autocomplete'/>
+        className='city-autocomplete'
+        ref={(ref) => {this._typeaheadRef = ref;}}/>
     );
   }
 
@@ -49,13 +51,13 @@ class CityAutocomplete extends React.Component {
 
   componentWillUnmount() {
     if (this._rndPlaceholderInterval) {
-      console.log('unmounting it');
       clearInterval(this._rndPlaceholderInterval);
     }
   }
 
   _generateRandomPlaceholder() {
     this._rndPlaceholderInterval = setInterval(() => {
+      console.log('setting to random place', this._getRandomCity());
       this.setState({
         placeholder: this._getRandomCity()
       });
@@ -73,6 +75,7 @@ class CityAutocomplete extends React.Component {
 
   _onOptionSelected(option) {
     console.log('AN OPTION HAS BEEN SELECTED!', option);
+    clearInterval(this._rndPlaceholderInterval);
   }
 
   _displayOption(option, index) {
