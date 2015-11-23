@@ -57,7 +57,6 @@ class CityAutocomplete extends React.Component {
 
   _generateRandomPlaceholder() {
     this._rndPlaceholderInterval = setInterval(() => {
-      console.log('setting to random place', this._getRandomCity());
       this.setState({
         placeholder: this._getRandomCity()
       });
