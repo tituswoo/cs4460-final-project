@@ -18,7 +18,7 @@ class App extends React.Component {
   render() {
     return (
       <div className='app'>
-        <NavBar />
+        {/*<NavBar />*/}
         <div className='app__container'>
           {this.props.children}
         </div>

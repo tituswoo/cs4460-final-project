@@ -13,18 +13,30 @@ class Step1 extends React.Component {
             <span className='step-1__question-text'>from</span>
           </div>
           <div className='step-1__question-segment'>
-            <CityAutocomplete showHint={true} />
+            <CityAutocomplete
+              onOptionSelected={this._onOptionSelected.bind(this)}
+              showHint={true} />
             <span
               className='step-1__question-text'>to</span>
           </div>
           <div className='step-1__question-segment'>
-            <CityAutocomplete showHint={true} />
+            <CityAutocomplete
+              onOptionSelected={this._onOptionSelected.bind(this)}
+              showHint={true} />
             <span
               className='step-1__question-text'>?</span>
           </div>
         </div>
       </div>
     );
+  }
+
+  _onOptionSelected(option) {
+    console.info(option);
+  }
+
+  _renderFindOutButton() {
+
   }
 }
 

@@ -74,8 +74,11 @@ class CityAutocomplete extends React.Component {
   }
 
   _onOptionSelected(option) {
-    console.log('AN OPTION HAS BEEN SELECTED!', option);
     clearInterval(this._rndPlaceholderInterval);
+
+    if (this.props.onOptionSelected) {
+      this.props.onOptionSelected(option);
+    }
   }
 
   _displayOption(option, index) {
@@ -93,6 +96,10 @@ class CityAutocomplete extends React.Component {
 
 CityAutocomplete.defaultProps = {
   showHint: false
+};
+
+CityAutocomplete.propTypes = {
+  onOptionSelected: React.PropTypes.func
 };
 
 export default CityAutocomplete;
