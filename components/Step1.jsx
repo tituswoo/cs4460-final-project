@@ -16,7 +16,7 @@ class Step1 extends React.Component {
           <div className='step-1__question-segment'>
             <span
               className='step-1__question-text'
-              style={{fontWeight: 'bold'}}>Should I move</span>
+              style={{fontWeight: 'bold', marginLeft: 0}}>Should I move</span>
             <span className='step-1__question-text'>from</span>
           </div>
           <div className='step-1__question-segment'>
