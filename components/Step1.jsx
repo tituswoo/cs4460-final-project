@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+let ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 import CityAutocomplete from '../components/CityAutocomplete';
 
 class Step1 extends React.Component {
