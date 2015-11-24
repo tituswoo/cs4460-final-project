@@ -2,7 +2,7 @@
 
 import React from 'react';
 import CityAutocomplete from '../components/CityAutocomplete';
-
+import {Link} from 'react-router';
 class Step1 extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +14,9 @@ class Step1 extends React.Component {
       <div className='step-1'>
         <div className='step-1__question'>
           <div className='step-1__question-segment'>
-            <span style={{fontWeight: 'bold'}}>Should I move</span>
+            <span
+              className='step-1__question-text'
+              style={{fontWeight: 'bold'}}>Should I move</span>
             <span className='step-1__question-text'>from</span>
           </div>
           <div className='step-1__question-segment'>
@@ -36,7 +38,9 @@ class Step1 extends React.Component {
               key={1}
               className='step-1__question-segment step-1__question-segment--centered'
               style={{marginTop: '5vh'}}>
-              <button className='button step-1__button'>
+              <Link to='reportpage' />
+              <button
+                className='button step-1__button'>
                 <span style={{fontStyle: 'italic'}}>find out</span>
                 <br /><i className='fa fa-angle-double-down'></i>
               </button>
