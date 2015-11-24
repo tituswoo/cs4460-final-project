@@ -8,8 +8,10 @@ let CityStore = Reflux.createStore({
   listenables: [CityActions],
   init: function() {
     this.cities = [];
+    this.onGetCities();
   },
   getInitialState: function() {
+    console.log('getting initial state...');
     return this.cities;
   },
   onGetCities: function() {
@@ -24,6 +26,8 @@ let CityStore = Reflux.createStore({
       }).fail((error) => {
         console.error('COULD NOT GET CITIES!', error);
       });
+    } else {
+      this.trigger(this.cities);
     }
   }
 });

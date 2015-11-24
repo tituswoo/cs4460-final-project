@@ -10,32 +10,34 @@ import CityActions from '../actions/CityActions';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    /*this.state = {
       cities: CityStore.getInitialState()
-    };
+    };*/
   }
 
   render() {
     return (
       <div className='app'>
-        {/*<NavBar />*/}
         <div className='app__container'>
-          {this.props.children}
+          <div className='magic-center'>
+            {this.props.children}
+          </div>
         </div>
       </div>
     );
   }
 
   componentDidMount() {
-    this.unsubscribe = CityStore.listen((cities) => {
+    /*this.unsubscribe = CityStore.listen((cities) => {
+      console.log('got the cities');
       this.setState({cities: cities});
     });
 
-    CityActions.getCities();
+    CityActions.getCities();*/
   }
 
   componentWillUnmount() {
-    this.unsubscribe();
+    // this.unsubscribe();
   }
 }
 

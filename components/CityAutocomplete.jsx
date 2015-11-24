@@ -15,6 +15,7 @@ class CityAutocomplete extends React.Component {
       selectedCity: {}
     };
   }
+
   render() {
     return (
       <Typeahead
@@ -38,50 +39,44 @@ class CityAutocomplete extends React.Component {
   }
 
   componentDidMount() {
-    this.unsubscribe = CityStore.listen((cities) => {
-      this.setState({
-        cities: cities
-      });
-      if (this.props.showHint) {
-        this._generateRandomPlaceholder();
-      }
-      this.setState({
-        placeholder: this._getRandomCity()
-      });
+    this.unsubscribe = CityStore.listen(this._onUpdate.bind(this));
+    // duplicate code of what's in _onUpdate.
+    // figure out better way of doing this later when I have time.
+    this.setState({
+      placeholder: this._getRandomCity(this.state.cities)
+    });
+
+    this._cycleThroughRandomPlaceholders();
+  }
+
+  _onUpdate(cities) {
+    this.setState({
+      cities: cities
+    });
+    this.setState({
+      placeholder: this._getRandomCity(this.state.cities)
     });
   }
 
   componentWillUnmount() {
+    this.unsubscribe();
     if (this._rndPlaceholderInterval) {
       clearInterval(this._rndPlaceholderInterval);
     }
   }
 
-  componentWillUpdate() {
-    /*if (Object.keys(this.state.selectedCity).length > 0) {
-      console.log('change detected');
-      if (this.state.optionSelected) {
-        this.setState({
-          optionSelected: false
-        });
-        console.log('deleted option');
-        this.props.onOptionDeselected();
-      }
-    }*/
-  }
-
-  _generateRandomPlaceholder() {
+  _cycleThroughRandomPlaceholders() {
     this._rndPlaceholderInterval = setInterval(() => {
       this.setState({
-        placeholder: this._getRandomCity()
+        placeholder: this._getRandomCity(this.state.cities)
       });
-    }, (Math.floor(Math.random() * (5000 - 3000)) + 3000));
+    }, (Math.floor(Math.random() * (6000 - 3000)) + 3000));
   }
 
-  _getRandomCity() {
-    if (this.props.showHint) {
-      var index = Math.floor(Math.random() * (this.state.cities.length - 1));
-      return this._normalizeQueryName(this.state.cities[index]);
+  _getRandomCity(cities) {
+    if (this.props.showHint && cities.length > 0) {
+      var index = Math.floor(Math.random() * (cities.length - 1));
+      return this._normalizeQueryName(cities[index]);
     } else {
       return '';
     }
