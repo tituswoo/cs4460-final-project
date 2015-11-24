@@ -24,7 +24,7 @@ class CityAutocomplete extends React.Component {
         placeholder={this.state.placeholder}
         displayOption={this._displayOption.bind(this)}
         onOptionSelected={this._onOptionSelected.bind(this)}
-        onKeyUp={this._onKeyDown.bind(this)}
+        onKeyDown={this._onKeyDown.bind(this)}
         customClasses={{
           input: 'city-autocomplete__input input',
           results: 'city-autocomplete__results',
