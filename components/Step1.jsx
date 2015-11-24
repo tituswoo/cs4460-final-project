@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-let ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 import CityAutocomplete from '../components/CityAutocomplete';
 
 class Step1 extends React.Component {
@@ -34,6 +33,7 @@ class Step1 extends React.Component {
           </div>
           {this.state.city1 && this.state.city2 &&
             <div
+              key={1}
               className='step-1__question-segment step-1__question-segment--centered'
               style={{marginTop: '5vh'}}>
               <button className='button step-1__button'>
