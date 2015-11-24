@@ -37,7 +37,10 @@ class Step1 extends React.Component {
             key={1}
             className='step-1__question-segment step-1__question-segment--centered'
             style={{marginTop: '5vh'}}>
-            <Link to='step2'>
+            <Link to='step2' state={{
+                city1: this.state.city1.city_id,
+                city2: this.state.city2.city_id
+              }}>
               <button
                 className='button step-1__button'>
                 <span style={{fontStyle: 'italic'}}>find out</span>

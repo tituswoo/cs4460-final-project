@@ -284,3 +284,8 @@ html, body {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
