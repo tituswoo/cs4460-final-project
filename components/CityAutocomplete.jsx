@@ -11,7 +11,8 @@ class CityAutocomplete extends React.Component {
     super(props);
     this.state = {
       cities: CityStore.getInitialState(),
-      placeholder: ''
+      placeholder: '',
+      selectedCity: {}
     };
   }
   render() {
@@ -23,6 +24,7 @@ class CityAutocomplete extends React.Component {
         placeholder={this.state.placeholder}
         displayOption={this._displayOption.bind(this)}
         onOptionSelected={this._onOptionSelected.bind(this)}
+        onKeyUp={this._onKeyDown.bind(this)}
         customClasses={{
           input: 'city-autocomplete__input input',
           results: 'city-autocomplete__results',
@@ -55,6 +57,19 @@ class CityAutocomplete extends React.Component {
     }
   }
 
+  componentWillUpdate() {
+    /*if (Object.keys(this.state.selectedCity).length > 0) {
+      console.log('change detected');
+      if (this.state.optionSelected) {
+        this.setState({
+          optionSelected: false
+        });
+        console.log('deleted option');
+        this.props.onOptionDeselected();
+      }
+    }*/
+  }
+
   _generateRandomPlaceholder() {
     this._rndPlaceholderInterval = setInterval(() => {
       this.setState({
@@ -72,9 +87,21 @@ class CityAutocomplete extends React.Component {
     }
   }
 
-  _onOptionSelected(option) {
-    clearInterval(this._rndPlaceholderInterval);
+  _onKeyDown(e) {
+    if (this.state.selectedCity.country === undefined) {
 
+    } else if (e.keyCode != 13 && e.keyCode != 9) {
+      // Case for when option is unselected
+      // For some reason ENTER key still triggers this,
+      // so check keyCode before continuing.
+      this.setState({selectedCity: {}});
+      this.props.onOptionDeselected();
+    }
+  }
+
+  _onOptionSelected(option, e) {
+    clearInterval(this._rndPlaceholderInterval);
+    this.setState({selectedCity: option});
     if (this.props.onOptionSelected) {
       this.props.onOptionSelected(option);
     }
@@ -94,12 +121,15 @@ class CityAutocomplete extends React.Component {
 }
 
 CityAutocomplete.defaultProps = {
-  showHint: false
+  showHint: false,
+  onOptionSelected: () => {},
+  onOptionDeselected: () => {}
 };
 
 CityAutocomplete.propTypes = {
   showHint: React.PropTypes.bool,
-  onOptionSelected: React.PropTypes.func
+  onOptionSelected: React.PropTypes.func,
+  onOptionDeselected: React.PropTypes.func
 };
 
 export default CityAutocomplete;
