@@ -52,7 +52,6 @@ class CityAutocomplete extends React.Component {
   }
 
   componentWillUnmount() {
-    this._unsubscribe();
     if (this._rndPlaceholderInterval) {
       clearInterval(this._rndPlaceholderInterval);
     }
