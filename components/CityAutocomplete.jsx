@@ -42,22 +42,12 @@ class CityAutocomplete extends React.Component {
     this.setState({
       placeholder: this._getRandomCity(this.props.cityList)
     });
-
     this._cycleThroughRandomPlaceholders();
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       placeholder: this._getRandomCity(nextProps.cityList)
-    });
-  }
-
-  _onUpdate(cities) {
-    this.setState({
-      cities: cities
-    });
-    this.setState({
-      placeholder: this._getRandomCity(this.props.cityList)
     });
   }
 
