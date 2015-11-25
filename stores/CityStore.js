@@ -11,7 +11,6 @@ let CityStore = Reflux.createStore({
     this.onGetCities();
   },
   getInitialState: function() {
-    console.log('getting initial state...');
     return this.cities;
   },
   onGetCities: function() {
