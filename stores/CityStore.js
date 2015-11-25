@@ -7,13 +7,20 @@ import config from '../config/config';
 let CityStore = Reflux.createStore({
   listenables: [CityActions],
   init: function() {
-    this.cities = [];
+    this.cities = {
+      list: [],
+    };
+  },
+  loaded: false,
+  get: function(cityId) {
+    return this.cities[cityId];
   },
   getInitialState: function() {
     return this.cities;
   },
   onGetCitiesCompleted: function(results) {
-    this.cities = results.cities;
+    this.cities.list = results.cities;
+    this.loaded = true;
     this.trigger(this.cities);
   },
   onGetCitiesFailed: function() {

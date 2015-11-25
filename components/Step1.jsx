@@ -3,10 +3,29 @@
 import React from 'react';
 import CityAutocomplete from '../components/CityAutocomplete';
 import {Link} from 'react-router';
+
+import CityStore from '../stores/CityStore';
+import CityActions from '../actions/CityActions';
+
 class Step1 extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      cities: CityStore.getInitialState()
+    };
+  }
+
+  componentDidMount() {
+    this._unsubscribe = CityStore.listen((cities) => {
+      this.setState({cities: cities});
+    });
+    if (!CityStore.loaded) {
+      CityActions.getCities();
+    }
+  }
+
+  componentWillUnmount() {
+    this._unsubscribe();
   }
 
   render() {
@@ -20,6 +39,7 @@ class Step1 extends React.Component {
         </div>
         <div className='step-1__question-segment'>
           <CityAutocomplete
+            cityList={this.state.cities.list}
             onOptionSelected={this._onOptionSelected.bind(this, 'city1')}
             onOptionDeselected={this._onOptionDeselected.bind(this, 'city1')}
             showHint={true} />
@@ -27,6 +47,7 @@ class Step1 extends React.Component {
         </div>
         <div className='step-1__question-segment'>
           <CityAutocomplete
+            cityList={this.state.cities.list}
             onOptionSelected={this._onOptionSelected.bind(this, 'city2')}
             onOptionDeselected={this._onOptionDeselected.bind(this, 'city2')}
             showHint={true} />

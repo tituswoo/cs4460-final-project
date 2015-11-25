@@ -11,7 +11,6 @@ class CityAutocomplete extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cities: CityStore.getInitialState(),
       placeholder: '',
       selectedCity: {}
     };
@@ -20,7 +19,7 @@ class CityAutocomplete extends React.Component {
   render() {
     return (
       <Typeahead
-        options={this.state.cities}
+        options={this.props.cityList}
         maxVisible={4}
         filterOption='city'
         placeholder={this.state.placeholder}
@@ -40,15 +39,17 @@ class CityAutocomplete extends React.Component {
   }
 
   componentDidMount() {
-    this._unsubscribe = CityStore.listen(this._onUpdate.bind(this));
-    CityActions.getCities();
-    // duplicate code of what's in _onUpdate.
-    // figure out better way of doing this later when I have time.
     this.setState({
-      placeholder: this._getRandomCity(this.state.cities)
+      placeholder: this._getRandomCity(this.props.cityList)
     });
 
     this._cycleThroughRandomPlaceholders();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      placeholder: this._getRandomCity(nextProps.cityList)
+    });
   }
 
   _onUpdate(cities) {
@@ -56,7 +57,7 @@ class CityAutocomplete extends React.Component {
       cities: cities
     });
     this.setState({
-      placeholder: this._getRandomCity(this.state.cities)
+      placeholder: this._getRandomCity(this.props.cityList)
     });
   }
 
@@ -70,7 +71,7 @@ class CityAutocomplete extends React.Component {
   _cycleThroughRandomPlaceholders() {
     this._rndPlaceholderInterval = setInterval(() => {
       this.setState({
-        placeholder: this._getRandomCity(this.state.cities)
+        placeholder: this._getRandomCity(this.props.cityList)
       });
     }, (Math.floor(Math.random() * (6000 - 3000)) + 3000));
   }
@@ -124,6 +125,7 @@ CityAutocomplete.defaultProps = {
 };
 
 CityAutocomplete.propTypes = {
+  cityList: React.PropTypes.array,
   showHint: React.PropTypes.bool,
   onOptionSelected: React.PropTypes.func,
   onOptionDeselected: React.PropTypes.func
