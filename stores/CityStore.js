@@ -8,26 +8,16 @@ let CityStore = Reflux.createStore({
   listenables: [CityActions],
   init: function() {
     this.cities = [];
-    this.onGetCities();
   },
   getInitialState: function() {
     return this.cities;
   },
-  onGetCities: function() {
-    if (this.cities.length < 1) {
-      $.get([
-        'http://localhost:3000/api/cities?',
-        'api_key=',
-        config.numeoKey
-      ].join('')).done((response) => {
-        this.cities = response.cities;
-        this.trigger(this.cities);
-      }).fail((error) => {
-        console.error('COULD NOT GET CITIES!', error);
-      });
-    } else {
-      this.trigger(this.cities);
-    }
+  onGetCitiesCompleted: function(results) {
+    this.cities = results.cities;
+    this.trigger(this.cities);
+  },
+  onGetCitiesFailed: function() {
+    console.log('failed to get cities');
   }
 });
 

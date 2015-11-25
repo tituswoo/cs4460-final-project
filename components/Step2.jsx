@@ -6,6 +6,7 @@ import CityProfile from './CityProfile';
 class Step2 extends React.Component {
   render() {
     let cities = this.props.location.state;
+    console.log(this.props.location);
     return (
       <div>
         <h1>Results</h1>

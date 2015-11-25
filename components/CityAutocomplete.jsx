@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 let Typeahead = require('react-typeahead').Typeahead;
 
 import CityStore from '../stores/CityStore';
+import CityActions from '../actions/CityActions';
 
 class CityAutocomplete extends React.Component {
   constructor(props) {
@@ -39,7 +40,8 @@ class CityAutocomplete extends React.Component {
   }
 
   componentDidMount() {
-    this.unsubscribe = CityStore.listen(this._onUpdate.bind(this));
+    this._unsubscribe = CityStore.listen(this._onUpdate.bind(this));
+    CityActions.getCities();
     // duplicate code of what's in _onUpdate.
     // figure out better way of doing this later when I have time.
     this.setState({
@@ -59,7 +61,7 @@ class CityAutocomplete extends React.Component {
   }
 
   componentWillUnmount() {
-    this.unsubscribe();
+    this._unsubscribe();
     if (this._rndPlaceholderInterval) {
       clearInterval(this._rndPlaceholderInterval);
     }
