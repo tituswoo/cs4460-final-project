@@ -22,14 +22,15 @@ class CityProfile extends React.Component {
             googleMapElement={
               <GoogleMap
                 ref={(map) => {this._map = map;}}
-                defaultZoom={12}
+                defaultZoom={9}
                 defaultCenter={{
                   lat: this.props.cityMeta.latitude,
                   lng: this.props.cityMeta.longitude
                 }}
                 options={{
                   draggable: false,
-                  disableDefaultUI: true
+                  disableDefaultUI: true,
+                  scrollwheel: false
                 }}>
               </GoogleMap>
             }>
