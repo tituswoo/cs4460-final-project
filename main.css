@@ -289,3 +289,13 @@ html, body {
   display: flex;
   flex-direction: row;
 }
+
+.city-profile {
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.city-profile:last-child {
+  margin-right: 0;
+}

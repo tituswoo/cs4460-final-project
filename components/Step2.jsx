@@ -12,16 +12,18 @@ class Step2 extends React.Component {
     this.state = {
       cities: CityStore.getInitialState()
     };
+    console.log(this.state.cities);
   }
 
   render() {
-    let cities = this.props.location.state;
+    //console.log(this.props.location);
+    //let cities = this.props.location.state;
     return (
       <div>
         <h1>Results</h1>
         <div className='flex-row'>
-          <CityProfile cityId={cities.city1} />
-          <CityProfile cityId={cities.city2} />
+          <CityProfile city={CityStore.get(this.props.location.state.city1_id)} />
+          <CityProfile city={CityStore.get(this.props.location.state.city2_id)} />
         </div>
       </div>
     );
@@ -34,8 +36,13 @@ class Step2 extends React.Component {
     if (!CityStore.loaded) {
       CityActions.getCities();
     }
-    if (CityStore.get(this.props.location.state.city1) === undefined) {
-      CityActions.getDetails(this.props.location.state.city1);
+    // yeah this sucks. Refactor later...
+    if (CityStore.get(this.props.location.state.city1_id) === undefined) {
+      CityActions.getDetails(this.props.location.state.city1_id);
+    }
+
+    if (CityStore.get(this.props.location.state.city2_id) === undefined) {
+      CityActions.getDetails(this.props.location.state.city2_id);
     }
   }
 

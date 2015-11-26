@@ -24,7 +24,6 @@ CityActions.getDetails.listen(function(cityId) {
 });
 
 function _getDetailsFor(cityId, categoryName) {
-  console.log('getting all the data');
   $.get([
     'http://localhost:3000/api/', categoryName, '?',
     'api_key=', config.numeoKey,
