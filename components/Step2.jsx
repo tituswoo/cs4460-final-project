@@ -21,6 +21,12 @@ class Step2 extends React.Component {
           <CityProfile
             city={CityStore.get(this.props.location.state.city1.city_id)}
             cityMeta={this.props.location.state.city1} />
+          <div style={{
+              fontSize:'2vw',
+              fontStyle: 'italic',
+              color: 'lightgray',
+              marginRight: '10px'
+            }}><p>vs</p></div>
           <CityProfile
             city={CityStore.get(this.props.location.state.city2.city_id)}
             cityMeta={this.props.location.state.city2}/>
