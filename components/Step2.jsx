@@ -12,14 +12,19 @@ class Step2 extends React.Component {
     this.state = {
       cities: CityStore.getInitialState()
     };
+    console.log(this.props.location.state.city1.city_id);
   }
 
   render() {
     return (
       <div>
         <div className='flex-row'>
-          <CityProfile city={CityStore.get(this.props.location.state.city1_id)} />
-          <CityProfile city={CityStore.get(this.props.location.state.city2_id)} />
+          <CityProfile
+            city={CityStore.get(this.props.location.state.city1.city_id)}
+            cityMeta={this.props.location.state.city1} />
+          <CityProfile
+            city={CityStore.get(this.props.location.state.city2.city_id)}
+            cityMeta={this.props.location.state.city2}/>
         </div>
       </div>
     );
@@ -33,12 +38,12 @@ class Step2 extends React.Component {
       CityActions.getCities();
     }
     // yeah this sucks. Refactor later...
-    if (CityStore.get(this.props.location.state.city1_id) === undefined) {
-      CityActions.getDetails(this.props.location.state.city1_id);
+    if (CityStore.get(this.props.location.state.city1.city_id) === undefined) {
+      CityActions.getDetails(this.props.location.state.city1.city_id);
     }
 
-    if (CityStore.get(this.props.location.state.city2_id) === undefined) {
-      CityActions.getDetails(this.props.location.state.city2_id);
+    if (CityStore.get(this.props.location.state.city2.city_id) === undefined) {
+      CityActions.getDetails(this.props.location.state.city2.city_id);
     }
   }
 
