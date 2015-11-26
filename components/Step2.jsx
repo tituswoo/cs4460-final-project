@@ -25,7 +25,7 @@ class Step2 extends React.Component {
               fontSize:'2vw',
               fontStyle: 'italic',
               color: 'lightgray',
-              marginRight: '10px'
+              marginRight: '20px'
             }}><p>vs</p></div>
           <CityProfile
             city={CityStore.get(this.props.location.state.city2.city_id)}

@@ -13,6 +13,7 @@ class CityProfile extends React.Component {
         !this.props.city.indices) {
         return (<div />);
       }
+      console.log(this.props.city);
       return (
         <div className='city-profile'>
           <GoogleMapLoader
@@ -37,6 +38,12 @@ class CityProfile extends React.Component {
             }>
           </GoogleMapLoader>
           <h2 className='city-profile__title'>{this.props.city.indices.name}</h2>
+          <p><strong>Safety:</strong>{this.props.city.city_crime.index_safety}</p>
+          <p><strong>Average time in traffic:</strong>{this.props.city.city_traffic.index_traffic} min</p>
+          <p><strong>Happiness:</strong>{this.props.city.indices.quality_of_life_index}</p>
+          <p><strong>Pollution:</strong>{this.props.city.indices.pollution_index}</p>
+          <p><strong>Purchasing power:</strong>{this.props.city.indices.purchasing_power_incl_rent_index}</p>
+          <p><strong>Cost of living:</strong>{this.props.city.indices.cpi_index}</p>
         </div>
       );
     }
