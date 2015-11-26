@@ -42,7 +42,6 @@ class CityProfile extends React.Component {
             scale={scales.qualityOfLife}/>
           <p><strong>Average time in traffic:</strong>{this.props.city.indices.traffic_index} min</p>
           <p><strong>Purchasing power:</strong>{this.props.city.indices.purchasing_power_incl_rent_index}</p>
-          <p><strong>Cost of living:</strong>{this.props.city.indices.cpi_index}</p>
         </div>
       );
     }

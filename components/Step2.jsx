@@ -26,7 +26,7 @@ class Step2 extends React.Component {
               fontStyle: 'italic',
               color: 'lightgray',
               marginRight: '20px'
-            }}><p>vs</p></div>
+            }}><p><i className='fa fa-arrow-right'></i></p></div>
           <CityProfile
             city={CityStore.get(this.props.location.state.city2.city_id)}
             cityMeta={this.props.location.state.city2}/>
