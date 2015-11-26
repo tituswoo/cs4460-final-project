@@ -9,11 +9,12 @@ let CityStore = Reflux.createStore({
   init: function() {
     this.cities = {
       list: [],
+      details: []
     };
   },
   loaded: false,
   get: function(cityId) {
-    return this.cities[cityId];
+    return this.cities.details[cityId];
   },
   getInitialState: function() {
     return this.cities;
@@ -25,6 +26,16 @@ let CityStore = Reflux.createStore({
   },
   onGetCitiesFailed: function() {
     console.log('failed to get cities');
+  },
+  onGetDetailsCompleted: function(cityId, categoryName, response) {
+    if (this.cities.details[cityId] === undefined) {
+      this.cities.details[cityId] = [];
+    }
+    this.cities.details[cityId][categoryName] = response;
+    this.trigger(this.cities);
+  },
+  onGetDetailsFailed: function(error) {
+    console.warn('FAILED TO GET DETAILS', error);
   }
 });
 
