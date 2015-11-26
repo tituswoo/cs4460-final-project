@@ -5,6 +5,7 @@ import React from 'react';
 class CityProfile extends React.Component {
     render() {
       console.log(this.props.city);
+      // super ugly, try to find another way...
       if (!this.props.city ||
         !this.props.city.city_crime ||
         !this.props.city.city_healthcare ||
@@ -14,7 +15,8 @@ class CityProfile extends React.Component {
       }
       return (
         <div className='city-profile'>
-          <h3>{this.props.city.indices.name}</h3>
+          <h2 className='city-profile__title'>{this.props.city.indices.name}</h2>
+
         </div>
       );
     }

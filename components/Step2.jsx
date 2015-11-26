@@ -12,15 +12,11 @@ class Step2 extends React.Component {
     this.state = {
       cities: CityStore.getInitialState()
     };
-    console.log(this.state.cities);
   }
 
   render() {
-    //console.log(this.props.location);
-    //let cities = this.props.location.state;
     return (
       <div>
-        <h1>Results</h1>
         <div className='flex-row'>
           <CityProfile city={CityStore.get(this.props.location.state.city1_id)} />
           <CityProfile city={CityStore.get(this.props.location.state.city2_id)} />
