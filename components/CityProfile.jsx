@@ -30,7 +30,8 @@ class CityProfile extends React.Component {
                 options={{
                   draggable: false,
                   disableDefaultUI: true,
-                  scrollwheel: false
+                  scrollwheel: false,
+                  disableDoubleClickZoom: true
                 }}>
               </GoogleMap>
             }>
