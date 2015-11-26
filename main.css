@@ -307,5 +307,6 @@ html, body {
 
 .city-profile__map {
   height: 200px;
+  margin: -10px;
   margin-bottom: 10px;
 }
