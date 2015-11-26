@@ -17,9 +17,9 @@ CityActions.getCities.listen(function() {
 });
 
 CityActions.getDetails.listen(function(cityId) {
-  _getDetailsFor.call(this, cityId, 'city_crime');
+  /*_getDetailsFor.call(this, cityId, 'city_crime');
   _getDetailsFor.call(this, cityId, 'city_healthcare');
-  _getDetailsFor.call(this, cityId, 'city_traffic');
+  _getDetailsFor.call(this, cityId, 'city_traffic');*/
   _getDetailsFor.call(this, cityId, 'indices');
 });
 
