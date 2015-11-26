@@ -27,7 +27,7 @@ class EmoticonReportTile extends React.Component {
   _pickRemarkAndEmote(scale, rating) {
     if (scale.length < 1) {
       this.setState({
-        remark: 'No scale defined!',
+        remark: 'No scale defined.',
         icon: 'fa-question-circle'
       });
     } else {
@@ -41,7 +41,7 @@ class EmoticonReportTile extends React.Component {
         }
       }
       this.setState({
-        remark: 'Unknown',
+        remark: 'Unknown.',
         icon: 'fa-question-circle'
       });
     }
