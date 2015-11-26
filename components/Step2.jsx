@@ -12,7 +12,6 @@ class Step2 extends React.Component {
     this.state = {
       cities: CityStore.getInitialState()
     };
-    console.log(this.props.location.state.city1.city_id);
   }
 
   render() {

@@ -304,3 +304,8 @@ html, body {
 .city-profile__title {
 
 }
+
+.city-profile__map {
+  height: 200px;
+  margin-bottom: 10px;
+}

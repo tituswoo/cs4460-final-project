@@ -5,7 +5,6 @@ import {GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
 
 class CityProfile extends React.Component {
     render() {
-      console.log(this.props);
       // super ugly, try to find another way...
       if (!this.props.city ||
         !this.props.city.city_crime ||
@@ -18,7 +17,7 @@ class CityProfile extends React.Component {
         <div className='city-profile'>
           <GoogleMapLoader
             containerElement={
-              <div style={{height: '200px'}} />
+              <div className='city-profile__map' />
             }
             googleMapElement={
               <GoogleMap
