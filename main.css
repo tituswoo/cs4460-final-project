@@ -333,10 +333,6 @@ html, body {
   margin-bottom: 10px;
 }
 
-.emoticon-report-tile:last-child {
-  margin-bottom: 0;
-}
-
 .emoticon-report-tile__emote {
   font-size: 40px;
   margin-right: 10px;

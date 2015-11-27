@@ -89,7 +89,7 @@ let scales = {
       icon: 'fa-smile-o'
     },
     {
-      from: 135, to: 200,
+      from: 135, to: 1000,
       remark: 'Very high',
       icon: 'fa-smile-o'
     }

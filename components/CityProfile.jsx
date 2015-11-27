@@ -8,9 +8,10 @@ import scales from '../scales';
 
 class CityProfile extends React.Component {
     render() {
-      // super ugly, try to find another way...
       if (!this.props.city || !this.props.city.indices) {
-        return (<div />);
+        return (
+          <div />
+        );
       }
       console.log(this.props.city.indices);
       return (
