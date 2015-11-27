@@ -3,6 +3,8 @@
 import React from 'react';
 import {GoogleMapLoader, GoogleMap} from 'react-google-maps';
 
+let CSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +34,14 @@ class App extends React.Component {
         <div className='app__container'>
           {this._renderMap()}
           <div className='magic-center magic-center--row'>
-            {this.props.children}
+            <CSSTransitionGroup
+              transitionName='generic-fade'
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={500}
+              transitionAppear={true}
+              transitionAppearTimeout={500}>
+              {this.props.children}
+            </CSSTransitionGroup>
           </div>
         </div>
       </div>

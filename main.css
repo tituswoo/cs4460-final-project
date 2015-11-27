@@ -337,3 +337,18 @@ html, body {
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 200px rgba(0, 0, 0, 0.5);
 }
+
+.generic-fade-appear, .generic-fade-enter {
+  opacity: 0;
+}
+
+.generic-fade-appear.generic-fade-appear-active,
+.generic-fade-enter.generic-fade-enter-active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+
+.generic-fade-leave.generic-fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 1s ease-in;
+}
