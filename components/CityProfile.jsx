@@ -54,7 +54,6 @@ class CityProfile extends React.Component {
               scale={scales.qualityOfLife}/>
             <EmoticonReportTile
               title='Commute Time'
-              rating={this.props.city.indices.traffic_index}
               remark={_trafficTimeIndexReport(this.props.city.indices.traffic_time_index)}
               icon='fa-road'/>
           </div>
@@ -65,7 +64,7 @@ class CityProfile extends React.Component {
 
 function _trafficTimeIndexReport(trafficTimeIndex) {
   if (trafficTimeIndex) {
-    return Math.floor(trafficTimeIndex) + 'min on average.';
+    return Math.floor(trafficTimeIndex) + ' min on average.';
   }
 
   return 'No data found.';
