@@ -9,13 +9,17 @@ import LoadingDialog from '../components/LoadingDialog';
 import CityStore from '../stores/CityStore';
 import CityActions from '../actions/CityActions';
 
+import locationStore from '../stores/LocationStore';
+import locationActions from '../actions/LocationActions';
+
 let CSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 class Step1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cities: CityStore.getInitialState()
+      cities: CityStore.getInitialState(),
+      locations: locationStore.getInitialState()
     };
   }
 
@@ -26,10 +30,15 @@ class Step1 extends React.Component {
     if (!CityStore.loaded) {
       CityActions.getCities();
     }
+
+    this._unsubscribeLocationStore = locationStore.listen((locations) => {
+      this.setState({locations: locations});
+    });
   }
 
   componentWillUnmount() {
     this._unsubscribe();
+    this._unsubscribeLocationStore();
   }
 
   render() {
@@ -48,22 +57,28 @@ class Step1 extends React.Component {
         </div>
         <div className='step-1__question-segment'>
           <CityAutocomplete
+            value={this.state.locations.from.city}
             cityList={this.state.cities.list}
-            onOptionSelected={this._onOptionSelected.bind(this, 'city1')}
-            onOptionDeselected={this._onOptionDeselected.bind(this, 'city1')}
+            onOptionSelected={this._onOptionSelected.bind(this, 'from')}
+            onOptionDeselected={this._onOptionDeselected.bind(this, 'from')}
             showHint={true}
             autoFocus={true} />
           <span className='step-1__question-text'>to</span>
         </div>
         <div className='step-1__question-segment'>
           <CityAutocomplete
+            value={this.state.locations.to.city}
             cityList={this.state.cities.list}
-            onOptionSelected={this._onOptionSelected.bind(this, 'city2')}
-            onOptionDeselected={this._onOptionDeselected.bind(this, 'city2')}
+            onOptionSelected={this._onOptionSelected.bind(this, 'to')}
+            onOptionDeselected={this._onOptionDeselected.bind(this, 'to')}
             showHint={true} />
           <span className='step-1__question-text'>?</span>
         </div>
-        {this.state.city1 && this.state.city2 && this._renderGoToStep2Button()}
+        {
+          !_isObjectEmpty(this.state.locations.from) &&
+          !_isObjectEmpty(this.state.locations.to) &&
+          this._renderGoToStep2Button()
+        }
       </div>
     );
   }
@@ -76,11 +91,10 @@ class Step1 extends React.Component {
         transitionLeaveTimeout={500}
         transitionAppear={true}
         transitionAppearTimeout={500}>
-        <div key={1} className='step-1__question-segment step-1__question-segment--centered'>
-          <Link to='step2' state={{
-              city1: this.state.city1,
-              city2: this.state.city2
-            }}>
+        <div
+          key={1}
+          className='step-1__question-segment step-1__question-segment--centered'>
+          <Link to='step2'>
             <button
               className='button step-1__button'>
               <span style={{fontStyle: 'italic'}}>find out</span>
@@ -92,17 +106,17 @@ class Step1 extends React.Component {
     );
   }
 
-  _onOptionSelected(city, option) {
-    this.setState({
-      [city]: option
-    });
+  _onOptionSelected(loc, locationObject) {
+    locationActions.setLocation(loc, locationObject);
   }
 
-  _onOptionDeselected(city, option) {
-    this.setState({
-      [city]: false
-    });
+  _onOptionDeselected(loc) {
+    locationActions.setLocation(loc, {});
   }
+}
+
+function _isObjectEmpty(obj) {
+  return Object.keys(obj).length < 1;
 }
 
 export default Step1;
