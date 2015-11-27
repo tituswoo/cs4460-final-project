@@ -28,6 +28,7 @@
     "react-google-maps": "^4.2.0",
     "react-router": "^1.0.0",
     "react-typeahead": "^1.1.5",
+    "jquery": "^2.1.4",
     "reflux": "^0.3.0"
   },
   "devDependencies": {

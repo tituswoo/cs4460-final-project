@@ -28,6 +28,7 @@ let CityStore = Reflux.createStore({
     console.log('failed to get cities');
   },
   onGetDetailsCompleted: function(cityId, categoryName, response) {
+    console.log('getting details');
     if (this.cities.details[cityId] === undefined) {
       this.cities.details[cityId] = [];
     }

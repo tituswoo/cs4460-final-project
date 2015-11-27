@@ -4,6 +4,7 @@ import React from 'react';
 import CityAutocomplete from '../components/CityAutocomplete';
 import {Link} from 'react-router';
 import {GoogleMapLoader, GoogleMap} from 'react-google-maps';
+import LoadingDialog from '../components/LoadingDialog';
 
 import CityStore from '../stores/CityStore';
 import CityActions from '../actions/CityActions';
@@ -12,11 +13,7 @@ class Step1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cities: CityStore.getInitialState(),
-      currentLocation: {
-        lat: 36.703660,
-        lng: -100.371094
-      }
+      cities: CityStore.getInitialState()
     };
   }
 
@@ -27,70 +24,20 @@ class Step1 extends React.Component {
     if (!CityStore.loaded) {
       CityActions.getCities();
     }
-
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.setState({
-        currentLocation: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        }
-      });
-    });
   }
 
   componentWillUnmount() {
     this._unsubscribe();
   }
 
-  _renderMap() {
-    console.log('rendering...');
-    return (
-      <GoogleMapLoader
-        containerElement={
-          <div style={{
-              height: '100vh',
-              width: '100vw',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              zIndex: '-100'
-            }} />
-        }
-        googleMapElement={
-          <GoogleMap
-            ref={(map) => {this._map = map;}}
-            defaultZoom={6}
-            options={{
-              draggable: false,
-              disableDefaultUI: true,
-              scrollwheel: false,
-              disableDoubleClickZoom: true,
-              center: {
-                lat: this.state.currentLocation.lat,
-                lng: this.state.currentLocation.lng
-              },
-              styles: [{
-                elementType: 'labels',
-                stylers: [
-                  {visibility: 'off'}
-                ]
-              }, {
-                featureType: 'road',
-                stylers: [
-                  {visibility: 'off'}
-                ]
-              }]
-            }}>
-          </GoogleMap>
-        }>
-      </GoogleMapLoader>
-    );
-  }
-
   render() {
+    if (!CityStore.loaded) {
+      return (
+        <LoadingDialog />
+      );
+    }
     return (
       <div className='step-1__question'>
-        {Object.keys(this.state.currentLocation).length > 1 && this._renderMap()}
         <div className='step-1__question-segment'>
           <span
             className='step-1__question-text'
