@@ -22,7 +22,7 @@ class CityAutocomplete extends React.Component {
         value={this.props.value}
         filterOption='city'
         placeholder={this.state.placeholder}
-        displayOption={this._displayOption.bind(this)}
+        displayOption={locationService.normalize.bind(this)}
         onOptionSelected={this._onOptionSelected.bind(this)}
         onKeyDown={this._onKeyDown.bind(this)}
         customClasses={{
@@ -95,10 +95,6 @@ class CityAutocomplete extends React.Component {
     if (this.props.onOptionSelected) {
       this.props.onOptionSelected(option);
     }
-  }
-
-  _displayOption(option, index) {
-    return locationService.normalize(option);
   }
 }
 
