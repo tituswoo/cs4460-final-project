@@ -2,6 +2,8 @@
 
 import React from 'react';
 import {GoogleMapLoader, GoogleMap} from 'react-google-maps';
+import locationStore from '../stores/LocationStore';
+import locationActions from '../actions/LocationActions';
 
 let CSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -9,30 +11,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // default current location to middle of USA:
-      currentLocation: {
-        lat: 36.703660,
-        lng: -100.371094
-      }
+      locations: locationStore.getInitialState()
     };
   }
 
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.setState({
-        currentLocation: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        }
-      });
+    this._unsubscribe = locationStore.listen((locations) => {
+      this.setState({locations: locations});
+      console.log('location updated:', this.state.locations);
     });
+    locationActions.load();
   }
 
   render() {
     return (
       <div className='app'>
         <div className='app__container'>
-          {this._renderMap()}
+          {this._renderMap(this.state.locations.current)}
           <div className='magic-center magic-center--row'>
             <CSSTransitionGroup
               transitionName='generic-fade'
@@ -48,7 +43,7 @@ class App extends React.Component {
     );
   }
 
-  _renderMap() {
+  _renderMap(location) {
     return (
       <GoogleMapLoader
         containerElement={
@@ -73,8 +68,8 @@ class App extends React.Component {
               scrollwheel: false,
               disableDoubleClickZoom: true,
               center: {
-                lat: this.state.currentLocation.lat,
-                lng: this.state.currentLocation.lng
+                lat: location.lat,
+                lng: location.lng
               },
               styles: [{
                 elementType: 'labels',
