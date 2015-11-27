@@ -10,7 +10,7 @@ class EmoticonReportTile extends React.Component {
 
   render() {
     return (
-      <div className='emoticon-report-tile'>
+      <div className={'emoticon-report-tile' + ' ' + this.state.className}>
         <i className={'fa ' + this._pickIconToUse() + ' emoticon-report-tile__emote'}></i>
         <div>
           <h3>{this.props.title}</h3>
@@ -39,7 +39,8 @@ class EmoticonReportTile extends React.Component {
         if (rating >= scale[i].from && rating <= scale[i].to) {
           this.setState({
             remark: scale[i].remark + '.',
-            icon: scale[i].icon
+            icon: scale[i].icon,
+            className: scale[i].className
           });
           return;
         }

@@ -5,7 +5,8 @@ let scales = {
     {
       from: 0, to: 40,
       remark: 'Low',
-      icon: 'fa-frown-o'
+      icon: 'fa-frown-o',
+      className: 'emoticon-report-tile--red'
     },
     {
       from: 40, to: 60,
@@ -119,6 +120,29 @@ let scales = {
       from: 110, to: 1000,
       remark: 'Very high',
       icon: 'fa-frown-o'
+    }
+  ],
+  safety: [
+    {
+      from: 0, to: 40,
+      remark: 'Poor',
+      icon: 'fa-frown-o',
+      className: 'emoticon-report-tile--red'
+    },
+    {
+      from: 40, to: 60,
+      remark: 'A little sketchy',
+      icon: 'fa-meh-o'
+    },
+    {
+      from: 60, to: 80,
+      remark: 'Great',
+      icon: 'fa-smile-o'
+    },
+    {
+      from: 80, to: 100,
+      remark: 'Very safe',
+      icon: 'fa-smile-o'
     }
   ]
 };

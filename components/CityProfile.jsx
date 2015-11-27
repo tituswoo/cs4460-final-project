@@ -36,7 +36,7 @@ class CityProfile extends React.Component {
           <EmoticonReportTile
             title='Safety'
             rating={this.props.city.indices.safety_index}
-            scale={scales.standardScale}/>
+            scale={scales.safety}/>
           <EmoticonReportTile
             title='Health Care'
             rating={this.props.city.indices.health_care_index}
