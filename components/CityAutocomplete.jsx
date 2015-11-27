@@ -18,6 +18,7 @@ class CityAutocomplete extends React.Component {
       <Typeahead
         options={this.props.cityList}
         maxVisible={4}
+        value={this.props.value}
         filterOption='city'
         placeholder={this.state.placeholder}
         displayOption={this._displayOption.bind(this)}
@@ -111,11 +112,13 @@ class CityAutocomplete extends React.Component {
 CityAutocomplete.defaultProps = {
   showHint: false,
   autoFocus: false,
+  value: '',
   onOptionSelected: () => {},
   onOptionDeselected: () => {}
 };
 
 CityAutocomplete.propTypes = {
+  value: React.PropTypes.string,
   cityList: React.PropTypes.array,
   showHint: React.PropTypes.bool,
   onOptionSelected: React.PropTypes.func,

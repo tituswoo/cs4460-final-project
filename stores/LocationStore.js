@@ -11,8 +11,8 @@ let locationStore = Reflux.createStore({
       to: {},
       current: {
         // default to middle of USA:
-        lat: 36.703660,
-        lng: -100.371094
+        longitude: 36.703660,
+        latitude: -100.371094
       }
     };
   },
@@ -22,8 +22,8 @@ let locationStore = Reflux.createStore({
     navigator.geolocation.getCurrentPosition((position) => {
       let coords = position.coords;
       this.onSetLocation('current', {
-        lat: coords.latitude,
-        lng: coords.longitude
+        longitude: coords.longitude,
+        latitude: coords.latitude
       });
     });
   },

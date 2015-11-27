@@ -68,8 +68,8 @@ class App extends React.Component {
               scrollwheel: false,
               disableDoubleClickZoom: true,
               center: {
-                lat: location.lat,
-                lng: location.lng
+                lat: location.latitude,
+                lng: location.longitude
               },
               styles: [{
                 elementType: 'labels',
