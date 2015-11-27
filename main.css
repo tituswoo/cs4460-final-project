@@ -303,10 +303,11 @@ html, body {
 }
 
 .city-profile {
-  margin-right: 20px;
-  padding: 10px;
+  margin-right: 3.5vw;
+  padding: 10px 10px 0 10px;
   border: 1px solid black;
   min-width: 350px;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .city-profile:last-child {
@@ -349,7 +350,6 @@ html, body {
 
 .emoticon-report-tile:last-child {
   margin-bottom: 0;
-  padding-bottom: 0;
 }
 
 .emoticon-report-tile__emote {
