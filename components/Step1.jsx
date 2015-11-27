@@ -116,8 +116,7 @@ class Step1 extends React.Component {
         {this.state.city1 && this.state.city2 &&
           <div
             key={1}
-            className='step-1__question-segment step-1__question-segment--centered'
-            style={{marginTop: '5vh'}}>
+            className='step-1__question-segment step-1__question-segment--centered'>
             <Link to='step2' state={{
                 city1: this.state.city1,
                 city2: this.state.city2
