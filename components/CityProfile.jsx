@@ -47,7 +47,7 @@ class CityProfile extends React.Component {
           <EmoticonReportTile
             title='Commute Time'
             rating={this.props.city.indices.traffic_index}
-            remark={Math.floor(this.props.city.indices.traffic_index) + ' min on average.'}
+            remark={Math.floor(this.props.city.indices.traffic_time_index) + ' min on average.'}
             icon='fa-road'/>
         </div>
       );
