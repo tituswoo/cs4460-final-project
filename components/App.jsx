@@ -58,7 +58,9 @@ class App extends React.Component {
               position: 'absolute',
               top: 0,
               left: 0,
-              zIndex: '-100'
+              zIndex: '-100',
+              WebkitFilter: 'blur(3px)',
+              filter: 'blur(3px)'
             }} />
         }
         googleMapElement={
