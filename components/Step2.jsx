@@ -2,6 +2,7 @@
 
 import React from 'react';
 import CityProfile from './CityProfile';
+import LoadingDialog from '../components/LoadingDialog';
 
 import CityActions from '../actions/CityActions';
 import CityStore from '../stores/CityStore';
@@ -15,6 +16,9 @@ class Step2 extends React.Component {
   }
 
   render() {
+    if (!CityStore.loaded) {
+      return (<LoadingDialog />);
+    }
     return (
       <div>
         <div className='flex-row'>
