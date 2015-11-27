@@ -295,7 +295,7 @@ html, body {
   margin-right: 20px;
   padding: 10px;
   border: 1px solid black;
-  min-width: 400px;
+  min-width: 350px;
 }
 
 .city-profile:last-child {
@@ -348,16 +348,13 @@ html, body {
 }
 
 .emoticon-report-tile--red {
-  color: white;
-  background-color: #EA1C1C;
+  background-color: rgba(234, 28, 28, 0.4);
 }
 
 .emoticon-report-tile--yellow {
-  color: white;
-  background-color: #FCB606;
+  background-color: rgba(252, 182, 6, 0.4);
 }
 
 .emoticon-report-tile--green {
-  color: white;
-  background-color: #5DA500;
+  background-color: rgba(93, 165, 0, 0.4);
 }
