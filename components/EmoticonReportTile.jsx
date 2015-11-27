@@ -11,10 +11,10 @@ class EmoticonReportTile extends React.Component {
   render() {
     return (
       <div className='emoticon-report-tile'>
-        <i className={'fa ' + this.state.icon + ' emoticon-report-tile__emote'}></i>
+        <i className={'fa ' + this._pickIconToUse() + ' emoticon-report-tile__emote'}></i>
         <div>
           <h3>{this.props.title}</h3>
-          <p>{this.state.remark}</p>
+          <p>{this.props.remark || this.state.remark}</p>
         </div>
       </div>
     );
@@ -22,6 +22,10 @@ class EmoticonReportTile extends React.Component {
 
   componentDidMount() {
     this._pickRemarkAndEmote(this.props.scale, this.props.rating);
+  }
+
+  _pickIconToUse() {
+    return this.props.icon || this.state.icon;
   }
 
   _pickRemarkAndEmote(scale, rating) {
@@ -51,7 +55,9 @@ class EmoticonReportTile extends React.Component {
 EmoticonReportTile.propTypes = {
   title: React.PropTypes.string,
   rating: React.PropTypes.number,
-  scale: React.PropTypes.array
+  scale: React.PropTypes.array,
+  remark: React.PropTypes.string,
+  icon: React.PropTypes.string
 };
 
 EmoticonReportTile.defaultProps = {

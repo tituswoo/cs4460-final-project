@@ -41,7 +41,11 @@ class CityProfile extends React.Component {
             title='Quality of Life'
             rating={this.props.city.indices.quality_of_life_index}
             scale={scales.qualityOfLife}/>
-          <p><strong>Average time in traffic:</strong>{this.props.city.indices.traffic_index} min</p>
+          <EmoticonReportTile
+            title='Commute Time'
+            rating={this.props.city.indices.traffic_index}
+            remark={Math.floor(this.props.city.indices.traffic_index) + ' min on average.'}
+            icon='fa-road'/>
           <p><strong>Purchasing power:</strong>{this.props.city.indices.purchasing_power_incl_rent_index}</p>
         </div>
       );
