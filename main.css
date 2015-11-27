@@ -331,6 +331,10 @@ html, body {
   margin-bottom: 10px;
 }
 
+.emoticon-report-tile:last-child {
+  margin-bottom: 0;
+}
+
 .emoticon-report-tile__emote {
   display: inline-block;
   text-align: center;
