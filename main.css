@@ -335,6 +335,7 @@ html, body {
 
 .emoticon-report-tile:last-child {
   margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .emoticon-report-tile__emote {
