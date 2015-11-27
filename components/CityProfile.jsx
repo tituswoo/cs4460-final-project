@@ -30,10 +30,6 @@ class CityProfile extends React.Component {
             rating={this.props.city.indices.purchasing_power_incl_rent_index}
             scale={scales.qualityOfLife}/>
           <EmoticonReportTile
-            title='Quality of Life'
-            rating={this.props.city.indices.quality_of_life_index}
-            scale={scales.qualityOfLife}/>
-          <EmoticonReportTile
             title='Safety'
             rating={this.props.city.indices.safety_index}
             scale={scales.safety}/>
@@ -45,6 +41,10 @@ class CityProfile extends React.Component {
             title='Pollution'
             rating={this.props.city.indices.pollution_index}
             scale={scales.pollutionScale}/>
+          <EmoticonReportTile
+            title='Quality of Life'
+            rating={this.props.city.indices.quality_of_life_index}
+            scale={scales.qualityOfLife}/>
           <EmoticonReportTile
             title='Commute Time'
             rating={this.props.city.indices.traffic_index}

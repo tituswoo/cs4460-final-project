@@ -344,7 +344,18 @@ html, body {
   font-size: 40px;
   margin-right: 10px;
 }
+
 .emoticon-report-tile--red {
   color: white;
   background-color: #DE1A1A;
+}
+
+.emoticon-report-tile--yellow {
+  color: white;
+  background-color: #FCB606;
+}
+
+.emoticon-report-tile--green {
+  color: white;
+  background-color: #399000;
 }
