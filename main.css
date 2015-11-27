@@ -267,7 +267,7 @@ html, body {
 .step-1__button {
   text-transform: none;
   background: none;
-  border: 1px solid white;
+  border: none;
   font-size: 2.5vw;
 }
 
