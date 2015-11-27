@@ -7,7 +7,7 @@ class LoadingDialog extends React.Component {
     return (
       <div className='loading-dialog'>
         <h1>
-          <i className='fa fa-spin fa-circle-o-notch'></i> Loading..
+          <i className='fa fa-cog fa-spin'></i> Loading...
           </h1>
       </div>
     );

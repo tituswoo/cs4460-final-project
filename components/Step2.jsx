@@ -16,7 +16,7 @@ class Step2 extends React.Component {
   }
 
   render() {
-    if (!CityStore.loaded) {
+    if (CityStore.loaded) {
       return (<LoadingDialog />);
     }
     return (
