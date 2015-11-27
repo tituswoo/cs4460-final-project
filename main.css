@@ -345,10 +345,31 @@ html, body {
 .generic-fade-appear.generic-fade-appear-active,
 .generic-fade-enter.generic-fade-enter-active {
   opacity: 1;
-  transition: opacity 1s ease-in;
+  transition: opacity 1s linear;
 }
 
 .generic-fade-leave.generic-fade-leave-active {
   opacity: 0.01;
-  transition: opacity 1s ease-in;
+  transition: opacity 1s linear;
+}
+
+.expand-in-appear {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-25px);
+  transition: opacity 500ms ease-out,
+    transform 500ms ease-out, max-height 700ms ease-out;
+}
+
+.expand-in-appear.expand-in-appear-active {
+  opacity: 1;
+  max-height: 50vh;
+  transform: translateY(0);
+}
+
+.expand-in-leave.expand-in-leave-active {
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(-25px);
 }

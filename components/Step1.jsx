@@ -9,6 +9,8 @@ import LoadingDialog from '../components/LoadingDialog';
 import CityStore from '../stores/CityStore';
 import CityActions from '../actions/CityActions';
 
+let CSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 class Step1 extends React.Component {
   constructor(props) {
     super(props);
@@ -61,23 +63,32 @@ class Step1 extends React.Component {
             showHint={true} />
           <span className='step-1__question-text'>?</span>
         </div>
-        {this.state.city1 && this.state.city2 &&
-          <div
-            key={1}
-            className='step-1__question-segment step-1__question-segment--centered'>
-            <Link to='step2' state={{
-                city1: this.state.city1,
-                city2: this.state.city2
-              }}>
-              <button
-                className='button step-1__button'>
-                <span style={{fontStyle: 'italic'}}>find out</span>
-                <br /><i className='fa fa-angle-double-down'></i>
-              </button>
-            </Link>
-          </div>
-        }
+        {this.state.city1 && this.state.city2 && this._renderGoToStep2Button()}
       </div>
+    );
+  }
+
+  _renderGoToStep2Button() {
+    return (
+      <CSSTransitionGroup
+        transitionName='expand-in'
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={500}
+        transitionAppear={true}
+        transitionAppearTimeout={500}>
+        <div key={1} className='step-1__question-segment step-1__question-segment--centered'>
+          <Link to='step2' state={{
+              city1: this.state.city1,
+              city2: this.state.city2
+            }}>
+            <button
+              className='button step-1__button'>
+              <span style={{fontStyle: 'italic'}}>find out</span>
+              <br /><i className='fa fa-angle-double-down'></i>
+            </button>
+          </Link>
+        </div>
+      </CSSTransitionGroup>
     );
   }
 
