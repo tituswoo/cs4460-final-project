@@ -338,6 +338,24 @@ html, body {
   box-shadow: 0 0 200px rgba(0, 0, 0, 0.5);
 }
 
+@keyframes cycle-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px)
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+}
+
+.step-1__button i {
+  animation: cycle-down 1s infinite;
+}
+
 .generic-fade-appear, .generic-fade-enter {
   opacity: 0;
 }
