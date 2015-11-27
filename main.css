@@ -309,8 +309,6 @@ html, body {
 .map-preview {
   overflow: hidden;
   position: relative;
-
-  height: 200px;
   margin: -10px;
   margin-bottom: 10px;
 }
@@ -336,7 +334,7 @@ html, body {
 .emoticon-report-tile__emote {
   display: inline-block;
   text-align: center;
-  width: 1.25em;
+  width: 1em;
   font-size: 40px;
   margin-right: 10px;
 }

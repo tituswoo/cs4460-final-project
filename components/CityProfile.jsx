@@ -30,23 +30,26 @@ class CityProfile extends React.Component {
             rating={this.props.city.indices.health_care_index}
             scale={scales.healthCare}/>
           <EmoticonReportTile
-            title='Pollution'
-            rating={this.props.city.indices.pollution_index}
-            scale={scales.pollutionScale}/>
+            title='Cost of Living'
+            rating={this.props.city.indices.cpi_index}
+            scale={scales.costOfLiving}/>
             <EmoticonReportTile
-              title='Cost of Living'
-              rating={this.props.city.indices.cpi_index}
-              scale={scales.costOfLiving}/>
+              title='Pollution'
+              rating={this.props.city.indices.pollution_index}
+              scale={scales.pollutionScale}/>
           <EmoticonReportTile
             title='Quality of Life'
             rating={this.props.city.indices.quality_of_life_index}
             scale={scales.qualityOfLife}/>
+            <EmoticonReportTile
+              title='Purchasing Power'
+              rating={this.props.city.indices.purchasing_power_incl_rent_index}
+              scale={scales.qualityOfLife}/>
           <EmoticonReportTile
             title='Commute Time'
             rating={this.props.city.indices.traffic_index}
             remark={Math.floor(this.props.city.indices.traffic_index) + ' min on average.'}
             icon='fa-road'/>
-          <p><strong>Purchasing power:</strong>{this.props.city.indices.purchasing_power_incl_rent_index}</p>
         </div>
       );
     }
