@@ -49,7 +49,8 @@ class Step1 extends React.Component {
             cityList={this.state.cities.list}
             onOptionSelected={this._onOptionSelected.bind(this, 'city1')}
             onOptionDeselected={this._onOptionDeselected.bind(this, 'city1')}
-            showHint={true} />
+            showHint={true}
+            autoFocus={true} />
           <span className='step-1__question-text'>to</span>
         </div>
         <div className='step-1__question-segment'>

@@ -40,6 +40,10 @@ class CityAutocomplete extends React.Component {
       placeholder: this._getRandomCity(this.props.cityList)
     });
     this._cycleThroughRandomPlaceholders();
+    if (this.props.autoFocus) {
+      // Doesn't work for some reason...
+      this._typeaheadRef.focus();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -106,6 +110,7 @@ class CityAutocomplete extends React.Component {
 
 CityAutocomplete.defaultProps = {
   showHint: false,
+  autoFocus: false,
   onOptionSelected: () => {},
   onOptionDeselected: () => {}
 };
@@ -114,7 +119,8 @@ CityAutocomplete.propTypes = {
   cityList: React.PropTypes.array,
   showHint: React.PropTypes.bool,
   onOptionSelected: React.PropTypes.func,
-  onOptionDeselected: React.PropTypes.func
+  onOptionDeselected: React.PropTypes.func,
+  autoFocus: React.PropTypes.bool
 };
 
 export default CityAutocomplete;
