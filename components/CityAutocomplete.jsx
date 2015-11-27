@@ -4,9 +4,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 let Typeahead = require('react-typeahead').Typeahead;
 
-import CityStore from '../stores/CityStore';
-import CityActions from '../actions/CityActions';
-
 class CityAutocomplete extends React.Component {
   constructor(props) {
     super(props);

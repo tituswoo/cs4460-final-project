@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import {GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
 import MapPreview from '../components/MapPreview';
 import EmoticonReportTile from '../components/EmoticonReportTile';
 import scales from '../scales';

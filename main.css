@@ -167,6 +167,10 @@ html, body {
   width: 100%;
 }
 
+.magic-center--row {
+  flex-direction: row;
+}
+
 .step-1__question {
   display: flex;
   flex-direction: column;
