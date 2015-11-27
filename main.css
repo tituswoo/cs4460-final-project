@@ -53,15 +53,17 @@ html, body {
   border: none;
   padding: 3px 5px;
   border: 2px solid lightgray;
+  transition: 0.1s linear all;
 }
 
 .button:hover {
   cursor: pointer;
-  -webkit-filter: brightness(1.1);
+  -webkit-filter: brightness(1.5);
 }
 
 .button:active {
-  -webkit-filter: brightness(0.9);
+  outline: 0;
+  -webkit-filter: brightness(0.7);
 }
 
 .button--full {
