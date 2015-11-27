@@ -76,14 +76,14 @@ class CityAutocomplete extends React.Component {
   }
 
   _onKeyDown(e) {
-    if (this.state.selectedCity.country === undefined) {
-
-    } else if (e.keyCode != 13 && e.keyCode != 9) {
-      // Case for when option is unselected
-      // For some reason ENTER key still triggers this,
-      // so check keyCode before continuing.
-      this.setState({selectedCity: {}});
-      this.props.onOptionDeselected();
+    if (Object.keys(this.state.selectedCity).length > 0) {
+      if (e.keyCode != 13 && e.keyCode != 9) {
+        // Case for when option is unselected
+        // For some reason ENTER key still triggers this,
+        // so check keyCode before continuing.
+        this.setState({selectedCity: {}});
+        this.props.onOptionDeselected();
+      }
     }
   }
 
