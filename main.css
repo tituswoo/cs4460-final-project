@@ -348,7 +348,7 @@ html, body {
 
 .emoticon-report-tile--red {
   color: white;
-  background-color: #DE1A1A;
+  background-color: #EA1C1C;
 }
 
 .emoticon-report-tile--yellow {
@@ -358,5 +358,5 @@ html, body {
 
 .emoticon-report-tile--green {
   color: white;
-  background-color: #399000;
+  background-color: #5DA500;
 }
