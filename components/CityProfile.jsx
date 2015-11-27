@@ -22,6 +22,18 @@ class CityProfile extends React.Component {
             latitude={this.props.cityMeta.latitude}
             longitude={this.props.cityMeta.longitude}/>
           <EmoticonReportTile
+            title='Cost of Living'
+            rating={this.props.city.indices.cpi_index}
+            scale={scales.costOfLiving}/>
+          <EmoticonReportTile
+            title='Purchasing Power'
+            rating={this.props.city.indices.purchasing_power_incl_rent_index}
+            scale={scales.qualityOfLife}/>
+          <EmoticonReportTile
+            title='Quality of Life'
+            rating={this.props.city.indices.quality_of_life_index}
+            scale={scales.qualityOfLife}/>
+          <EmoticonReportTile
             title='Safety'
             rating={this.props.city.indices.safety_index}
             scale={scales.standardScale}/>
@@ -30,21 +42,9 @@ class CityProfile extends React.Component {
             rating={this.props.city.indices.health_care_index}
             scale={scales.healthCare}/>
           <EmoticonReportTile
-            title='Cost of Living'
-            rating={this.props.city.indices.cpi_index}
-            scale={scales.costOfLiving}/>
-            <EmoticonReportTile
-              title='Pollution'
-              rating={this.props.city.indices.pollution_index}
-              scale={scales.pollutionScale}/>
-          <EmoticonReportTile
-            title='Quality of Life'
-            rating={this.props.city.indices.quality_of_life_index}
-            scale={scales.qualityOfLife}/>
-            <EmoticonReportTile
-              title='Purchasing Power'
-              rating={this.props.city.indices.purchasing_power_incl_rent_index}
-              scale={scales.qualityOfLife}/>
+            title='Pollution'
+            rating={this.props.city.indices.pollution_index}
+            scale={scales.pollutionScale}/>
           <EmoticonReportTile
             title='Commute Time'
             rating={this.props.city.indices.traffic_index}
