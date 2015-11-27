@@ -12,6 +12,8 @@ import CityActions from '../actions/CityActions';
 import locationStore from '../stores/LocationStore';
 import locationActions from '../actions/LocationActions';
 
+import locationService from '../services/locationService';
+
 let CSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 class Step1 extends React.Component {
@@ -57,7 +59,7 @@ class Step1 extends React.Component {
         </div>
         <div className='step-1__question-segment'>
           <CityAutocomplete
-            value={this.state.locations.from.city}
+            value={locationService.normalize(this.state.locations.from)}
             cityList={this.state.cities.list}
             onOptionSelected={this._onOptionSelected.bind(this, 'from')}
             onOptionDeselected={this._onOptionDeselected.bind(this, 'from')}
@@ -67,7 +69,7 @@ class Step1 extends React.Component {
         </div>
         <div className='step-1__question-segment'>
           <CityAutocomplete
-            value={this.state.locations.to.city}
+            value={locationService.normalize(this.state.locations.to)}
             cityList={this.state.cities.list}
             onOptionSelected={this._onOptionSelected.bind(this, 'to')}
             onOptionDeselected={this._onOptionDeselected.bind(this, 'to')}

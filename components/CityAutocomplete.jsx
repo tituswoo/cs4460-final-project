@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 let Typeahead = require('react-typeahead').Typeahead;
+import locationService from '../services/locationService';
 
 class CityAutocomplete extends React.Component {
   constructor(props) {
@@ -70,7 +71,7 @@ class CityAutocomplete extends React.Component {
   _getRandomCity(cities) {
     if (this.props.showHint && cities.length > 0) {
       var index = Math.floor(Math.random() * (cities.length - 1));
-      return this._normalizeQueryName(cities[index]);
+      return locationService.normalize(cities[index]);
     } else {
       return '';
     }
@@ -97,15 +98,7 @@ class CityAutocomplete extends React.Component {
   }
 
   _displayOption(option, index) {
-    return this._normalizeQueryName(option);
-  }
-
-  _normalizeQueryName(option) {
-    if (option.city.split(',').length < 2) {
-      return option.city + ', ' + option.country;
-    } else {
-      return option.city;
-    }
+    return locationService.normalize(option);
   }
 }
 
