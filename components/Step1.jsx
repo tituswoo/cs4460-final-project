@@ -41,7 +41,7 @@ class Step1 extends React.Component {
 
   componentWillUnmount() {
     this._unsubscribe();
-    this._unsubscribeLocationStore();    
+    this._unsubscribeLocationStore();
   }
 
   render() {
@@ -127,8 +127,7 @@ class Step1 extends React.Component {
   }
 
   _onOptionDeselected(loc) {
-    console.log('option deselected');
-    // locationActions.setLocation(loc, {});
+    // do nothing right now.
   }
 }
 
