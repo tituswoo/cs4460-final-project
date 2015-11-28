@@ -15,7 +15,8 @@ class ReportCard extends React.Component {
             title={_abbreviate(this.props.from.city)}
             subtitle={this.props.from.country}
             latitude={this.props.from.latitude}
-            longitude={this.props.from.longitude}/>
+            longitude={this.props.from.longitude}>
+          </MapPreview>
           <MapPreview
             title={_abbreviate(this.props.to.city)}
             subtitle={this.props.to.country}

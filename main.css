@@ -321,6 +321,10 @@ html, body {
   filter: blur(2px);
 }
 
+.map-preview__extra-content {
+  margin-top: 10px;
+}
+
 .map-preview__overlay {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;

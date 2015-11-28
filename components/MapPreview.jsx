@@ -15,6 +15,11 @@ class MapPreview extends React.Component {
           <div style={{textAlign: 'center'}}>
             <h1>{this.props.title}</h1>
             <h3 style={{fontStyle: 'italic'}}>{this.props.subtitle}</h3>
+            { React.Children.count(this.props.children) > 0 &&
+              <div className='map-preview__extra-content'>
+                {this.props.children}
+              </div>
+            }
           </div>
         </div>
         <GoogleMapLoader
