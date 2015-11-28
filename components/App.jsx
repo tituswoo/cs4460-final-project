@@ -98,7 +98,8 @@ class App extends React.Component {
         containerElement={
           <div className='fullscreen-map-bkg'
             style={{
-              WebkitFilter: 'blur(' + this.state.controls.mapBlur + ')'
+              WebkitFilter: 'blur(' + this.state.controls.mapBlur + ')',
+              filter: 'blur(' + this.state.controls.mapBlur + ')'
             }}
           />
         }
