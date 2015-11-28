@@ -7,7 +7,6 @@ let locationStore = Reflux.createStore({
   listenables: [locationActions],
   init: function() {
     let savedLocations = JSON.parse(window.sessionStorage.getItem('locations'));
-    console.info('saved locations', savedLocations);
     this.locations = {
       from: savedLocations.from || {},
       to: savedLocations.to || {},
