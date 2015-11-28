@@ -18,7 +18,6 @@ class App extends React.Component {
   componentDidMount() {
     this._unsubscribe = locationStore.listen((locations) => {
       this.setState({locations: locations});
-      console.log('location updated:', this.state.locations);
     });
     locationActions.load();
   }

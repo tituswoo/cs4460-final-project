@@ -126,7 +126,6 @@ class Step1 extends React.Component {
   }
 
   _onOptionDeselected(loc) {
-    console.info('DESELECTED!');
     locationActions.setLocation(loc, {});
   }
 }
