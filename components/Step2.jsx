@@ -59,8 +59,13 @@ class Step2 extends React.Component {
     );
   }
 
+  componentWillUpdate() {
+    if (CityStore.loaded) {
+      environmentControlActions.setControlVisible('startOverButton', true);
+    }
+  }
+
   componentDidMount() {
-    environmentControlActions.setControlVisible('startOverButton', true);
     environmentControlActions.blurMap(5);
     environmentControlActions.set('mapSaturation', 0);
 
