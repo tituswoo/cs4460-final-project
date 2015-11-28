@@ -5,7 +5,8 @@ import Reflux from 'reflux';
 let locationActions = Reflux.createActions([
   'getLocation',
   'setLocation',
-  'load'
+  'load',
+  'swap'
 ]);
 
 export default locationActions;

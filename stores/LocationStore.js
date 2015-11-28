@@ -37,6 +37,12 @@ let locationStore = Reflux.createStore({
     this.locations[loc] = locationObject;
     window.sessionStorage.setItem('locations', JSON.stringify(this.locations));
     this.trigger(this.locations);
+  },
+  onSwap: function() {
+    let temp = this.locations.from;
+    this.locations.from = this.locations.to;
+    this.locations.to = temp;
+    this.trigger(this.locations);
   }
 });
 

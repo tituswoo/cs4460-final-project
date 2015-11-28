@@ -39,6 +39,10 @@ class Step2 extends React.Component {
               city={CityStore.get(this.state.locations.from.city_id)}
               cityMeta={this.state.locations.from} />
         </CSSTransitionGroup>
+        <div className='city-profile__transition-group swap-btn'
+          onClick={locationActions.swap}>
+          <i className='fa fa-exchange'></i>
+        </div>
         <CSSTransitionGroup className='city-profile__transition-group'
           transitionName='generic-fade'
           transitionEnterTimeout={500}
