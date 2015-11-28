@@ -3,8 +3,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
+import FullscreenButton from '../components/FullscreenButton';
+
 import locationStore from '../stores/LocationStore';
 import locationActions from '../actions/LocationActions';
+
+import fullscreenService from '../services/fullscreenService';
 
 let CSSTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -33,6 +37,8 @@ class App extends React.Component {
     if (Object.keys(this.state.locations.from).length > 1 &&
         Object.keys(this.state.locations.to).length > 1) {
 
+      console.log('UPDATED PIN');
+
       let bounds = new google.maps.LatLngBounds();
 
       bounds.extend(new google.maps.LatLng({
@@ -52,6 +58,7 @@ class App extends React.Component {
     return (
       <div className='app'>
         <div className='app__container'>
+          <FullscreenButton />
           {this._renderMap(this.state.locations.current)}
           <div className='magic-center magic-center--row'>
             <CSSTransitionGroup
@@ -117,6 +124,7 @@ class App extends React.Component {
 
   _renderMarker(location) {
     if (Object.keys(location).length > 1) {
+      console.log('RENDERED MARKER');
       return (
         <Marker
           position={{

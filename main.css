@@ -110,6 +110,7 @@ html, body {
 }
 
 .app {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -401,4 +402,28 @@ html, body {
   opacity: 0;
   max-height: 0;
   transform: translateY(-25px);
+}
+
+.fullscreen-button {
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  z-index: 100;
+  opacity: 0.5;
+
+  transition: 0.1s linear all;
+}
+
+.fullscreen-button i {
+  margin-right: 10px;
+}
+
+.fullscreen-button:hover {
+  opacity: 1;
+  cursor: pointer;
 }
