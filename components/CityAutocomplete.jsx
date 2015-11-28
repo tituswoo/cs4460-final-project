@@ -25,6 +25,7 @@ class CityAutocomplete extends React.Component {
         displayOption={locationService.normalize.bind(this)}
         onOptionSelected={this._onOptionSelected.bind(this)}
         onKeyDown={this._onKeyDown.bind(this)}
+        onFocus={this._onFocus.bind(this)}
         customClasses={{
           input: 'city-autocomplete__input input',
           results: 'city-autocomplete__results',
@@ -91,6 +92,10 @@ class CityAutocomplete extends React.Component {
     if (this.props.onOptionSelected) {
       this.props.onOptionSelected(option);
     }
+  }
+
+  _onFocus(e) {
+    e.target.select();
   }
 }
 
