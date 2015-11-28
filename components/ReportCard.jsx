@@ -6,7 +6,7 @@ import MapPreview from '../components/MapPreview';
 class ReportCard extends React.Component {
   render() {
     return (
-      <div className='report-card'>
+      <div className='report-card report-card--push-left'>
         <div className='report-card__maps'>
           <div className='report-card__vs'>
             <p>vs</p>

@@ -505,6 +505,10 @@ html, body {
   box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
 }
 
+.report-card--push-left {
+  margin-left: 7em;
+}
+
 .report-card__maps {
   position: relative;
   display: flex;
@@ -563,5 +567,8 @@ html, body {
   }
   .city-profile {
     min-width: 280px;
+  }
+  .report-card--push-left {
+    margin-left: 3em;
   }
 }
