@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import CityAutocomplete from '../components/CityAutocomplete';
 import {Link} from 'react-router';
 import {GoogleMapLoader, GoogleMap} from 'react-google-maps';
@@ -61,10 +62,14 @@ class Step1 extends React.Component {
           <CityAutocomplete
             value={locationService.normalize(this.state.locations.from)}
             cityList={this.state.cities.list}
-            onOptionSelected={this._onOptionSelected.bind(this, 'from')}
+            onOptionSelected={(option) => {
+              this._to.focus();
+              this._onOptionSelected('from', option);
+            }}
             onOptionDeselected={this._onOptionDeselected.bind(this, 'from')}
             showHint={true}
-            autoFocus={true} />
+            autoFocus={true}
+            ref={(ref) => this._from = ref} />
           <span className='step-1__question-text'>to</span>
         </div>
         <div className='step-1__question-segment'>
@@ -73,7 +78,8 @@ class Step1 extends React.Component {
             cityList={this.state.cities.list}
             onOptionSelected={this._onOptionSelected.bind(this, 'to')}
             onOptionDeselected={this._onOptionDeselected.bind(this, 'to')}
-            showHint={true} />
+            showHint={true}
+            ref={(ref) => this._to = ref} />
           <span className='step-1__question-text'>?</span>
         </div>
         {
@@ -98,6 +104,7 @@ class Step1 extends React.Component {
           className='step-1__question-segment step-1__question-segment--centered'>
           <Link to='step2'>
             <button
+              autoFocus={true}
               className='button step-1__button'>
               <span style={{fontStyle: 'italic'}}>find out</span>
               <br /><i className='fa fa-angle-double-down'></i>
@@ -109,6 +116,7 @@ class Step1 extends React.Component {
   }
 
   _onOptionSelected(loc, locationObject) {
+    console.info('selected', loc, locationObject);
     locationActions.setLocation(loc, locationObject);
   }
 

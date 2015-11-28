@@ -43,9 +43,13 @@ class CityAutocomplete extends React.Component {
     });
     this._cycleThroughRandomPlaceholders();
     if (this.props.autoFocus) {
-      // Doesn't work for some reason...
       this._typeaheadRef.focus();
     }
+
+    // Exposed component functions:
+    this.focus = function() {
+      this._typeaheadRef.focus();
+    };
   }
 
   componentWillReceiveProps(nextProps) {
