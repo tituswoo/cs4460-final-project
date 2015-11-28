@@ -161,7 +161,7 @@ html, body {
 }
 
 .step-1__question-segment:last-child {
-  margin-bottom: 0; 
+  margin-bottom: 0;
 }
 
 .step-1__question-segment .input {
@@ -291,6 +291,10 @@ html, body {
   position: relative;
   margin: -10px;
   margin-bottom: 10px;
+}
+
+.map-preview__map {
+  -webkit-filter: blur(2px);
 }
 
 .map-preview__overlay {
