@@ -9,6 +9,7 @@ ReactDOM.render((
   <Router>
     <Route path='/' component={App}>
       <IndexRoute component={Step1} />
+      <Redirect from='step1' to='/' />
       <Route path='step2' component={Step2} />
     </Route>
   </Router>

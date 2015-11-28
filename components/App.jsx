@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
 import FullscreenButton from '../components/FullscreenButton';
+import {Link} from 'react-router';
 
 import locationStore from '../stores/LocationStore';
 import locationActions from '../actions/LocationActions';
@@ -59,16 +60,17 @@ class App extends React.Component {
       <div className='app'>
         <div className='app__container'>
           <FullscreenButton />
+          <div className='big-control__container'>
+            <Link to='step1'>
+              <h1 className='big-control__button'>
+                <i className='fa fa-angle-double-up'></i><br />
+                start over
+              </h1>
+            </Link>
+          </div>
           {this._renderMap(this.state.locations.current)}
           <div className='magic-center magic-center--row'>
-            <CSSTransitionGroup
-              transitionName='generic-fade'
-              transitionEnterTimeout={500}
-              transitionLeaveTimeout={500}
-              transitionAppear={true}
-              transitionAppearTimeout={500}>
               {this.props.children}
-            </CSSTransitionGroup>
           </div>
         </div>
       </div>

@@ -26,8 +26,7 @@ class Step2 extends React.Component {
       return (<LoadingDialog />);
     }
     return (
-      <div>
-        <div className='flex-row'>
+      <div className='flex-row'>
         <CSSTransitionGroup className='city-profile__transition-group'
           transitionName='generic-fade'
           transitionEnterTimeout={500}
@@ -37,18 +36,17 @@ class Step2 extends React.Component {
             <CityProfile
               city={CityStore.get(this.state.locations.from.city_id)}
               cityMeta={this.state.locations.from} />
+        </CSSTransitionGroup>
+        <CSSTransitionGroup className='city-profile__transition-group'
+          transitionName='generic-fade'
+          transitionEnterTimeout={500}
+          transitionAppear={false}
+          transitionAppearTimeout={500}
+          transitionLeaveTimeout={500}>
+            <CityProfile
+              city={CityStore.get(this.state.locations.to.city_id)}
+              cityMeta={this.state.locations.to} />
           </CSSTransitionGroup>
-          <CSSTransitionGroup className='city-profile__transition-group'
-            transitionName='generic-fade'
-            transitionEnterTimeout={500}
-            transitionAppear={false}
-            transitionAppearTimeout={500}
-            transitionLeaveTimeout={500}>
-              <CityProfile
-                city={CityStore.get(this.state.locations.to.city_id)}
-                cityMeta={this.state.locations.to} />
-            </CSSTransitionGroup>
-        </div>
       </div>
     );
   }
