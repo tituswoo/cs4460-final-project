@@ -52,12 +52,6 @@ class CityAutocomplete extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      placeholder: this._getRandomCity(nextProps.cityList)
-    });
-  }
-
   componentWillUnmount() {
     if (this._rndPlaceholderInterval) {
       clearInterval(this._rndPlaceholderInterval);
@@ -82,14 +76,12 @@ class CityAutocomplete extends React.Component {
   }
 
   _onKeyDown(e) {
-    if (Object.keys(this.state.selectedCity).length > 0) {
-      if (e.keyCode != 13 && e.keyCode != 9) {
-        // Case for when option is unselected
-        // For some reason ENTER key still triggers this,
-        // so check keyCode before continuing.
-        this.setState({selectedCity: {}});
-        this.props.onOptionDeselected();
+    if (e.target.value !== locationService.normalize(this.state.selectedCity)) {
+      if (e.target.value === '') {
+        this._cycleThroughRandomPlaceholders();
       }
+      this.setState({selectedCity: {}});
+      this.props.onOptionDeselected();
     }
   }
 

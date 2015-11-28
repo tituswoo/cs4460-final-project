@@ -76,7 +76,12 @@ class Step1 extends React.Component {
           <CityAutocomplete
             value={locationService.normalize(this.state.locations.to)}
             cityList={this.state.cities.list}
-            onOptionSelected={this._onOptionSelected.bind(this, 'to')}
+            onOptionSelected={(option) => {
+              if (this._linkBtn) {
+                ReactDOM.findDOMNode(this._linkBtn).focus();
+              }
+              this._onOptionSelected('to', option);
+            }}
             onOptionDeselected={this._onOptionDeselected.bind(this, 'to')}
             showHint={true}
             ref={(ref) => this._to = ref} />
@@ -102,10 +107,11 @@ class Step1 extends React.Component {
         <div
           key={1}
           className='step-1__question-segment step-1__question-segment--centered'>
-          <Link to='step2'>
+          <Link to='step2' tabIndex='-1'>
             <button
               autoFocus={true}
-              className='button step-1__button'>
+              className='button step-1__button'
+              ref={(ref) => this._linkBtn = ref}>
               <span style={{fontStyle: 'italic'}}>find out</span>
               <br /><i className='fa fa-angle-double-down'></i>
             </button>
@@ -116,11 +122,11 @@ class Step1 extends React.Component {
   }
 
   _onOptionSelected(loc, locationObject) {
-    console.info('selected', loc, locationObject);
     locationActions.setLocation(loc, locationObject);
   }
 
   _onOptionDeselected(loc) {
+    console.info('DESELECTED!');
     locationActions.setLocation(loc, {});
   }
 }

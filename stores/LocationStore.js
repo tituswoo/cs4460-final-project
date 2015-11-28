@@ -6,9 +6,11 @@ import locationActions from '../actions/LocationActions';
 let locationStore = Reflux.createStore({
   listenables: [locationActions],
   init: function() {
+    let savedLocations = JSON.parse(window.sessionStorage.getItem('locations'));
+    console.info('saved locations', savedLocations);
     this.locations = {
-      from: {},
-      to: {},
+      from: savedLocations.from || {},
+      to: savedLocations.to || {},
       current: {
         // default to middle of USA:
         longitude: 36.703660,
@@ -18,7 +20,6 @@ let locationStore = Reflux.createStore({
   },
   loaded: false,
   onLoad: function() {
-    console.log('onLoad()');
     navigator.geolocation.getCurrentPosition((position) => {
       let coords = position.coords;
       this.onSetLocation('current', {
@@ -34,8 +35,8 @@ let locationStore = Reflux.createStore({
     return this.locations[loc];
   },
   onSetLocation: function(loc, locationObject) {
-    console.log('onSetLocation(', loc, ')', locationObject);
     this.locations[loc] = locationObject;
+    window.sessionStorage.setItem('locations', JSON.stringify(this.locations));
     this.trigger(this.locations);
   }
 });
