@@ -41,7 +41,7 @@ class Step1 extends React.Component {
 
   componentWillUnmount() {
     this._unsubscribe();
-    this._unsubscribeLocationStore();
+    this._unsubscribeLocationStore();    
   }
 
   render() {

@@ -9,6 +9,8 @@ import LoadingDialog from '../components/LoadingDialog';
 import CityActions from '../actions/CityActions';
 import CityStore from '../stores/CityStore';
 
+import navControlActions from '../actions/navControlActions';
+
 import locationStore from '../stores/LocationStore';
 import locationActions from '../actions/LocationActions';
 
@@ -52,6 +54,8 @@ class Step2 extends React.Component {
   }
 
   componentDidMount() {
+    navControlActions.setControlVisible('startOver', true);
+
     this._unsubscribe = CityStore.listen((cities) => {
       this.setState({cities: cities});
     });
@@ -76,6 +80,7 @@ class Step2 extends React.Component {
   componentWillUnmount() {
     this._unsubscribe();
     this._unsubscribeLocationStore();
+    navControlActions.reset();
   }
 }
 
