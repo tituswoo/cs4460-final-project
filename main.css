@@ -278,12 +278,13 @@ html, body {
   border: 1px solid black;
   min-width: 350px;
   background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 200px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
 }
 
 .city-profile .map-preview {
   margin: -10px;
   margin-bottom: 10px;
+  border-bottom: 1px solid black;
 }
 
 .city-profile__transition-group {
@@ -480,6 +481,7 @@ html, body {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid black;
   min-width: 370px;
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
 }
 
 .report-card__maps {
@@ -496,7 +498,6 @@ html, body {
 .report-card__maps .map-preview {
   flex-grow: 1;
   border-right: 1px solid black;
-
 }
 
 .report-card__maps .map-preview:last-child {
