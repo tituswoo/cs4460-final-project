@@ -557,6 +557,23 @@ html, body {
   font-style: italic;
 }
 
+.color-cube {
+  color: white;
+  background-color: black;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.report-card__color-cubes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 1350px) {
   .emoticon-report-tile {
     padding: 5px;

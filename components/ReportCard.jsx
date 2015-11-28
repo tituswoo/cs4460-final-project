@@ -2,8 +2,16 @@
 
 import React from 'react';
 import MapPreview from '../components/MapPreview';
+import ColorCube from '../components/ColorCube';
 
 class ReportCard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      categories: []
+    };
+  }
+
   render() {
     return (
       <div className='report-card report-card--push-left'>
@@ -16,6 +24,11 @@ class ReportCard extends React.Component {
             subtitle={this.props.from.country}
             latitude={this.props.from.latitude}
             longitude={this.props.from.longitude}>
+            <div className='report-card__color-cubes'>
+              <ColorCube color='red' />
+              <ColorCube color='green' />
+              <ColorCube color='blue' />
+            </div>
           </MapPreview>
           <MapPreview
             title={_abbreviate(this.props.to.city)}
@@ -35,12 +48,16 @@ function _abbreviate(city) {
 
 ReportCard.defaultProps = {
   from: {},
-  to: {}
+  to: {},
+  fromCity: [],
+  toCity: []
 };
 
 ReportCard.propTypes = {
   from: React.PropTypes.object.isRequired,
-  to: React.PropTypes.object.isRequired
+  to: React.PropTypes.object.isRequired,
+  fromCity: React.PropTypes.array.isRequired,
+  toCity: React.PropTypes.array.isRequired,
 };
 
 export default ReportCard;

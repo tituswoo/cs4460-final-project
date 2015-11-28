@@ -40,7 +40,11 @@ class Step2 extends React.Component {
           <CityProfile
             city={CityStore.get(this.state.locations.to.city_id)}
             cityMeta={this.state.locations.to} />
-        <ReportCard from={this.state.locations.from} to={this.state.locations.to} />
+        <ReportCard
+          from={this.state.locations.from}
+          fromCity={CityStore.get(this.state.locations.from.city_id)}
+          to={this.state.locations.to}
+          toCity={CityStore.get(this.state.locations.to.city_id)} />
       </div>
     );
   }
