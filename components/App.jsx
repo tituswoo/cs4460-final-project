@@ -99,6 +99,7 @@ class App extends React.Component {
             lng: location.longitude
           }}
           key={location.city}
+          label={{text: location.city}}
           defaultAnimation={2} />
       );
     }
