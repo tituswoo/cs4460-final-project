@@ -153,7 +153,6 @@ class App extends React.Component {
 }
 
 function _styleHelper(blur, saturation) {
-  console.log('style helper triggered!');
   return 'blur(' + blur + 'px) saturate(' + saturation + ')';
 }
 

@@ -25,7 +25,7 @@ let CityStore = Reflux.createStore({
     this.trigger(this.cities);
   },
   onGetCitiesFailed: function() {
-    console.log('failed to get cities');
+    console.error('Failed to get cities.');
   },
   onGetDetailsCompleted: function(cityId, categoryName, response) {
     if (this.cities.details[cityId] === undefined) {
@@ -35,7 +35,7 @@ let CityStore = Reflux.createStore({
     this.trigger(this.cities);
   },
   onGetDetailsFailed: function(error) {
-    console.warn('FAILED TO GET DETAILS', error);
+    console.error('FAILED TO GET DETAILS', error);
   }
 });
 

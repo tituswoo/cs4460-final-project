@@ -547,3 +547,21 @@ html, body {
   width: 25px; height: 25px;
   font-style: italic;
 }
+
+@media (max-width: 1350px) {
+  .emoticon-report-tile {
+    padding: 5px;
+    font-size: 13px;
+  }
+  .emoticon-report-tile__emote {
+    font-size: 36px;
+    margin-right: 5px;
+    width: 37px;
+  }
+  .city-profile__transition-group {
+    margin-right: 15px;
+  }
+  .city-profile {
+    min-width: 280px;
+  }
+}

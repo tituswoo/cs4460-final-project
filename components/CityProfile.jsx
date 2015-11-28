@@ -67,7 +67,7 @@ CityProfile.defaultProps = {
 
 CityProfile.propTypes = {
   city: React.PropTypes.array,
-  cityMeta: React.PropTypes.object
+  cityMeta: React.PropTypes.object.isRequired
 };
 
 export default CityProfile;
