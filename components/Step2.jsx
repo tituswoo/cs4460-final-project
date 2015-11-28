@@ -5,6 +5,7 @@ let CSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 import CityProfile from './CityProfile';
 import LoadingDialog from '../components/LoadingDialog';
+import ReportCard from '../components/ReportCard';
 
 import CityActions from '../actions/CityActions';
 import CityStore from '../stores/CityStore';
@@ -35,9 +36,9 @@ class Step2 extends React.Component {
           transitionAppear={false}
           transitionAppearTimeout={500}
           transitionLeaveTimeout={500}>
-            <CityProfile
-              city={CityStore.get(this.state.locations.from.city_id)}
-              cityMeta={this.state.locations.from} />
+        <CityProfile
+          city={CityStore.get(this.state.locations.from.city_id)}
+          cityMeta={this.state.locations.from} />
         </CSSTransitionGroup>
         <div className='city-profile__transition-group swap-btn'
           onClick={locationActions.swap}>
@@ -49,10 +50,11 @@ class Step2 extends React.Component {
           transitionAppear={false}
           transitionAppearTimeout={500}
           transitionLeaveTimeout={500}>
-            <CityProfile
-              city={CityStore.get(this.state.locations.to.city_id)}
-              cityMeta={this.state.locations.to} />
-          </CSSTransitionGroup>
+          <CityProfile
+            city={CityStore.get(this.state.locations.to.city_id)}
+            cityMeta={this.state.locations.to} />
+        </CSSTransitionGroup>
+        <ReportCard from={this.state.locations.from} to={this.state.locations.to} />
       </div>
     );
   }

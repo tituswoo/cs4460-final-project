@@ -281,6 +281,11 @@ html, body {
   box-shadow: 0 0 200px rgba(0, 0, 0, 0.5);
 }
 
+.city-profile .map-preview {
+  margin: -10px;
+  margin-bottom: 10px;
+}
+
 .city-profile__transition-group {
   margin-right: 3.5vw;
 }
@@ -296,8 +301,6 @@ html, body {
 .map-preview {
   overflow: hidden;
   position: relative;
-  margin: -10px;
-  margin-bottom: 10px;
 }
 
 .map-preview__map {
@@ -470,4 +473,55 @@ html, body {
 
 .swap-btn:active {
   transform: scale(1) rotate(186deg);
+}
+
+.report-card {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid black;
+  min-width: 370px;
+}
+
+.report-card__maps {
+  position: relative;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: -10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+.report-card__maps .map-preview {
+  flex-grow: 1;
+  border-right: 1px solid black;
+
+}
+
+.report-card__maps .map-preview:last-child {
+  border-right: none;
+}
+
+.report-card__vs {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.report-card__vs p {
+  background-color: black;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px; height: 25px;
+  font-style: italic;
 }
