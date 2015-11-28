@@ -122,11 +122,13 @@ class Step1 extends React.Component {
   }
 
   _onOptionSelected(loc, locationObject) {
+    console.log('option selected');
     locationActions.setLocation(loc, locationObject);
   }
 
   _onOptionDeselected(loc) {
-    locationActions.setLocation(loc, {});
+    console.log('option deselected');
+    // locationActions.setLocation(loc, {});
   }
 }
 

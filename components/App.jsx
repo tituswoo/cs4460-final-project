@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
 import locationStore from '../stores/LocationStore';
 import locationActions from '../actions/LocationActions';
@@ -19,7 +20,32 @@ class App extends React.Component {
     this._unsubscribe = locationStore.listen((locations) => {
       this.setState({locations: locations});
     });
+
     locationActions.load();
+  }
+
+  componentDidUpdate() {
+    this._updateMapZoom();
+  }
+
+  _updateMapZoom() {
+    // This kind of checking is ugly, but for now whatever:
+    if (Object.keys(this.state.locations.from).length > 1 &&
+        Object.keys(this.state.locations.to).length > 1) {
+
+      let bounds = new google.maps.LatLngBounds();
+
+      bounds.extend(new google.maps.LatLng({
+        lat: this.state.locations.from.latitude,
+        lng: this.state.locations.from.longitude
+      }));
+      bounds.extend(new google.maps.LatLng({
+        lat: this.state.locations.to.latitude,
+        lng: this.state.locations.to.longitude
+      }));
+
+      this._map.fitBounds(bounds);
+    }
   }
 
   render() {
@@ -43,6 +69,7 @@ class App extends React.Component {
   }
 
   _renderMap(location) {
+    console.log('rendering map');
     return (
       <GoogleMapLoader
         containerElement={
@@ -52,14 +79,12 @@ class App extends React.Component {
               position: 'absolute',
               top: 0,
               left: 0,
-              zIndex: '-100',
-              WebkitFilter: 'blur(3px)',
-              filter: 'blur(3px)'
+              zIndex: '-100'
             }} />
         }
         googleMapElement={
           <GoogleMap
-            ref={(map) => {this._map = map;}}
+            ref={(ref) => {this._map = ref;}}
             defaultZoom={6}
             options={{
               draggable: false,
