@@ -62,6 +62,7 @@ class Step2 extends React.Component {
   componentDidMount() {
     environmentControlActions.setControlVisible('startOverButton', true);
     environmentControlActions.blurMap(5);
+    environmentControlActions.set('mapSaturation', 0);
 
     this._unsubscribe = CityStore.listen((cities) => {
       this.setState({cities: cities});

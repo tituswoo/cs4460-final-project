@@ -9,12 +9,12 @@ let environmentControlStore = Reflux.createStore({
     this.controls = {
       startOverButton: false,
       fullscreenButton: true,
-      mapBlur: 0
+      mapBlur: 0,
+      mapSaturation: 1
     };
   },
   onBlurMap: function(amount) {
     this.controls.mapBlur = amount || 0;
-    this.controls.mapBlur += 'px';
     this.trigger(this.controls);
   },
   onReset: function() {
@@ -28,6 +28,10 @@ let environmentControlStore = Reflux.createStore({
     this.controls[controlName] = visibility;
     this.trigger(this.controls);
   },
+  onSet: function(key, value) {
+    this.controls[key] = value;
+    this.trigger(this.controls);
+  }
 });
 
 export default environmentControlStore;

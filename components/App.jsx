@@ -98,8 +98,8 @@ class App extends React.Component {
         containerElement={
           <div className='fullscreen-map-bkg'
             style={{
-              WebkitFilter: 'blur(' + this.state.controls.mapBlur + ')',
-              filter: 'blur(' + this.state.controls.mapBlur + ')'
+              WebkitFilter: _styleHelper(this.state.controls.mapBlur, this.state.controls.mapSaturation),
+              filter: _styleHelper(this.state.controls.mapBlur, this.state.controls.mapSaturation)
             }}
           />
         }
@@ -150,6 +150,11 @@ class App extends React.Component {
       );
     }
   }
+}
+
+function _styleHelper(blur, saturation) {
+  console.log('style helper triggered!');
+  return 'blur(' + blur + 'px) saturate(' + saturation + ')';
 }
 
 export default App;

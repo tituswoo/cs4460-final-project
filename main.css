@@ -465,12 +465,17 @@ html, body {
   padding: 20px;
   display: inline-block;
   box-shadow: 0 10px 70px rgba(0,0,0,0.5);
-  transform: translateY(-30vh);
+  transform: translateY(-300px) scale(1);
   transition: 0.2s ease-in-out all;
 }
 
 .big-control__container:hover .big-control__button {
   transform: translateY(0);
+}
+
+.big-control__container:hover .big-control__button:active{
+  transform: translateY(-20px) scale(0.9);
+  transition: 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) all;
 }
 
 .swap-btn {
