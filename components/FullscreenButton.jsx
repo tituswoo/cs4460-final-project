@@ -30,10 +30,10 @@ class FullscreenButton extends React.Component {
     return (
       <div className='fullscreen-button' onClick={this._toggleFullscreen.bind(this)}>
         {!this.state.inFullscreen &&
-          <p><i className='fa fa-arrows-alt'></i> Fullscreen</p>
+          <p><i className='fa fa-arrows-alt'></i></p>
         }
         {this.state.inFullscreen &&
-          <p><i className='fa fa-compress' style={{marginRight: 0}}></i></p>
+          <p><i className='fa fa-compress'></i></p>
         }
       </div>
     );

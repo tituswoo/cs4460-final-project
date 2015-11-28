@@ -419,10 +419,6 @@ html, body {
   transition: 0.1s linear all;
 }
 
-.fullscreen-button i {
-  margin-right: 10px;
-}
-
 .fullscreen-button:hover {
   opacity: 1;
   cursor: pointer;
