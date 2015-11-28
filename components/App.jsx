@@ -9,8 +9,8 @@ import {Link} from 'react-router';
 import locationStore from '../stores/LocationStore';
 import locationActions from '../actions/LocationActions';
 
-import navControlStore from '../stores/navControlStore';
-import navControlActions from '../actions/navControlActions';
+import environmentControlStore from '../stores/environmentControlStore';
+import environmentControlActions from '../actions/environmentControlActions';
 
 import fullscreenService from '../services/fullscreenService';
 
@@ -21,7 +21,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       locations: locationStore.getInitialState(),
-      controls: navControlStore.getInitialState()
+      controls: environmentControlStore.getInitialState()
     };
   }
 
@@ -30,7 +30,7 @@ class App extends React.Component {
       this.setState({locations: locations});
     });
 
-    this._unsubscribeNavControls = navControlStore.listen((controls) => {
+    this._unsubscribeNavControls = environmentControlStore.listen((controls) => {
       this.setState({controls: controls});
     });
 
@@ -96,14 +96,11 @@ class App extends React.Component {
     return (
       <GoogleMapLoader
         containerElement={
-          <div style={{
-              height: '100vh',
-              width: '100vw',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              zIndex: '-100'
-            }} />
+          <div className='fullscreen-map-bkg'
+            style={{
+              WebkitFilter: 'blur(' + this.state.controls.mapBlur + ')'
+            }}
+          />
         }
         googleMapElement={
           <GoogleMap

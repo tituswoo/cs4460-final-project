@@ -134,6 +134,16 @@ html, body {
   flex-direction: row;
 }
 
+.fullscreen-map-bkg {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0; left: 0;
+  z-index: -100;
+  -webkit-filter: blur(0);
+  transition: -webkit-filter 0.5s linear;
+}
+
 .step-1__question {
   display: flex;
   flex-direction: column;

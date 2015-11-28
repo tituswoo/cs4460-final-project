@@ -10,7 +10,7 @@ import ReportCard from '../components/ReportCard';
 import CityActions from '../actions/CityActions';
 import CityStore from '../stores/CityStore';
 
-import navControlActions from '../actions/navControlActions';
+import environmentControlActions from '../actions/environmentControlActions';
 
 import locationStore from '../stores/LocationStore';
 import locationActions from '../actions/LocationActions';
@@ -60,7 +60,8 @@ class Step2 extends React.Component {
   }
 
   componentDidMount() {
-    navControlActions.setControlVisible('startOverButton', true);
+    environmentControlActions.setControlVisible('startOverButton', true);
+    environmentControlActions.blurMap(5);
 
     this._unsubscribe = CityStore.listen((cities) => {
       this.setState({cities: cities});
@@ -86,7 +87,7 @@ class Step2 extends React.Component {
   componentWillUnmount() {
     this._unsubscribe();
     this._unsubscribeLocationStore();
-    navControlActions.reset();
+    environmentControlActions.reset();
   }
 }
 

@@ -4,6 +4,7 @@ import Reflux from 'reflux';
 
 let navControlActions = Reflux.createActions([
   'setControlVisible',
+  'blurMap',
   'reset'
 ]);
 
