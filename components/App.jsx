@@ -124,7 +124,6 @@ class App extends React.Component {
 
   _renderMarker(location) {
     if (Object.keys(location).length > 1) {
-      console.log('RENDERED MARKER');
       return (
         <Marker
           position={{
