@@ -1,6 +1,8 @@
 'use strict';
 
 import React from 'react';
+let CSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 import CityProfile from './CityProfile';
 import LoadingDialog from '../components/LoadingDialog';
 
@@ -26,12 +28,26 @@ class Step2 extends React.Component {
     return (
       <div>
         <div className='flex-row'>
-          <CityProfile
-            city={CityStore.get(this.state.locations.from.city_id)}
-            cityMeta={this.state.locations.from} />
-          <CityProfile
-            city={CityStore.get(this.state.locations.to.city_id)}
-            cityMeta={this.state.locations.to}/>
+        <CSSTransitionGroup className='city-profile__transition-group'
+          transitionName='generic-fade'
+          transitionEnterTimeout={500}
+          transitionAppear={false}
+          transitionAppearTimeout={500}
+          transitionLeaveTimeout={500}>
+            <CityProfile
+              city={CityStore.get(this.state.locations.from.city_id)}
+              cityMeta={this.state.locations.from} />
+          </CSSTransitionGroup>
+          <CSSTransitionGroup className='city-profile__transition-group'
+            transitionName='generic-fade'
+            transitionEnterTimeout={500}
+            transitionAppear={false}
+            transitionAppearTimeout={500}
+            transitionLeaveTimeout={500}>
+              <CityProfile
+                city={CityStore.get(this.state.locations.to.city_id)}
+                cityMeta={this.state.locations.to} />
+            </CSSTransitionGroup>
         </div>
       </div>
     );

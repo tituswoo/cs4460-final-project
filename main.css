@@ -160,6 +160,10 @@ html, body {
   margin-bottom: 2vh;
 }
 
+.step-1__question-segment:last-child {
+  margin-bottom: 0; 
+}
+
 .step-1__question-segment .input {
   flex: 1;
   border: 0;
@@ -263,7 +267,6 @@ html, body {
 }
 
 .city-profile {
-  margin-right: 3.5vw;
   padding: 10px 10px 0 10px;
   border: 1px solid black;
   min-width: 350px;
@@ -271,7 +274,11 @@ html, body {
   box-shadow: 0 0 200px rgba(0, 0, 0, 0.5);
 }
 
-.city-profile:last-child {
+.city-profile__transition-group {
+  margin-right: 3.5vw;
+}
+
+.city-profile__transition-group:last-child {
   margin-right: 0;
 }
 
@@ -358,13 +365,11 @@ html, body {
 
 .generic-fade-appear, .generic-fade-enter {
   opacity: 0;
-  transform: scale(0.6);
 }
 
 .generic-fade-appear.generic-fade-appear-active,
 .generic-fade-enter.generic-fade-enter-active {
   opacity: 1;
-  transform: scale(1);
   transition: 1s ease-in all;
 }
 
