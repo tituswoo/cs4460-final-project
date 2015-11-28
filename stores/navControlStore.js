@@ -7,7 +7,8 @@ let navControlStore = Reflux.createStore({
   listenables: [navControlActions],
   init: function() {
     this.controls = {
-      startOver: false
+      startOverButton: false,
+      fullscreenButton: true
     };
   },
   getInitialState: function() {

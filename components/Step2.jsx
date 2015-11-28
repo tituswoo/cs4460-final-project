@@ -54,7 +54,7 @@ class Step2 extends React.Component {
   }
 
   componentDidMount() {
-    navControlActions.setControlVisible('startOver', true);
+    navControlActions.setControlVisible('startOverButton', true);
 
     this._unsubscribe = CityStore.listen((cities) => {
       this.setState({cities: cities});

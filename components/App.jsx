@@ -70,8 +70,10 @@ class App extends React.Component {
     return (
       <div className='app'>
         <div className='app__container'>
-          <FullscreenButton />
-          { this.state.controls.startOver &&
+          { this.state.controls.fullscreenButton &&
+            <FullscreenButton />
+          }
+          { this.state.controls.startOverButton &&
             <div className='big-control__container'>
               <Link to='step1'>
                 <h1 className='big-control__button'>
