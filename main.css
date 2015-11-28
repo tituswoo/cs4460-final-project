@@ -358,17 +358,19 @@ html, body {
 
 .generic-fade-appear, .generic-fade-enter {
   opacity: 0;
+  transform: scale(0.6);
 }
 
 .generic-fade-appear.generic-fade-appear-active,
 .generic-fade-enter.generic-fade-enter-active {
   opacity: 1;
-  transition: opacity 1s linear;
+  transform: scale(1);
+  transition: 1s ease-in all;
 }
 
 .generic-fade-leave.generic-fade-leave-active {
   opacity: 0.01;
-  transition: opacity 1s linear;
+  transition: 1s ease-in all;
 }
 
 .expand-in-appear {
