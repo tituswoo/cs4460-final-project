@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import {GoogleMapLoader, GoogleMap} from 'react-google-maps';
+import {GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
 import locationStore from '../stores/LocationStore';
 import locationActions from '../actions/LocationActions';
 
@@ -82,10 +82,26 @@ class App extends React.Component {
                 ]
               }]
             }}>
+            {this._renderMarker(this.state.locations.from)}
+            {this._renderMarker(this.state.locations.to)}
           </GoogleMap>
         }>
       </GoogleMapLoader>
     );
+  }
+
+  _renderMarker(location) {
+    if (Object.keys(location).length > 1) {
+      return (
+        <Marker
+          position={{
+            lat: location.latitude,
+            lng: location.longitude
+          }}
+          key={location.city}
+          defaultAnimation={2} />
+      );
+    }
   }
 }
 
