@@ -294,16 +294,13 @@ html, body {
   min-width: 350px;
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
+  margin-right: 2vw;
 }
 
 .city-profile .map-preview {
   margin: -10px;
   margin-bottom: 10px;
   border-bottom: 1px solid black;
-}
-
-.city-profile__transition-group {
-  margin-right: 2vw;
 }
 
 .city-profile__transition-group:last-child {
@@ -487,6 +484,10 @@ html, body {
   transition: 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) all;
 }
 
+.swap-btn--push-right {
+  margin-right: 2vw; /* same as city-profile */
+}
+
 .swap-btn:hover {
   cursor: pointer;
   text-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
@@ -562,7 +563,7 @@ html, body {
     margin-right: 5px;
     width: 37px;
   }
-  .city-profile__transition-group {
+  .city-profile, .swap-btn--push-right {
     margin-right: 15px;
   }
   .city-profile {

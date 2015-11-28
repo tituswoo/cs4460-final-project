@@ -30,30 +30,16 @@ class Step2 extends React.Component {
     }
     return (
       <div className='flex-row'>
-        <CSSTransitionGroup className='city-profile__transition-group'
-          transitionName='generic-fade'
-          transitionEnterTimeout={500}
-          transitionAppear={false}
-          transitionAppearTimeout={500}
-          transitionLeaveTimeout={500}>
         <CityProfile
           city={CityStore.get(this.state.locations.from.city_id)}
           cityMeta={this.state.locations.from} />
-        </CSSTransitionGroup>
-        <div className='city-profile__transition-group swap-btn'
+        <div className='swap-btn swap-btn--push-right'
           onClick={locationActions.swap}>
           <i className='fa fa-exchange'></i>
         </div>
-        <CSSTransitionGroup className='city-profile__transition-group'
-          transitionName='generic-fade'
-          transitionEnterTimeout={500}
-          transitionAppear={false}
-          transitionAppearTimeout={500}
-          transitionLeaveTimeout={500}>
           <CityProfile
             city={CityStore.get(this.state.locations.to.city_id)}
             cityMeta={this.state.locations.to} />
-        </CSSTransitionGroup>
         <ReportCard from={this.state.locations.from} to={this.state.locations.to} />
       </div>
     );
