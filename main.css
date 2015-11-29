@@ -142,7 +142,7 @@ html, body {
   width: 100vw;
   position: absolute;
   top: 0; left: 0;
-  z-index: -100;
+  z-index: -1;
   -webkit-filter: blur(0);
   filter: blur(0);
   transition: -webkit-filter 0.5s linear,
@@ -602,6 +602,11 @@ html, body {
 
 .report-card__color-cubes .color-cube:last-child {
   margin-right: 0;
+}
+
+/* Remove google street view full-screen btn*/
+.gm-style > div:nth-child(10){
+ display:none;
 }
 
 @media (max-width: 1350px) {

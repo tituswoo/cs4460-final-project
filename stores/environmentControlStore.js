@@ -12,7 +12,8 @@ let environmentControlStore = Reflux.createStore({
       fullscreenButton: true,
       mapBlur: 0,
       mapSaturation: 1,
-      mapEnabled: false
+      mapEnabled: false,
+      mapShowDetailed: false
     };
   },
   onBlurMap: function(amount) {

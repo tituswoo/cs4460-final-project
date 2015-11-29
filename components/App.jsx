@@ -109,7 +109,8 @@ class App extends React.Component {
           <div className='fullscreen-map-bkg'
             style={{
               WebkitFilter: _styleHelper(this.state.controls.mapBlur, this.state.controls.mapSaturation),
-              filter: _styleHelper(this.state.controls.mapBlur, this.state.controls.mapSaturation)
+              filter: _styleHelper(this.state.controls.mapBlur, this.state.controls.mapSaturation),
+              zIndex: this.state.controls.mapEnabled ? 40 : -1
             }}
           />
         }
