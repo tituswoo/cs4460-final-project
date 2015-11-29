@@ -34,7 +34,7 @@ class CityProfile extends React.Component {
     }
 }
 
-function _trafficTimeIndexReport(trafficTimeIndex) {
+function _trafficTimeIndexReport(traffiicTimeIndex) {
   if (trafficTimeIndex) {
     return Math.floor(trafficTimeIndex) + ' min on average.';
   }

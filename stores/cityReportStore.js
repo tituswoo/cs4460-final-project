@@ -24,10 +24,8 @@ let cityReportStore = Reflux.createStore({
   },
   // just need to get this to work... not saying this is good:
   onGetReport: function(cityID) {
-    console.info('LOC', cityID, 'GETTING REPORT');
     let report = this.reports[cityID];
     if (report === undefined) {
-      console.log('LOC', cityID, 'INDICES:', this.cityDetails[cityID]);
       let indices = this.cityDetails[cityID];
       if (indices !== undefined) {
         this.reports[cityID] = _generateReport(cityID, indices.indices);
@@ -42,7 +40,6 @@ let cityReportStore = Reflux.createStore({
 
 // Yeah, I know...
 function _generateReport(cityId, indices) {
-  console.warn('LOC', cityId,'GEN REPORT USING', indices);
   let categories = [
     {
       name: 'Cost of Living',
