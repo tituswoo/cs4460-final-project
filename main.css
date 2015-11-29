@@ -371,7 +371,7 @@ html, body {
 }
 
 .bkg--gray {
-  background-color: rgba(142, 142, 142, 0.6);
+  background-color: rgba(170, 170, 170, 0.6);
 }
 
 .loading-dialog {
@@ -456,12 +456,19 @@ html, body {
 }
 
 .big-control__container {
-  top: 0; left: 0;
   width: 100%;
   box-sizing: border-box;
   position: fixed;
   z-index: 50;
   text-align: center;
+}
+
+.big-control__container--top {
+  top: 0; left: 0;
+}
+
+.big-control__container--bottom {
+  bottom: 0; left: 0;
 }
 
 .big-control__button {
@@ -470,16 +477,28 @@ html, body {
   padding: 20px;
   display: inline-block;
   box-shadow: 0 10px 70px rgba(0,0,0,0.5);
-  transform: translateY(-300px) scale(1);
   transition: 0.2s ease-in-out all;
+}
+
+.big-control__container--top .big-control__button {
+  transform: translateY(-300px) scale(1);
+}
+
+.big-control__container--bottom .big-control__button {
+  transform: translateY(300px) scale(1);
 }
 
 .big-control__container:hover .big-control__button {
   transform: translateY(0);
 }
 
-.big-control__container:hover .big-control__button:active{
+.big-control__container--top:hover .big-control__button:active{
   transform: translateY(-20px) scale(0.9);
+  transition: 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) all;
+}
+
+.big-control__container--bottom:hover .big-control__button:active{
+  transform: translateY(20px) scale(0.9);
   transition: 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) all;
 }
 

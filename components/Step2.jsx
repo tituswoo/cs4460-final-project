@@ -64,6 +64,7 @@ class Step2 extends React.Component {
   }
 
   componentDidMount() {
+    environmentControlActions.setControlVisible('exploreButton', true);
     environmentControlActions.blurMap(5);
     environmentControlActions.set('mapSaturation', 0);
 

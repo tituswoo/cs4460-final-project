@@ -74,11 +74,21 @@ class App extends React.Component {
             <FullscreenButton />
           }
           { this.state.controls.startOverButton &&
-            <div className='big-control__container'>
+            <div className='big-control__container big-control__container--top'>
               <Link to='step1'>
                 <h1 className='big-control__button'>
                   <i className='fa fa-angle-double-up'></i><br />
                   start over
+                </h1>
+              </Link>
+            </div>
+          }
+          { this.state.controls.exploreButton &&
+            <div className='big-control__container big-control__container--bottom'>
+              <Link to='explore'>
+                <h1 className='big-control__button'>
+                  explore<br />
+                  <i className='fa fa-angle-double-down'></i>
                 </h1>
               </Link>
             </div>
@@ -108,25 +118,14 @@ class App extends React.Component {
             ref={(ref) => {this._map = ref;}}
             defaultZoom={6}
             options={{
-              draggable: false,
-              disableDefaultUI: true,
-              scrollwheel: false,
-              disableDoubleClickZoom: true,
+              disableDefaultUI: !this.state.controls.mapEnabled,
+              scrollwheel: this.state.controls.mapEnabled,
+              disableDoubleClickZoom: this.state.controls.mapEnabled,
               center: {
                 lat: location.latitude,
                 lng: location.longitude
               },
-              styles: [{
-                elementType: 'labels',
-                stylers: [
-                  {visibility: 'off'}
-                ]
-              }, {
-                featureType: 'road',
-                stylers: [
-                  {visibility: 'off'}
-                ]
-              }]
+              styles: _showDetailedMap(this.state.controls.mapShowDetailed)
             }}>
             {this._renderMarker(this.state.locations.from)}
             {this._renderMarker(this.state.locations.to)}
@@ -150,6 +149,23 @@ class App extends React.Component {
       );
     }
   }
+}
+
+function _showDetailedMap(showDetailed) {
+  if (!showDetailed) {
+    return [{
+      elementType: 'labels',
+      stylers: [
+        {visibility: 'off'}
+      ]
+    }, {
+      featureType: 'road',
+      stylers: [
+        {visibility: 'off'}
+      ]
+    }];
+  }
+  return [];
 }
 
 function _styleHelper(blur, saturation) {

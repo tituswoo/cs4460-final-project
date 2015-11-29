@@ -8,9 +8,11 @@ let environmentControlStore = Reflux.createStore({
   init: function() {
     this.controls = {
       startOverButton: false,
+      exploreButton: false,
       fullscreenButton: true,
       mapBlur: 0,
-      mapSaturation: 1
+      mapSaturation: 1,
+      mapEnabled: false
     };
   },
   onBlurMap: function(amount) {
