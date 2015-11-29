@@ -2,9 +2,10 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
-import FullscreenButton from '../components/FullscreenButton';
 import {Link} from 'react-router';
+
+import FullscreenMap from '../components/FullscreenMap';
+import FullscreenButton from '../components/FullscreenButton';
 
 import locationStore from '../stores/locationStore';
 import locationActions from '../actions/locationActions';
@@ -66,6 +67,10 @@ class App extends React.Component {
     }
   }
 
+  _gotMapRef(ref) {
+    this._map = ref;
+  }
+
   render() {
     return (
       <div className='app'>
@@ -93,7 +98,11 @@ class App extends React.Component {
               </Link>
             </div>
           }
-          {this._renderMap(this.state.locations.current)}
+          <FullscreenMap
+            controls={this.state.controls}
+            locations={this.state.locations}
+            gotMapRef={this._gotMapRef.bind(this)}
+            />
           <div className='magic-center magic-center--row'>
               {this.props.children}
           </div>
@@ -101,76 +110,6 @@ class App extends React.Component {
       </div>
     );
   }
-
-  _renderMap(location) {
-    return (
-      <GoogleMapLoader
-        containerElement={
-          <div className='fullscreen-map-bkg'
-            style={{
-              WebkitFilter: _styleHelper(this.state.controls.mapBlur, this.state.controls.mapSaturation),
-              filter: _styleHelper(this.state.controls.mapBlur, this.state.controls.mapSaturation),
-              zIndex: this.state.controls.mapEnabled ? 40 : -1
-            }}
-          />
-        }
-        googleMapElement={
-          <GoogleMap
-            ref={(ref) => {this._map = ref;}}
-            defaultZoom={6}
-            options={{
-              disableDefaultUI: !this.state.controls.mapEnabled,
-              scrollwheel: this.state.controls.mapEnabled,
-              disableDoubleClickZoom: this.state.controls.mapEnabled,
-              center: {
-                lat: location.latitude,
-                lng: location.longitude
-              },
-              styles: _showDetailedMap(this.state.controls.mapShowDetailed)
-            }}>
-            {this._renderMarker(this.state.locations.from)}
-            {this._renderMarker(this.state.locations.to)}
-          </GoogleMap>
-        }>
-      </GoogleMapLoader>
-    );
-  }
-
-  _renderMarker(location) {
-    if (Object.keys(location).length > 1) {
-      return (
-        <Marker
-          position={{
-            lat: location.latitude,
-            lng: location.longitude
-          }}
-          key={location.city}
-          label={{text: location.city}}
-          defaultAnimation={2} />
-      );
-    }
-  }
-}
-
-function _showDetailedMap(showDetailed) {
-  if (!showDetailed) {
-    return [{
-      elementType: 'labels',
-      stylers: [
-        {visibility: 'off'}
-      ]
-    }, {
-      featureType: 'road',
-      stylers: [
-        {visibility: 'off'}
-      ]
-    }];
-  }
-  return [];
-}
-
-function _styleHelper(blur, saturation) {
-  return 'blur(' + blur + 'px) saturate(' + saturation + ')';
 }
 
 export default App;
