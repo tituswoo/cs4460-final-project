@@ -19,42 +19,6 @@ class EmoticonReportTile extends React.Component {
       </div>
     );
   }
-
-  componentDidMount() {
-    this._pickRemarkAndEmote(this.props.scale, this.props.rating);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this._pickRemarkAndEmote(nextProps.scale, nextProps.rating);
-  }
-
-  _pickIconToUse() {
-    return this.props.icon || this.state.icon;
-  }
-
-  _pickRemarkAndEmote(scale, rating) {
-    if (scale.length < 1) {
-      this.setState({
-        remark: 'No scale defined.',
-        icon: 'fa-question-circle'
-      });
-    } else {
-      for (let i = 0; i < scale.length; i++) {
-        if (rating >= scale[i].from && rating <= scale[i].to) {
-          this.setState({
-            remark: scale[i].remark + '.',
-            icon: scale[i].icon,
-            className: scale[i].className
-          });
-          return;
-        }
-      }
-      this.setState({
-        remark: 'Unknown.',
-        icon: 'fa-question-circle'
-      });
-    }
-  }
 }
 
 EmoticonReportTile.propTypes = {

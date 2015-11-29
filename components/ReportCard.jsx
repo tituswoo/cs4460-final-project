@@ -49,7 +49,7 @@ class ReportCard extends React.Component {
       if (a.className === b.className) {
         return 0;
       } else {
-        return (a.className > b.className) ? 1 : -1;
+        return (a.sortOrder > b.sortOrder) ? 1 : -1;
       }
     }).map(function(cat) {
       return (

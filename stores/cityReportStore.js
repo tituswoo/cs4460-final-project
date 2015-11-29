@@ -87,8 +87,9 @@ function _generateReport(cityId, indices) {
         remark: 'No data found.',
         icon: 'fa-question-circle',
         className: 'bkg--gray',
-        rating: category.rating,
-        key: 0 + keyPrefix
+        rating: 0,
+        key: 0 + keyPrefix,
+        sortOrder: -1
       };
     }
 
@@ -101,7 +102,8 @@ function _generateReport(cityId, indices) {
           icon: category.scale[i].icon,
           className: category.scale[i].className,
           rating: category.rating,
-          key: i + keyPrefix
+          key: i + keyPrefix,
+          sortOrder: category.scale[i].sortOrder
         };
       }
     }
@@ -112,7 +114,8 @@ function _generateReport(cityId, indices) {
       icon: 'fa-question-circle',
       className: 'bkg--gray',
       rating: category.rating,
-      key: 0 + keyPrefix
+      key: 0 + keyPrefix,
+      sortOrder: -1
     };
   });
 }
