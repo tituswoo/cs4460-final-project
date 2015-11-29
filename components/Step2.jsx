@@ -31,8 +31,8 @@ class Step2 extends React.Component {
   render() {
     let loc = this.state.locations;
 
-    if (!cityStore.loaded &&
-        !cityReportStore.get(loc.from.city_id) &&
+    if (!cityStore.loaded ||
+        !cityReportStore.get(loc.from.city_id) ||
         !cityReportStore.get(loc.to.city_id)) {
       return (<LoadingDialog />);
     }

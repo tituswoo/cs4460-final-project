@@ -21,10 +21,12 @@
   },
   "homepage": "https://github.com/tituswoo/cs4460-final-project#readme",
   "dependencies": {
+    "chart.js": "^1.0.2",
     "font-awesome": "^4.4.0",
     "history": "^1.13.1",
     "jquery": "^2.1.4",
     "react": "^0.14.2",
+    "react-chartjs": "^0.6.0",
     "react-dom": "^0.14.2",
     "react-google-maps": "^4.2.0",
     "react-router": "^1.0.0",

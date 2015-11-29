@@ -1,8 +1,10 @@
 'use strict';
 
 import React from 'react';
+
 import MapPreview from '../components/MapPreview';
 import ColorCube from '../components/ColorCube';
+import RadarChartReport from '../components/RadarChartReport';
 
 class ReportCard extends React.Component {
   constructor(props) {
@@ -38,7 +40,8 @@ class ReportCard extends React.Component {
             </div>
           </MapPreview>
         </div>
-        <h3>Test</h3>
+        <RadarChartReport
+          reports={[this.props.fromReport, this.props.toReport]} />
       </div>
     );
   }
