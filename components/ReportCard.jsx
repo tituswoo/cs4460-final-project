@@ -45,9 +45,9 @@ class ReportCard extends React.Component {
           <RadarChartReport
             reports={[this.props.fromReport, this.props.toReport]} />
         </div>
-        <h3>Summary</h3>
+        {/*<h3>Summary</h3>
         <ReportCardSummary
-          reports={[this.props.fromReport, this.props.toReport]} />
+          reports={[this.props.fromReport, this.props.toReport]} />*/}
       </div>
     );
   }
