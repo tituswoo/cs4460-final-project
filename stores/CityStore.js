@@ -15,10 +15,12 @@ let cityStore = Reflux.createStore({
     this.listenTo(locationStore, (locations) => {
       // ugly yeah...
       if (this.get(locations.from.city_id) === undefined) {
+        console.log('getting details for LOC1...', locations.from.city_id);
         cityActions.getDetails(locations.from.city_id);
       }
 
       if (this.get(locations.to.city_id) === undefined) {
+        console.log('getting details for LOC2...', locations.to.city_id);
         cityActions.getDetails(locations.to.city_id);
       }
     });
@@ -43,9 +45,11 @@ let cityStore = Reflux.createStore({
     console.error('Failed to get cities.');
   },
   onGetDetailsCompleted: function(cityId, categoryName, response) {
+    console.log('got details for LOC', cityId);
     if (this.cities.details[cityId] === undefined) {
       this.cities.details[cityId] = [];
     }
+    console.log('LOC', cityId, response);
     this.cities.details[cityId][categoryName] = response;
     this.trigger(this.cities);
   },

@@ -24,8 +24,10 @@ let cityReportStore = Reflux.createStore({
   },
   // just need to get this to work... not saying this is good:
   onGetReport: function(cityID) {
+    console.info('LOC', cityID, 'GETTING REPORT');
     let report = this.reports[cityID];
     if (report === undefined) {
+      console.log('LOC', cityID, 'INDICES:', this.cityDetails[cityID]);
       let indices = this.cityDetails[cityID];
       if (indices !== undefined) {
         this.reports[cityID] = _generateReport(cityID, indices.indices);
@@ -40,40 +42,39 @@ let cityReportStore = Reflux.createStore({
 
 // Yeah, I know...
 function _generateReport(cityId, indices) {
+  console.warn('LOC', cityId,'GEN REPORT USING', indices);
   let categories = [
     {
       name: 'Cost of Living',
       scale: scales.costOfLiving,
-      rating: indices.cpi_index || 0
+      rating: indices.cpi_index || false
     },
     {
       name: 'Purchasing Power',
       scale: scales.qualityOfLife,
-      rating: indices.purchasing_power_incl_rent_index || 0
+      rating: indices.purchasing_power_incl_rent_index || false
     },
     {
       name: 'Safety',
       scale: scales.safety,
-      rating: indices.safety_index || 0
+      rating: indices.safety_index || false
     },
     {
       name: 'Health Care',
       scale: scales.healthCare,
-      rating: indices.health_care_index || 0
+      rating: indices.health_care_index || false
     },
     {
       name: 'Pollution',
       scale: scales.pollutionScale,
-      rating: indices.pollution_index || 0
+      rating: indices.pollution_index || false
     },
     {
       name: 'Quality of Life',
       scale: scales.qualityOfLife,
-      rating: indices.quality_of_life_index || 0
+      rating: indices.quality_of_life_index || false
     }
   ];
-
-  console.log('categories for ' + cityId, categories);
 
   // code duplication everywhere, etc... i know...
   // quick and dirty to get the job done.
@@ -81,11 +82,14 @@ function _generateReport(cityId, indices) {
   let keyPrefix = 0;
   return categories.map((category) => {
     keyPrefix += 1;
-    if (category.scale.length < 1) {
+    if (category.scale.length < 1 || category.rating === false) {
+      // then the data is either missing or no scale was provided.
+      // we want the users to see this as being some unknown quantity.
       return {
-        remark: 'No scale defined.',
+        name: category.name,
+        remark: 'No data found.',
         icon: 'fa-question-circle',
-        color: 'white',
+        className: 'bkg--gray',
         rating: category.rating,
         key: 0 + keyPrefix
       };
@@ -95,6 +99,7 @@ function _generateReport(cityId, indices) {
       if (category.rating >= category.scale[i].from &&
         category.rating <= category.scale[i].to) {
         return {
+          name: category.name,
           remark: category.scale[i].remark + '.',
           icon: category.scale[i].icon,
           className: category.scale[i].className,
@@ -105,13 +110,18 @@ function _generateReport(cityId, indices) {
     }
 
     return {
+      name: category.name,
       remark: 'Unknown',
       icon: 'fa-question-circle',
-      className: 'bkg--white',
+      className: 'bkg--gray',
       rating: category.rating,
       key: 0 + keyPrefix
     };
   });
+}
+
+function _checkData() {
+
 }
 
 export default cityReportStore;

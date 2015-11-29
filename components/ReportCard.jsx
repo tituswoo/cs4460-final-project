@@ -45,7 +45,7 @@ class ReportCard extends React.Component {
 
   // yeha, I know...
   _renderCubes(report) {
-    return report.sort((a, b) => {
+    return report.concat().sort((a, b) => {
       if (a.className === b.className) {
         return 0;
       } else {

@@ -39,19 +39,19 @@ class Step2 extends React.Component {
     return (
       <div className='flex-row'>
         <CityProfile
-          city={cityStore.get(this.state.locations.from.city_id)}
+          cityReport={cityReportStore.get(this.state.locations.from.city_id)}
           cityMeta={this.state.locations.from} />
         <div className='swap-btn swap-btn--push-right'
           onClick={locationActions.swap}>
           <i className='fa fa-exchange'></i>
         </div>
-          <CityProfile
-            city={cityStore.get(this.state.locations.to.city_id)}
-            cityMeta={this.state.locations.to} />
+        <CityProfile
+          cityReport={cityReportStore.get(this.state.locations.to.city_id)}
+          cityMeta={this.state.locations.to} />
         <ReportCard
           from={this.state.locations.from}
-          fromReport={cityReportStore.get(this.state.locations.from.city_id)}
           to={this.state.locations.to}
+          fromReport={cityReportStore.get(this.state.locations.from.city_id)}
           toReport={cityReportStore.get(this.state.locations.to.city_id)} />
       </div>
     );

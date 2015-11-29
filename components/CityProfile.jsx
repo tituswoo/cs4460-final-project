@@ -7,11 +7,6 @@ import scales from '../scales';
 
 class CityProfile extends React.Component {
     render() {
-      if (!this.props.city || !this.props.city.indices) {
-        return (
-          <div />
-        );
-      }
       return (
         <div className='city-profile'>
           <MapPreview
@@ -19,36 +14,23 @@ class CityProfile extends React.Component {
             subtitle={this.props.cityMeta.country}
             latitude={this.props.cityMeta.latitude}
             longitude={this.props.cityMeta.longitude}/>
-          <EmoticonReportTile
-            title='Cost of Living'
-            rating={this.props.city.indices.cpi_index}
-            scale={scales.costOfLiving}/>
-          <EmoticonReportTile
-            title='Purchasing Power'
-            rating={this.props.city.indices.purchasing_power_incl_rent_index}
-            scale={scales.qualityOfLife}/>
-          <EmoticonReportTile
-            title='Safety'
-            rating={this.props.city.indices.safety_index}
-            scale={scales.safety}/>
-          <EmoticonReportTile
-            title='Health Care'
-            rating={this.props.city.indices.health_care_index}
-            scale={scales.healthCare}/>
-          <EmoticonReportTile
-            title='Pollution'
-            rating={this.props.city.indices.pollution_index}
-            scale={scales.pollutionScale}/>
-          <EmoticonReportTile
-            title='Quality of Life'
-            rating={this.props.city.indices.quality_of_life_index}
-            scale={scales.qualityOfLife}/>
-          <EmoticonReportTile
-            title='Commute Time'
-            remark={_trafficTimeIndexReport(this.props.city.indices.traffic_time_index)}
-            icon='fa-road'/>
+          {this._renderReportTiles(this.props.cityReport)}
         </div>
       );
+    }
+
+    _renderReportTiles(report) {
+      return report.map((cat) => {
+        return (
+          <EmoticonReportTile
+            title={cat.name}
+            rating={cat.rating}
+            remark={cat.remark}
+            icon={cat.icon}
+            customClasses={cat.className}
+            key={cat.rating + cat.key}/>
+        );
+      });
     }
 }
 
@@ -56,17 +38,16 @@ function _trafficTimeIndexReport(trafficTimeIndex) {
   if (trafficTimeIndex) {
     return Math.floor(trafficTimeIndex) + ' min on average.';
   }
-
   return 'No data found.';
 }
 
 CityProfile.defaultProps = {
-  city: [],
+  cityReport: [],
   cityMeta: {}
 };
 
 CityProfile.propTypes = {
-  city: React.PropTypes.array,
+  cityReport: React.PropTypes.array,
   cityMeta: React.PropTypes.object.isRequired
 };
 
