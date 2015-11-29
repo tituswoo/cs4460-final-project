@@ -458,6 +458,7 @@ html, body {
 .big-control__container {
   box-sizing: border-box;
   position: fixed;
+  left: 0; right: 0;
   z-index: 50;
   text-align: center;
   margin-left: auto;
@@ -466,11 +467,11 @@ html, body {
 }
 
 .big-control__container--top {
-  top: 0; left: 0; right: 0;
+  top: 0;
 }
 
 .big-control__container--bottom {
-  bottom: 0; left: 0;
+  bottom: 0;
 }
 
 .big-control__button {
