@@ -21,23 +21,24 @@ class RadarChartReport extends React.Component {
     let labels = report.map((cat) => {
       return cat.name;
     });
-    console.log(labels);
     return labels;
   }
 
   _getReportDatasets(reports) {
     let datasets = [];
+    let count = 0;
     reports.map((report) => {
       datasets.push({
         label: 'Dataset',
-        fillColor: 'rgba(220,220,220,0.2)',
-        strokeColor: 'rgba(220,220,220,1)',
-        pointColor: 'rgba(220,220,220,1)',
+        fillColor: count % 2 ? 'rgba(220,220,220,0.2)' : 'rgba(151,187,205,0.2)',
+        strokeColor: count % 2 ? 'rgba(220,220,220,1)' : 'rgba(151,187,205,1)',
+        pointColor: count % 2 ? 'rgba(220,220,220,1)' : 'rgba(151,187,205,1)',
         pointStrokeColor: '#fff',
         pointHighlightFill: '#fff',
-        pointHighlightStroke: 'rgba(220,220,220,1)',
+        pointHighlightStroke: count % 2 ? 'rgba(220,220,220,1)' : 'rgba(151,187,205,1)',
         data: this._getReportRatings(report)
       });
+      count += 1;
     });
     return datasets;
   }
@@ -51,17 +52,16 @@ class RadarChartReport extends React.Component {
 
   render() {
     if (this.props.reports.length <= 0) {
-      console.log('not ready yet...');
       return (<div />);
     }
-
-    console.log(this._getChartDataFrom(this.props.reports));
 
     return (
       <RadarChart
         data={this._getChartDataFrom.call(this, this.props.reports)}
         options={{
-          scaleOverride: false
+          scaleOverride: false,
+          responsive: true,
+          pointLabelFontSize: 15
         }}/>
     );
   }
