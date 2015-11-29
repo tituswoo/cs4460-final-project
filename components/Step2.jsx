@@ -15,19 +15,28 @@ import environmentControlActions from '../actions/environmentControlActions';
 import locationStore from '../stores/LocationStore';
 import locationActions from '../actions/LocationActions';
 
+import cityReportStore from '../stores/cityReportStore';
+import cityReportActions from '../actions/cityReportActions';
+
 class Step2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       cities: CityStore.getInitialState(),
-      locations: locationStore.getInitialState()
+      locations: locationStore.getInitialState(),
+      reports: cityReportStore.getInitialState()
     };
   }
 
   render() {
-    if (!CityStore.loaded) {
+    let loc = this.state.locations;
+
+    if (!CityStore.loaded &&
+        !cityReportStore.get(loc.from.city_id) &&
+        !cityReportStore.get(loc.to.city_id)) {
       return (<LoadingDialog />);
     }
+    console.log(cityReportStore.get(this.state.locations.from.city_id));
     return (
       <div className='flex-row'>
         <CityProfile
@@ -67,22 +76,38 @@ class Step2 extends React.Component {
       this.setState({locations: locations});
     });
 
+    this._unsubscribeCityReportStore = cityReportStore.listen((reports) => {
+      this.setState({reports: reports});
+    });
+
     if (!CityStore.loaded) {
       CityActions.getCities();
     }
-    // yeah this sucks. Refactor later...
-    if (CityStore.get(this.state.locations.from.city_id) === undefined) {
-      CityActions.getDetails(this.state.locations.from.city_id);
+
+    let loc = this.state.locations;
+
+    // This thoroughly disgusts me, but priority is getting it to work:
+    if (CityStore.get(loc.from.city_id) === undefined) {
+      CityActions.getDetails(loc.from.city_id);
     }
 
-    if (CityStore.get(this.state.locations.to.city_id) === undefined) {
-      CityActions.getDetails(this.state.locations.to.city_id);
+    if (CityStore.get(loc.to.city_id) === undefined) {
+      CityActions.getDetails(loc.to.city_id);
     }
+
+    // if (cityReportStore.get(loc.to.city_id) === undefined) {
+    //   cityReportActions.getReport(loc.to.city_id);
+    // }
+    //
+    // if (cityReportStore.get(loc.from.city_id) === undefined) {
+    //   cityReportActions.getReport(loc.from.city_id);
+    // }
   }
 
   componentWillUnmount() {
     this._unsubscribe();
     this._unsubscribeLocationStore();
+    this._unsubscribeCityReportStore();
     environmentControlActions.reset();
   }
 }

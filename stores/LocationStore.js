@@ -27,6 +27,9 @@ let locationStore = Reflux.createStore({
       });
     });
   },
+  getLocations: function() {
+    return this.locations;
+  },
   getInitialState: function() {
     return this.locations;
   },

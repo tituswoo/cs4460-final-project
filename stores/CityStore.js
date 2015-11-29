@@ -2,6 +2,7 @@
 
 import Reflux from 'reflux';
 import CityActions from '../actions/CityActions';
+import locationStore from '../stores/LocationStore';
 import config from '../config/config';
 
 let CityStore = Reflux.createStore({
@@ -11,10 +12,26 @@ let CityStore = Reflux.createStore({
       list: [],
       details: []
     };
+    this.listenTo(locationStore, (locations) => {
+      // ugly yeah...
+      if (this.get(locations.from.city_id) === undefined) {
+        console.info('city details not cached... get it.');
+        CityActions.getDetails(locations.from.city_id);
+      }
+
+      if (this.get(locations.to.city_id) === undefined) {
+        console.info('city details not cached... get it.');
+        CityActions.getDetails(locations.to.city_id);
+      }
+    });
   },
   loaded: false,
   get: function(cityId) {
-    return this.cities.details[cityId];
+    let details = this.cities.details[cityId];
+    if (details === undefined) {
+      CityActions.getDetails(cityId);
+    }
+    return details;
   },
   getInitialState: function() {
     return this.cities;
