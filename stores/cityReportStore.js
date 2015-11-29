@@ -13,7 +13,6 @@ let cityReportStore = Reflux.createStore({
     this.cityDetails = [];
 
     this.listenTo(CityStore, (cities) => {
-      console.info('CITY STORE POPULATED');
       this.cityDetails = cities.details;
       let locs = locationStore.getLocations();
       this.onGetReport(locs.from.city_id);
@@ -29,8 +28,7 @@ let cityReportStore = Reflux.createStore({
     if (report === undefined) {
       let indices = this.cityDetails[cityID];
       if (indices !== undefined) {
-        console.log(indices);
-        this.reports[cityID] = _generateReport(cityID, indices);
+        this.reports[cityID] = _generateReport(cityID, indices.indices);
         this.trigger(this.reports);
       }
     }
@@ -40,9 +38,8 @@ let cityReportStore = Reflux.createStore({
   }
 });
 
+// Yeah, I know...
 function _generateReport(cityId, indices) {
-  let report = {};
-  console.log('GENERATING REPORT');
   let categories = [
     {
       name: 'Cost of Living',
@@ -76,8 +73,34 @@ function _generateReport(cityId, indices) {
     }
   ];
 
-  categories.map((category) => {
-    
+  return categories.map((category) => {
+    if (category.scale.length < 1) {
+      return {
+        remark: 'No scale defined.',
+        icon: 'fa-question-circle',
+        color: 'white',
+        rating: category.rating
+      };
+    }
+
+    for (let i = 0; i < category.scale.length; i += 1) {
+      if (category.rating >= category.scale[i].from &&
+        category.rating <= category.scale[i].to) {
+        return {
+          remark: category.scale[i].remark + '.',
+          icon: category.scale[i].icon,
+          className: category.scale[i].className,
+          rating: category.rating
+        };
+      }
+    }
+
+    return {
+      remark: 'Unknown',
+      icon: 'fa-question-circle',
+      className: 'bkg--white',
+      rating: category.rating
+    };
   });
 }
 

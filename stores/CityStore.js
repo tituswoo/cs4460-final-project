@@ -15,12 +15,10 @@ let CityStore = Reflux.createStore({
     this.listenTo(locationStore, (locations) => {
       // ugly yeah...
       if (this.get(locations.from.city_id) === undefined) {
-        console.info('city details not cached... get it.');
         CityActions.getDetails(locations.from.city_id);
       }
 
       if (this.get(locations.to.city_id) === undefined) {
-        console.info('city details not cached... get it.');
         CityActions.getDetails(locations.to.city_id);
       }
     });

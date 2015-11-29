@@ -36,7 +36,6 @@ class Step2 extends React.Component {
         !cityReportStore.get(loc.to.city_id)) {
       return (<LoadingDialog />);
     }
-    console.log(cityReportStore.get(this.state.locations.from.city_id));
     return (
       <div className='flex-row'>
         <CityProfile
