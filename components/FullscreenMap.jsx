@@ -8,9 +8,6 @@ class FullscreenMap extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-  }
-
   _setMapRef(ref) {
     this.props.gotMapRef(ref);
   }
