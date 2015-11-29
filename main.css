@@ -607,6 +607,13 @@ html, body {
   margin-right: 0;
 }
 
+.report-card__chart {
+  border-bottom: 1px solid black;
+  margin: -10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
 /* Remove google street view full-screen btn*/
 .gm-style > div:nth-child(10){
  display:none;

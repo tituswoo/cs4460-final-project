@@ -40,8 +40,10 @@ class ReportCard extends React.Component {
             </div>
           </MapPreview>
         </div>
-        <RadarChartReport
-          reports={[this.props.fromReport, this.props.toReport]} />
+        <div className='report-card__chart'>
+          <RadarChartReport
+            reports={[this.props.fromReport, this.props.toReport]} />
+        </div>
       </div>
     );
   }
