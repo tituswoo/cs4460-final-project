@@ -7,8 +7,8 @@ import CityProfile from './CityProfile';
 import LoadingDialog from '../components/LoadingDialog';
 import ReportCard from '../components/ReportCard';
 
-import CityActions from '../actions/CityActions';
-import CityStore from '../stores/CityStore';
+import cityActions from '../actions/cityActions';
+import cityStore from '../stores/cityStore';
 
 import environmentControlActions from '../actions/environmentControlActions';
 
@@ -22,7 +22,7 @@ class Step2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cities: CityStore.getInitialState(),
+      cities: cityStore.getInitialState(),
       locations: locationStore.getInitialState(),
       reports: cityReportStore.getInitialState()
     };
@@ -31,7 +31,7 @@ class Step2 extends React.Component {
   render() {
     let loc = this.state.locations;
 
-    if (!CityStore.loaded &&
+    if (!cityStore.loaded &&
         !cityReportStore.get(loc.from.city_id) &&
         !cityReportStore.get(loc.to.city_id)) {
       return (<LoadingDialog />);
@@ -39,14 +39,14 @@ class Step2 extends React.Component {
     return (
       <div className='flex-row'>
         <CityProfile
-          city={CityStore.get(this.state.locations.from.city_id)}
+          city={cityStore.get(this.state.locations.from.city_id)}
           cityMeta={this.state.locations.from} />
         <div className='swap-btn swap-btn--push-right'
           onClick={locationActions.swap}>
           <i className='fa fa-exchange'></i>
         </div>
           <CityProfile
-            city={CityStore.get(this.state.locations.to.city_id)}
+            city={cityStore.get(this.state.locations.to.city_id)}
             cityMeta={this.state.locations.to} />
         <ReportCard
           from={this.state.locations.from}
@@ -58,7 +58,7 @@ class Step2 extends React.Component {
   }
 
   componentWillUpdate() {
-    if (CityStore.loaded) {
+    if (cityStore.loaded) {
       environmentControlActions.setControlVisible('startOverButton', true);
     }
   }
@@ -67,7 +67,7 @@ class Step2 extends React.Component {
     environmentControlActions.blurMap(5);
     environmentControlActions.set('mapSaturation', 0);
 
-    this._unsubscribe = CityStore.listen((cities) => {
+    this._unsubscribe = cityStore.listen((cities) => {
       this.setState({cities: cities});
     });
 
@@ -79,19 +79,19 @@ class Step2 extends React.Component {
       this.setState({reports: reports});
     });
 
-    if (!CityStore.loaded) {
-      CityActions.getCities();
+    if (!cityStore.loaded) {
+      cityActions.getCities();
     }
 
     let loc = this.state.locations;
 
     // This thoroughly disgusts me, but priority is getting it to work:
-    if (CityStore.get(loc.from.city_id) === undefined) {
-      CityActions.getDetails(loc.from.city_id);
+    if (cityStore.get(loc.from.city_id) === undefined) {
+      cityActions.getDetails(loc.from.city_id);
     }
 
-    if (CityStore.get(loc.to.city_id) === undefined) {
-      CityActions.getDetails(loc.to.city_id);
+    if (cityStore.get(loc.to.city_id) === undefined) {
+      cityActions.getDetails(loc.to.city_id);
     }
   }
 

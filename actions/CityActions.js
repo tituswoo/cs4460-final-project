@@ -3,12 +3,12 @@
 import Reflux from 'reflux';
 import config from '../config/config';
 
-let CityActions = Reflux.createActions({
+let cityActions = Reflux.createActions({
   'getCities': {children: ['completed', 'failed']},
   'getDetails': {children: ['completed', 'failed']}
 });
 
-CityActions.getCities.listen(function() {
+cityActions.getCities.listen(function() {
   $.get([
     'http://localhost:3000/api/cities?',
     'api_key=',
@@ -16,7 +16,7 @@ CityActions.getCities.listen(function() {
   ].join('')).done(this.completed).fail(this.failed);
 });
 
-CityActions.getDetails.listen(function(cityId) {
+cityActions.getDetails.listen(function(cityId) {
   /*_getDetailsFor.call(this, cityId, 'city_crime');
   _getDetailsFor.call(this, cityId, 'city_healthcare');
   _getDetailsFor.call(this, cityId, 'city_traffic');*/
@@ -33,4 +33,4 @@ function _getDetailsFor(cityId, categoryName) {
     .fail(this.fail);
 }
 
-export default CityActions;
+export default cityActions;

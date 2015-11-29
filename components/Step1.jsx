@@ -7,8 +7,8 @@ import {Link} from 'react-router';
 import {GoogleMapLoader, GoogleMap} from 'react-google-maps';
 import LoadingDialog from '../components/LoadingDialog';
 
-import CityStore from '../stores/CityStore';
-import CityActions from '../actions/CityActions';
+import cityStore from '../stores/cityStore';
+import cityActions from '../actions/cityActions';
 
 import locationStore from '../stores/locationStore';
 import locationActions from '../actions/locationActions';
@@ -21,17 +21,17 @@ class Step1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cities: CityStore.getInitialState(),
+      cities: cityStore.getInitialState(),
       locations: locationStore.getInitialState()
     };
   }
 
   componentDidMount() {
-    this._unsubscribe = CityStore.listen((cities) => {
+    this._unsubscribe = cityStore.listen((cities) => {
       this.setState({cities: cities});
     });
-    if (!CityStore.loaded) {
-      CityActions.getCities();
+    if (!cityStore.loaded) {
+      cityActions.getCities();
     }
 
     this._unsubscribeLocationStore = locationStore.listen((locations) => {
@@ -45,7 +45,7 @@ class Step1 extends React.Component {
   }
 
   render() {
-    if (!CityStore.loaded) {
+    if (!cityStore.loaded) {
       return (
         <LoadingDialog />
       );

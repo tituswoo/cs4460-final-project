@@ -2,7 +2,7 @@
 
 import Reflux from 'reflux';
 import locationStore from '../stores/locationStore';
-import CityStore from '../stores/CityStore';
+import cityStore from '../stores/cityStore';
 import cityReportActions from '../actions/cityReportActions';
 import scales from '../scales';
 
@@ -12,7 +12,7 @@ let cityReportStore = Reflux.createStore({
     this.reports = [];
     this.cityDetails = [];
 
-    this.listenTo(CityStore, (cities) => {
+    this.listenTo(cityStore, (cities) => {
       this.cityDetails = cities.details;
       let locs = locationStore.getLocations();
       this.onGetReport(locs.from.city_id);

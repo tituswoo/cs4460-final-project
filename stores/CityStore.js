@@ -1,12 +1,12 @@
 'use strict';
 
 import Reflux from 'reflux';
-import CityActions from '../actions/CityActions';
+import cityActions from '../actions/cityActions';
 import locationStore from '../stores/locationStore';
 import config from '../config/config';
 
-let CityStore = Reflux.createStore({
-  listenables: [CityActions],
+let cityStore = Reflux.createStore({
+  listenables: [cityActions],
   init: function() {
     this.cities = {
       list: [],
@@ -15,11 +15,11 @@ let CityStore = Reflux.createStore({
     this.listenTo(locationStore, (locations) => {
       // ugly yeah...
       if (this.get(locations.from.city_id) === undefined) {
-        CityActions.getDetails(locations.from.city_id);
+        cityActions.getDetails(locations.from.city_id);
       }
 
       if (this.get(locations.to.city_id) === undefined) {
-        CityActions.getDetails(locations.to.city_id);
+        cityActions.getDetails(locations.to.city_id);
       }
     });
   },
@@ -27,7 +27,7 @@ let CityStore = Reflux.createStore({
   get: function(cityId) {
     let details = this.cities.details[cityId];
     if (details === undefined) {
-      CityActions.getDetails(cityId);
+      cityActions.getDetails(cityId);
     }
     return details;
   },
@@ -54,4 +54,4 @@ let CityStore = Reflux.createStore({
   }
 });
 
-export default CityStore;
+export default cityStore;
