@@ -24,6 +24,8 @@ class RadarChartReport extends React.Component {
     return labels;
   }
 
+  // my use case only has 2 things to compare, so really rn just hardcode this...
+  // I know it isn't pretty :)
   _getReportDatasets(reports) {
     let datasets = [];
     let count = 0;
