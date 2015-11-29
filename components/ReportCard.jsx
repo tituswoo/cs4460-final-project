@@ -53,7 +53,7 @@ class ReportCard extends React.Component {
       }
     }).map(function(cat) {
       return (
-        <ColorCube key={cat.rating + new Date()}
+        <ColorCube key={cat.rating + cat.key}
            classes={cat.className}/>
       );
     });

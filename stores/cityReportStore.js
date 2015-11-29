@@ -90,7 +90,8 @@ function _generateReport(cityId, indices) {
           remark: category.scale[i].remark + '.',
           icon: category.scale[i].icon,
           className: category.scale[i].className,
-          rating: category.rating
+          rating: category.rating,
+          key: i
         };
       }
     }
