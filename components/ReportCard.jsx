@@ -5,6 +5,7 @@ import React from 'react';
 import MapPreview from '../components/MapPreview';
 import ColorCube from '../components/ColorCube';
 import RadarChartReport from '../components/RadarChartReport';
+import ReportCardSummary from '../components/ReportCardSummary';
 
 class ReportCard extends React.Component {
   constructor(props) {
@@ -45,6 +46,8 @@ class ReportCard extends React.Component {
             reports={[this.props.fromReport, this.props.toReport]} />
         </div>
         <h3>Summary</h3>
+        <ReportCardSummary
+          reports={[this.props.fromReport, this.props.toReport]} />
       </div>
     );
   }
@@ -68,6 +71,10 @@ class ReportCard extends React.Component {
 
 function _abbreviate(city) {
   return city.substr(0, 3).toUpperCase();
+}
+
+function _compare(a, b) {
+  return ((1 - (a / b)) * 100).toPrecision(3);
 }
 
 ReportCard.defaultProps = {
