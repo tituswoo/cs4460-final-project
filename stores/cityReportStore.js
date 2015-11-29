@@ -44,42 +44,50 @@ function _generateReport(cityId, indices) {
     {
       name: 'Cost of Living',
       scale: scales.costOfLiving,
-      rating: indices.cpi_index
+      rating: indices.cpi_index || 0
     },
     {
       name: 'Purchasing Power',
       scale: scales.qualityOfLife,
-      rating: indices.purchasing_power_incl_rent_index
+      rating: indices.purchasing_power_incl_rent_index || 0
     },
     {
       name: 'Safety',
       scale: scales.safety,
-      rating: indices.safety_index
+      rating: indices.safety_index || 0
     },
     {
       name: 'Health Care',
       scale: scales.healthCare,
-      rating: indices.health_care_index
+      rating: indices.health_care_index || 0
     },
     {
       name: 'Pollution',
       scale: scales.pollutionScale,
-      rating: indices.pollution_index
+      rating: indices.pollution_index || 0
     },
     {
       name: 'Quality of Life',
       scale: scales.qualityOfLife,
-      rating: indices.quality_of_life_index
+      rating: indices.quality_of_life_index || 0
     }
   ];
 
+  console.log('categories for ' + cityId, categories);
+
+  // code duplication everywhere, etc... i know...
+  // quick and dirty to get the job done.
+  // other deadlines to meet :/
+  let keyPrefix = 0;
   return categories.map((category) => {
+    keyPrefix += 1;
     if (category.scale.length < 1) {
       return {
         remark: 'No scale defined.',
         icon: 'fa-question-circle',
         color: 'white',
-        rating: category.rating
+        rating: category.rating,
+        key: 0 + keyPrefix
       };
     }
 
@@ -91,7 +99,7 @@ function _generateReport(cityId, indices) {
           icon: category.scale[i].icon,
           className: category.scale[i].className,
           rating: category.rating,
-          key: i
+          key: i + keyPrefix
         };
       }
     }
@@ -100,7 +108,8 @@ function _generateReport(cityId, indices) {
       remark: 'Unknown',
       icon: 'fa-question-circle',
       className: 'bkg--white',
-      rating: category.rating
+      rating: category.rating,
+      key: 0 + keyPrefix
     };
   });
 }
