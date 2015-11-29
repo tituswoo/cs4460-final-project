@@ -507,7 +507,7 @@ html, body {
 
 .swap-btn {
   font-size: 35px;
-  color: white;
+  color: black;
   font-size: 35px;
   text-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
   transform: scale(1) rotate(0);
