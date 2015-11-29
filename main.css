@@ -456,15 +456,17 @@ html, body {
 }
 
 .big-control__container {
-  width: 100%;
   box-sizing: border-box;
   position: fixed;
   z-index: 50;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .big-control__container--top {
-  top: 0; left: 0;
+  top: 0; left: 0; right: 0;
 }
 
 .big-control__container--bottom {
