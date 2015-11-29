@@ -27,14 +27,15 @@ class RadarChartReport extends React.Component {
   // my use case only has 2 things to compare, so really rn just hardcode this...
   // I know it isn't pretty :)
   _getReportDatasets(reports) {
+    console.log(reports);
     let datasets = [];
     let count = 0;
     reports.map((report) => {
       datasets.push({
-        label: 'Dataset',
-        fillColor: count % 2 ? 'rgba(220,220,220,0.2)' : 'rgba(151,187,205,0.2)',
-        strokeColor: count % 2 ? 'rgba(220,220,220,1)' : 'rgba(151,187,205,1)',
-        pointColor: count % 2 ? 'rgba(220,220,220,1)' : 'rgba(151,187,205,1)',
+        label: 'Awesome dataset',
+        fillColor: count % 2 ? 'rgba(255, 117, 117, 0.4)' : 'rgba(77, 154, 255, 0.51)',
+        strokeColor: count % 2 ? 'rgba(255, 117, 117, 0.84)' : 'rgba(151,187,205,1)',
+        pointColor: count % 2 ? 'rgba(255, 77, 77, 0.79)' : 'rgba(51, 139, 255, 1)',
         pointStrokeColor: '#fff',
         pointHighlightFill: '#fff',
         pointHighlightStroke: count % 2 ? 'rgba(220,220,220,1)' : 'rgba(151,187,205,1)',
