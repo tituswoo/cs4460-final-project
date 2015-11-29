@@ -2,7 +2,7 @@
 
 import Reflux from 'reflux';
 import CityActions from '../actions/CityActions';
-import locationStore from '../stores/LocationStore';
+import locationStore from '../stores/locationStore';
 import config from '../config/config';
 
 let CityStore = Reflux.createStore({

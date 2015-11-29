@@ -1,7 +1,7 @@
 'use strict';
 
 import Reflux from 'reflux';
-import locationActions from '../actions/LocationActions';
+import locationActions from '../actions/locationActions';
 
 let locationStore = Reflux.createStore({
   listenables: [locationActions],

@@ -10,8 +10,8 @@ import LoadingDialog from '../components/LoadingDialog';
 import CityStore from '../stores/CityStore';
 import CityActions from '../actions/CityActions';
 
-import locationStore from '../stores/LocationStore';
-import locationActions from '../actions/LocationActions';
+import locationStore from '../stores/locationStore';
+import locationActions from '../actions/locationActions';
 
 import locationService from '../services/locationService';
 

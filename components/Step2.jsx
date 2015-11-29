@@ -12,8 +12,8 @@ import CityStore from '../stores/CityStore';
 
 import environmentControlActions from '../actions/environmentControlActions';
 
-import locationStore from '../stores/LocationStore';
-import locationActions from '../actions/LocationActions';
+import locationStore from '../stores/locationStore';
+import locationActions from '../actions/locationActions';
 
 import cityReportStore from '../stores/cityReportStore';
 import cityReportActions from '../actions/cityReportActions';

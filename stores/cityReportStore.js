@@ -1,7 +1,7 @@
 'use strict';
 
 import Reflux from 'reflux';
-import locationStore from '../stores/LocationStore';
+import locationStore from '../stores/locationStore';
 import CityStore from '../stores/CityStore';
 import cityReportActions from '../actions/cityReportActions';
 import scales from '../scales';

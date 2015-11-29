@@ -6,8 +6,8 @@ import {GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
 import FullscreenButton from '../components/FullscreenButton';
 import {Link} from 'react-router';
 
-import locationStore from '../stores/LocationStore';
-import locationActions from '../actions/LocationActions';
+import locationStore from '../stores/locationStore';
+import locationActions from '../actions/locationActions';
 
 import environmentControlStore from '../stores/environmentControlStore';
 import environmentControlActions from '../actions/environmentControlActions';
