@@ -50,9 +50,9 @@ class Step2 extends React.Component {
             cityMeta={this.state.locations.to} />
         <ReportCard
           from={this.state.locations.from}
-          fromCity={CityStore.get(this.state.locations.from.city_id)}
+          fromReport={cityReportStore.get(this.state.locations.from.city_id)}
           to={this.state.locations.to}
-          toCity={CityStore.get(this.state.locations.to.city_id)} />
+          toReport={cityReportStore.get(this.state.locations.to.city_id)} />
       </div>
     );
   }
@@ -93,14 +93,6 @@ class Step2 extends React.Component {
     if (CityStore.get(loc.to.city_id) === undefined) {
       CityActions.getDetails(loc.to.city_id);
     }
-
-    // if (cityReportStore.get(loc.to.city_id) === undefined) {
-    //   cityReportActions.getReport(loc.to.city_id);
-    // }
-    //
-    // if (cityReportStore.get(loc.from.city_id) === undefined) {
-    //   cityReportActions.getReport(loc.from.city_id);
-    // }
   }
 
   componentWillUnmount() {

@@ -5,7 +5,7 @@ import React from 'react';
 class ColorCube extends React.Component {
   render() {
     return (
-      <div className='color-cube'
+      <div className={'color-cube ' + this.props.classes}
         style={{color: this.props.color}} />
     );
   }
@@ -14,13 +14,15 @@ class ColorCube extends React.Component {
 ColorCube.defaultProps = {
   text: '',
   color: 'black',
-  tooltip: ''
+  tooltip: '',
+  classes: ''
 };
 
 ColorCube.propTypes = {
   text: React.PropTypes.string,
   color: React.PropTypes.string,
-  tooltip: React.PropTypes.string
+  tooltip: React.PropTypes.string,
+  classes: React.PropTypes.string
 };
 
 export default ColorCube;

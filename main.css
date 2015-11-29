@@ -358,15 +358,15 @@ html, body {
   margin-right: 10px;
 }
 
-.emoticon-report-tile--red {
+.bkg--red {
   background-color: rgba(234, 28, 28, 0.6);
 }
 
-.emoticon-report-tile--yellow {
+.bkg--yellow {
   background-color: rgba(252, 182, 6, 0.6);
 }
 
-.emoticon-report-tile--green {
+.bkg--green {
   background-color: rgba(93, 165, 0, 0.6);
 }
 
@@ -559,7 +559,6 @@ html, body {
 
 .color-cube {
   color: white;
-  background-color: black;
   width: 15px;
   height: 15px;
   display: flex;
@@ -572,6 +571,14 @@ html, body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.report-card__color-cubes .color-cube {
+  margin-right: 5px;
+}
+
+.report-card__color-cubes .color-cube:last-child {
+  margin-right: 0;
 }
 
 @media (max-width: 1350px) {

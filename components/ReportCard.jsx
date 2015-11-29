@@ -25,20 +25,38 @@ class ReportCard extends React.Component {
             latitude={this.props.from.latitude}
             longitude={this.props.from.longitude}>
             <div className='report-card__color-cubes'>
-              <ColorCube color='red' />
-              <ColorCube color='green' />
-              <ColorCube color='blue' />
+              {this._renderCubes(this.props.fromReport)}
             </div>
           </MapPreview>
           <MapPreview
             title={_abbreviate(this.props.to.city)}
             subtitle={this.props.to.country}
             latitude={this.props.to.latitude}
-            longitude={this.props.to.longitude}/>
+            longitude={this.props.to.longitude}>
+            <div className='report-card__color-cubes'>
+              {this._renderCubes(this.props.toReport)}
+            </div>
+          </MapPreview>
         </div>
         <h3>Test</h3>
       </div>
     );
+  }
+
+  // yeha, I know...
+  _renderCubes(report) {
+    return report.sort((a, b) => {
+      if (a.className === b.className) {
+        return 0;
+      } else {
+        return (a.className > b.className) ? 1 : -1;
+      }
+    }).map(function(cat) {
+      return (
+        <ColorCube key={cat.rating + new Date()}
+           classes={cat.className}/>
+      );
+    });
   }
 }
 
@@ -49,15 +67,15 @@ function _abbreviate(city) {
 ReportCard.defaultProps = {
   from: {},
   to: {},
-  fromCity: [],
-  toCity: []
+  fromReport: [],
+  toReport: []
 };
 
 ReportCard.propTypes = {
   from: React.PropTypes.object.isRequired,
   to: React.PropTypes.object.isRequired,
-  fromCity: React.PropTypes.array.isRequired,
-  toCity: React.PropTypes.array.isRequired,
+  fromReport: React.PropTypes.array,
+  toReport: React.PropTypes.array
 };
 
 export default ReportCard;
