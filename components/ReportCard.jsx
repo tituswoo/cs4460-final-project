@@ -45,9 +45,12 @@ class ReportCard extends React.Component {
           <RadarChartReport
             reports={[this.props.fromReport, this.props.toReport]} />
         </div>
-        {/*<h3>Summary</h3>
-        <ReportCardSummary
-          reports={[this.props.fromReport, this.props.toReport]} />*/}
+        <div>
+          <span style={{marginRight: '15px'}}>
+            <ColorCube legend={this.props.from.city} classes='bkg--blue' />
+          </span>
+          <ColorCube legend={this.props.to.city} classes='bkg--purple' />
+        </div>
       </div>
     );
   }

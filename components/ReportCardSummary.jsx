@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ColorCube from '../components/ColorCube';
 
 class ReportCardSummary extends React.Component {
   render() {
@@ -11,7 +12,9 @@ class ReportCardSummary extends React.Component {
 
     return (
       <div>
-        <p></p>
+        <p>
+          <ColorCube classes='bkg--blue' />
+        </p>
       </div>
     );
   }

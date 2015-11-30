@@ -33,9 +33,9 @@ class RadarChartReport extends React.Component {
     reports.map((report) => {
       datasets.push({
         label: 'Awesome dataset',
-        fillColor: count % 2 ? 'rgba(255, 117, 117, 0.4)' : 'rgba(77, 154, 255, 0.51)',
-        strokeColor: count % 2 ? 'rgba(255, 117, 117, 0.84)' : 'rgba(151,187,205,1)',
-        pointColor: count % 2 ? 'rgba(255, 77, 77, 0.79)' : 'rgba(51, 139, 255, 1)',
+        fillColor: count % 2 ? 'rgba(255, 117, 230, 0.53)' : 'rgba(77, 154, 255, 0.51)',
+        strokeColor: count % 2 ? 'rgba(255, 51, 218, 0.76)' : 'rgba(151,187,205,1)',
+        pointColor: count % 2 ? 'rgba(255, 61, 219, 1)' : 'rgba(51, 139, 255, 1)',
         pointStrokeColor: '#fff',
         pointHighlightFill: '#fff',
         pointHighlightStroke: count % 2 ? 'rgba(220,220,220,1)' : 'rgba(151,187,205,1)',
