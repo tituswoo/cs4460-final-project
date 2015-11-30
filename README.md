@@ -1,17 +1,28 @@
-# cs4460-final-project
-Final information visualization project for CS 4460.
+# Final InfoViz Project (CS 4460)
 
 ## Getting started
 
-Make sure you have `nodejs 4.0+` installed. Once you do, type:
+Before you do anything else, **make sure you have nodejs 4.0+ installed.**
 
-`$ npm install && npm run start`. That's it! :)
+### Building the project
 
-## Numbeo API key
+1. Run `$ npm install` in your terminal to get all dependencies.
 
-To use the key, make a config file called `config.js` inside the `config` folderg, and put this in there:
+### Numbeo API key
+
+To use the key, make a config file called `config.js` inside the `config` folder:
+
+```
+$ cd config
+$ touch config.js
+$ open config.js
+```
+
+Then copy and paste the following into `config.js`:
 
 ```js
+'use strict';
+
 let config = {
   numeoKey: 'key_goes_in_here'
 };
@@ -19,4 +30,16 @@ let config = {
 export default config;
 ```
 
-And now the key should be consumed by the app. That's it!
+Then paste your Numbeo API key into the `key_goes_in_here` placeholder. That's it!
+
+### Running the project
+
+Assuming you did everything above correctly, just run:
+
+```
+$ npm run start
+```
+from the root directory of the app (`cs4460-final-project`) and the app should
+launch in your browser.
+
+**Note: If you see a blank page, you might need to hit refresh for Webpack to finish bundling**.
