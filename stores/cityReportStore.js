@@ -44,7 +44,7 @@ function _generateReport(cityId, indices) {
     {
       name: 'Cost of Living',
       scale: scales.costOfLiving,
-      rating: indices.cpi_index || false
+      rating: indices.cpi_and_rent_index || false
     },
     {
       name: 'Purchasing Power',
