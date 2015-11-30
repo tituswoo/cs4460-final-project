@@ -1,13 +1,13 @@
 import React from 'react';
 import FormDivider from './FormDivider';
 import AddressAutocomplete from './AddressAutocomplete';
-import CompareActions from '../actions/CompareActions';
-import CompareStore from '../stores/CompareStore';
+import compareActions from '../actions/compareActions';
+import compareStore from '../stores/compareStore';
 
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = CompareStore.getInitialState();
+    this.state = compareStore.getInitialState();
   }
 
   render() {
@@ -70,12 +70,12 @@ class Sidebar extends React.Component {
     );
   }
 
-  onCompareStoreUpdate(locations) {
+  oncompareStoreUpdate(locations) {
     this.setState({locations: locations});
   }
 
   componentDidMount() {
-    this.unsubscribe = CompareStore.listen(this.onCompareStoreUpdate.bind(this));
+    this.unsubscribe = compareStore.listen(this.oncompareStoreUpdate.bind(this));
   }
 
   componentWillUnmount() {
@@ -108,13 +108,13 @@ class Sidebar extends React.Component {
   }
 
   _compareLocations() {
-    CompareActions.compareLocations();
+    compareActions.compareLocations();
   }
 
   _onChange(key) {
     return (place) => {
       console.info(place);
-      CompareActions.updateLocation(key, place.name);
+      compareActions.updateLocation(key, place.name);
     };
   }
 }

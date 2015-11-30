@@ -1,12 +1,12 @@
 'use strict';
 
 import Reflux from 'reflux';
-import CompareActions from '../actions/CompareActions';
+import compareActions from '../actions/compareActions';
 import locationStore from '../stores/locationStore';
 import config from '../config/config.js';
 
-let CompareStore = Reflux.createStore({
-  listenables: [CompareActions],
+let compareStore = Reflux.createStore({
+  listenables: [compareActions],
   init: function() {
     this.comparisons = {};
     this.locations = {};
@@ -60,4 +60,4 @@ function _computeIndexComparison(a, b) {
   return ((1 - (a / b)) * 100).toPrecision(3);
 }
 
-export default CompareStore;
+export default compareStore;

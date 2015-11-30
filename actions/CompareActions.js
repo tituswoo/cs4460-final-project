@@ -2,11 +2,11 @@
 
 import Reflux from 'reflux';
 
-let CompareActions = Reflux.createActions([
+let compareActions = Reflux.createActions([
   'getAddress',
   'compareLocations',
   'updateLocation',
   'compareStoreUpdate'
 ]);
 
-export default CompareActions;
+export default compareActions;
