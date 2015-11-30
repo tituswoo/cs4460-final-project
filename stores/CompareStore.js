@@ -2,7 +2,7 @@
 
 import Reflux from 'reflux';
 import CompareActions from '../actions/CompareActions';
-import locationStore from '../stores/LocationStore';
+import locationStore from '../stores/locationStore';
 import config from '../config/config.js';
 
 let CompareStore = Reflux.createStore({

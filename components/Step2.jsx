@@ -72,7 +72,7 @@ class Step2 extends React.Component {
       this.setState({cities: cities});
     });
 
-    this._unsubscribeLocationStore = locationStore.listen((locations) => {
+    this._unsubscribelocationStore = locationStore.listen((locations) => {
       this.setState({locations: locations});
     });
 
@@ -98,7 +98,7 @@ class Step2 extends React.Component {
 
   componentWillUnmount() {
     this._unsubscribe();
-    this._unsubscribeLocationStore();
+    this._unsubscribelocationStore();
     this._unsubscribeCityReportStore();
     environmentControlActions.reset();
   }

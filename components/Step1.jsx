@@ -34,14 +34,14 @@ class Step1 extends React.Component {
       cityActions.getCities();
     }
 
-    this._unsubscribeLocationStore = locationStore.listen((locations) => {
+    this._unsubscribelocationStore = locationStore.listen((locations) => {
       this.setState({locations: locations});
     });
   }
 
   componentWillUnmount() {
     this._unsubscribe();
-    this._unsubscribeLocationStore();
+    this._unsubscribelocationStore();
   }
 
   render() {
