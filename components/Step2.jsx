@@ -78,17 +78,19 @@ class Step2 extends React.Component {
           fromReport={cityReportStore.get(this.state.locations.from.city_id)}
           toReport={cityReportStore.get(this.state.locations.to.city_id)}
           salary={this.state.salary}>
-          <SalaryScrubber
-            salary={this.state.salary}
-            onChange={this._updateSalary.bind(this)}
-            suffix={'in ' + this.state.locations.from.city.substr(0, 3).toUpperCase()} />
-          <p style={{fontSize: 20, marginTop: 10}}>
-            Comparable salary in {this.state.locations.to.city.substr(0, 3).toUpperCase()} is
-          </p>
-          <p style={{fontSize: 30, marginTop: 5}} className={classNames({
-              'color--red': computedSalary > this.state.salary,
-              'color--green': computedSalary <= this.state.salary
-            })}>{currencyService.formatAsCurrency(computedSalary)}</p>
+          <div style={{textAlign: 'center'}}>
+            <SalaryScrubber
+              salary={this.state.salary}
+              onChange={this._updateSalary.bind(this)}
+              suffix={'in ' + this.state.locations.from.city.substr(0, 3).toUpperCase()} />
+            <p style={{fontSize: 20, marginTop: 10}}>
+              A comparable salary in {this.state.locations.to.city.substr(0, 3).toUpperCase()} is around
+            </p>
+            <p style={{fontSize: 30, marginTop: 5}} className={classNames({
+                'color--red': computedSalary > this.state.salary,
+                'color--green': computedSalary <= this.state.salary
+              })}>{currencyService.formatAsCurrency(computedSalary)}</p>
+          </div>
         </ReportCard>
       </div>
     );
@@ -119,7 +121,7 @@ class Step2 extends React.Component {
 
     this._unsubscribeSalaryStore = salaryStore.listen((salary) => {
       this.setState({salary: salary});
-    })
+    });
 
     if (!cityStore.loaded) {
       cityActions.getCities();
