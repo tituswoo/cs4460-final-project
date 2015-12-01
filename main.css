@@ -649,6 +649,38 @@ html, body {
   box-sizing: border-box;
 }
 
+/* SalaryScrubber */
+.salary-scrubber {
+  text-align: left;
+}
+
+.salary-scrubber__label {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.salary-scrubber .rc-slider {
+  height: 34px;
+  border-radius: 0;
+}
+
+.salary-scrubber .rc-slider-handle {
+  margin-left: 0;
+  margin-top: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 0;
+}
+
+.salary-scrubber .rc-slider-track {
+  height: 34px;
+  border-radius: 0;
+}
+
+.salary-scrubber .rc-slider-step {
+  height: 34px;
+}
+
 /* Remove google street view full-screen btn*/
 .gm-style > div:nth-child(10){
  display:none;

@@ -6,6 +6,7 @@ import CityAutocomplete from '../components/CityAutocomplete';
 import {Link} from 'react-router';
 import {GoogleMapLoader, GoogleMap} from 'react-google-maps';
 import LoadingDialog from '../components/LoadingDialog';
+import SalaryScrubber from '../components/SalaryScrubber';
 
 import cityStore from '../stores/cityStore';
 import cityActions from '../actions/cityActions';
@@ -86,6 +87,11 @@ class Step1 extends React.Component {
             showHint={true}
             ref={(ref) => this._to = ref} />
           <span className='step-1__question-text'>?</span>
+        </div>
+        <div className='step-1__question-segment' style={{marginTop: 20}}>
+          <div style={{width: '100%'}}>
+            <SalaryScrubber />
+          </div>
         </div>
         {
           !_isObjectEmpty(this.state.locations.from) &&
