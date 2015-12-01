@@ -2,8 +2,9 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CityAutocomplete from '../components/CityAutocomplete';
 import {Link} from 'react-router';
+
+import CityAutocomplete from '../components/CityAutocomplete';
 import {GoogleMapLoader, GoogleMap} from 'react-google-maps';
 import LoadingDialog from '../components/LoadingDialog';
 import SalaryScrubber from '../components/SalaryScrubber';

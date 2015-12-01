@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import classNames from 'classnames';
 let CSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 import CityProfile from './CityProfile';
@@ -46,7 +47,7 @@ class Step2 extends React.Component {
     let toCPI = toCityDetails.indices.cpi_and_rent_index;
 
     let result = (toCPI / fromCPI) * this.state.salary;
-    return currencyService.formatAsCurrency(Math.round(result));
+    return Math.round(result);
   }
 
   render() {
@@ -57,6 +58,8 @@ class Step2 extends React.Component {
         !cityReportStore.get(loc.to.city_id)) {
       return (<LoadingDialog />);
     }
+    let computedSalary = this._calculateProjectedSalary();
+
     return (
       <div className='flex-row'>
         <CityProfile
@@ -82,7 +85,10 @@ class Step2 extends React.Component {
           <p style={{fontSize: 20, marginTop: 10}}>
             Comparable salary in {this.state.locations.to.city.substr(0, 3).toUpperCase()} is
           </p>
-          <p style={{fontSize: 30}}>{this._calculateProjectedSalary()}</p>
+          <p style={{fontSize: 30, marginBottom: 5}} className={classNames({
+              'color--red': computedSalary > this.state.salary,
+              'color--green': computedSalary <= this.state.salary
+            })}>{currencyService.formatAsCurrency(computedSalary)}</p>
         </ReportCard>
       </div>
     );
