@@ -85,7 +85,7 @@ class Step2 extends React.Component {
           <p style={{fontSize: 20, marginTop: 10}}>
             Comparable salary in {this.state.locations.to.city.substr(0, 3).toUpperCase()} is
           </p>
-          <p style={{fontSize: 30, marginBottom: 5}} className={classNames({
+          <p style={{fontSize: 30, marginTop: 5}} className={classNames({
               'color--red': computedSalary > this.state.salary,
               'color--green': computedSalary <= this.state.salary
             })}>{currencyService.formatAsCurrency(computedSalary)}</p>
