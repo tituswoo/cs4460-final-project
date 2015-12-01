@@ -103,7 +103,8 @@ class Step1 extends React.Component {
         </div>
         <div className='step-1__question-segment' style={{marginTop: 20}}>
           <div style={{width: '100%'}}>
-            <SalaryScrubber salary={this.state.salary} onChange={this._updateSalary.bind(this)}/>
+            <SalaryScrubber salary={this.state.salary}
+              onChange={this._updateSalary.bind(this)} suffix='a year.'/>
           </div>
         </div>
         {
