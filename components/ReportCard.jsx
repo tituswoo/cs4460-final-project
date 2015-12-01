@@ -45,11 +45,19 @@ class ReportCard extends React.Component {
           <RadarChartReport
             reports={[this.props.fromReport, this.props.toReport]} />
         </div>
-        <div>
+        <div style={{
+            borderBottom: '1px solid black',
+            margin: '-10px',
+            marginBottom: 10,
+            padding: 10
+          }}>
           <span style={{marginRight: '15px'}}>
             <ColorCube legend={this.props.from.city} classes='bkg--blue' />
           </span>
           <ColorCube legend={this.props.to.city} classes='bkg--purple' />
+        </div>
+        <div>
+          {this.props.children}
         </div>
       </div>
     );
@@ -84,14 +92,16 @@ ReportCard.defaultProps = {
   from: {},
   to: {},
   fromReport: [],
-  toReport: []
+  toReport: [],
+  salary: 0
 };
 
 ReportCard.propTypes = {
   from: React.PropTypes.object.isRequired,
   to: React.PropTypes.object.isRequired,
   fromReport: React.PropTypes.array,
-  toReport: React.PropTypes.array
+  toReport: React.PropTypes.array,
+  salary: React.PropTypes.number
 };
 
 export default ReportCard;

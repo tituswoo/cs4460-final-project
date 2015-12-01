@@ -14,6 +14,9 @@ import cityActions from '../actions/cityActions';
 import locationStore from '../stores/locationStore';
 import locationActions from '../actions/locationActions';
 
+import salaryStore from '../stores/salaryStore';
+import salaryActions from '../actions/salaryActions';
+
 import locationService from '../services/locationService';
 
 let CSSTransitionGroup = React.addons.CSSTransitionGroup;
@@ -23,7 +26,8 @@ class Step1 extends React.Component {
     super(props);
     this.state = {
       cities: cityStore.getInitialState(),
-      locations: locationStore.getInitialState()
+      locations: locationStore.getInitialState(),
+      salary: salaryStore.getInitialState()
     };
   }
 
@@ -38,11 +42,20 @@ class Step1 extends React.Component {
     this._unsubscribelocationStore = locationStore.listen((locations) => {
       this.setState({locations: locations});
     });
+
+    this._unsubscribeSalaryStore = salaryStore.listen((salary) => {
+      this.setState({salary: salary});
+    });
   }
 
   componentWillUnmount() {
     this._unsubscribe();
     this._unsubscribelocationStore();
+    this._unsubscribeSalaryStore();
+  }
+
+  _updateSalary(newSalary) {
+    salaryActions.setSalary(newSalary);
   }
 
   render() {
@@ -90,7 +103,7 @@ class Step1 extends React.Component {
         </div>
         <div className='step-1__question-segment' style={{marginTop: 20}}>
           <div style={{width: '100%'}}>
-            <SalaryScrubber />
+            <SalaryScrubber salary={this.state.salary} onChange={this._updateSalary.bind(this)}/>
           </div>
         </div>
         {

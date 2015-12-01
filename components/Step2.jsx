@@ -6,9 +6,13 @@ let CSSTransitionGroup = React.addons.CSSTransitionGroup;
 import CityProfile from './CityProfile';
 import LoadingDialog from '../components/LoadingDialog';
 import ReportCard from '../components/ReportCard';
+import SalaryScrubber from '../components/SalaryScrubber';
 
 import cityActions from '../actions/cityActions';
 import cityStore from '../stores/cityStore';
+
+import salaryStore from '../stores/salaryStore';
+import salaryActions from '../actions/salaryActions';
 
 import environmentControlActions from '../actions/environmentControlActions';
 
@@ -24,8 +28,13 @@ class Step2 extends React.Component {
     this.state = {
       cities: cityStore.getInitialState(),
       locations: locationStore.getInitialState(),
-      reports: cityReportStore.getInitialState()
+      reports: cityReportStore.getInitialState(),
+      salary: salaryStore.getInitialState()
     };
+  }
+
+  _updateSalary(newSalary) {
+    salaryActions.setSalary(newSalary);
   }
 
   render() {
@@ -52,7 +61,10 @@ class Step2 extends React.Component {
           from={this.state.locations.from}
           to={this.state.locations.to}
           fromReport={cityReportStore.get(this.state.locations.from.city_id)}
-          toReport={cityReportStore.get(this.state.locations.to.city_id)} />
+          toReport={cityReportStore.get(this.state.locations.to.city_id)}
+          salary={this.state.salary}>
+          <SalaryScrubber salary={this.state.salary} onChange={this._updateSalary.bind(this)} />
+        </ReportCard>
       </div>
     );
   }
@@ -80,6 +92,10 @@ class Step2 extends React.Component {
       this.setState({reports: reports});
     });
 
+    this._unsubscribeSalaryStore = salaryStore.listen((salary) => {
+      this.setState({salary: salary});
+    })
+
     if (!cityStore.loaded) {
       cityActions.getCities();
     }
@@ -100,6 +116,7 @@ class Step2 extends React.Component {
     this._unsubscribe();
     this._unsubscribelocationStore();
     this._unsubscribeCityReportStore();
+    this._unsubscribeSalaryStore();
     environmentControlActions.reset();
   }
 }
