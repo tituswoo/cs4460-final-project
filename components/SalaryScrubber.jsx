@@ -19,7 +19,7 @@ class SalaryScrubber extends React.Component {
   render() {
     return (
       <div className='salary-scrubber'>
-        <p className='salary-scrubber__label'>I currently make {_formatAsCurrency(this.state.salary)}</p>
+        <p className='salary-scrubber__label'>I currently make {_formatAsCurrency(this.state.salary)} {this.props.suffix}</p>
         <Slider min={10000} max={500000} step={5000}
           defaultValue={this.props.salary}
           tipFormatter={_formatAsCurrency}
@@ -31,11 +31,13 @@ class SalaryScrubber extends React.Component {
 
 SalaryScrubber.propTypes = {
   salary: React.PropTypes.number,
+  suffix: React.PropTypes.string,
   onChange: React.PropTypes.func
 }
 
 SalaryScrubber.defaultProps = {
   salary: 15000,
+  suffix: '',
   onChange: function() {}
 }
 

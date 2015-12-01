@@ -22,6 +22,8 @@ import locationActions from '../actions/locationActions';
 import cityReportStore from '../stores/cityReportStore';
 import cityReportActions from '../actions/cityReportActions';
 
+import currencyService from '../services/currencyService';
+
 class Step2 extends React.Component {
   constructor(props) {
     super(props);
@@ -35,6 +37,16 @@ class Step2 extends React.Component {
 
   _updateSalary(newSalary) {
     salaryActions.setSalary(newSalary);
+  }
+
+  _calculateProjectedSalary() {
+    let fromCityDetails = cityStore.get(this.state.locations.from.city_id);
+    let fromCPI = fromCityDetails.indices.cpi_and_rent_index;
+    let toCityDetails = cityStore.get(this.state.locations.to.city_id);
+    let toCPI = toCityDetails.indices.cpi_and_rent_index;
+
+    let result = (toCPI / fromCPI) * this.state.salary;
+    return currencyService.formatAsCurrency(Math.round(result));
   }
 
   render() {
@@ -63,7 +75,14 @@ class Step2 extends React.Component {
           fromReport={cityReportStore.get(this.state.locations.from.city_id)}
           toReport={cityReportStore.get(this.state.locations.to.city_id)}
           salary={this.state.salary}>
-          <SalaryScrubber salary={this.state.salary} onChange={this._updateSalary.bind(this)} />
+          <SalaryScrubber
+            salary={this.state.salary}
+            onChange={this._updateSalary.bind(this)}
+            suffix={'in ' + this.state.locations.from.city.substr(0, 3).toUpperCase()} />
+          <p style={{fontSize: 20, marginTop: 10}}>
+            Comparable salary in {this.state.locations.to.city.substr(0, 3).toUpperCase()} is
+          </p>
+          <p style={{fontSize: 30}}>{this._calculateProjectedSalary()}</p>
         </ReportCard>
       </div>
     );
