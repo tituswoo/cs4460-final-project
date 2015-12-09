@@ -32,15 +32,15 @@ class MapPreview extends React.Component {
             <GoogleMap
               ref={(map) => {this._map = map;}}
               defaultZoom={9}
-              defaultCenter={{
-                lat: this.props.latitude,
-                lng: this.props.longitude
-              }}
               options={{
                 draggable: false,
                 disableDefaultUI: true,
                 scrollwheel: false,
                 disableDoubleClickZoom: true,
+                center: {
+                  lat: this.props.latitude,
+                  lng: this.props.longitude
+                },
                 styles: [{
                   elementType: 'labels',
                   stylers: [
@@ -67,7 +67,9 @@ MapPreview.defaultProps = {
 MapPreview.propTypes = {
   height: React.PropTypes.number,
   title: React.PropTypes.string,
-  subtitle: React.PropTypes.string
+  subtitle: React.PropTypes.string,
+  latitude: React.PropTypes.number,
+  longitude: React.PropTypes.number
 };
 
 export default MapPreview;
