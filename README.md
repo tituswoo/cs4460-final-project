@@ -1,5 +1,7 @@
 # Final InfoViz Project (CS 4460)
 
+![Screenshot Demo](demo-screencast.gif?raw=true "Demo")
+
 ## Getting started
 
 Before you do anything else, **make sure you have nodejs 4.0+ installed.**
