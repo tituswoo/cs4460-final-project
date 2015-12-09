@@ -7,7 +7,7 @@ let salaryStore = Reflux.createStore({
   listenables: [salaryActions],
   init: function() {
     let savedSalary = JSON.parse(window.sessionStorage.getItem('salary'));
-    this.salary = savedSalary || 15000;
+    this.salary = savedSalary || 50000;
   },
   getInitialState: function() {
     return this.salary;

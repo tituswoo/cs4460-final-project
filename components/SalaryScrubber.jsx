@@ -24,7 +24,7 @@ class SalaryScrubber extends React.Component {
         <p className='salary-scrubber__label'>
           I currently make {currencyService.formatAsCurrency(this.state.salary)} {this.props.suffix}
         </p>
-        <Slider min={10000} max={500000} step={5000}
+        <Slider min={15000} max={350000} step={5000}
           defaultValue={this.props.salary}
           tipFormatter={currencyService.formatAsCurrency}
           onChange={this._onChange.bind(this)}/>
