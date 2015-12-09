@@ -3,12 +3,14 @@
 import React from 'react';
 import Slider from 'rc-slider';
 
+import currencyService from '../services/currencyService';
+
 class SalaryScrubber extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       salary: this.props.salary
-    }
+    };
   }
 
   _onChange(value) {
@@ -19,7 +21,9 @@ class SalaryScrubber extends React.Component {
   render() {
     return (
       <div className='salary-scrubber'>
-        <p className='salary-scrubber__label'>I currently make {_formatAsCurrency(this.state.salary)} {this.props.suffix}</p>
+        <p className='salary-scrubber__label'>
+          I currently make {currencyService.formatAsCurrency(this.state.salary)} {this.props.suffix}
+        </p>
         <Slider min={10000} max={500000} step={5000}
           defaultValue={this.props.salary}
           tipFormatter={_formatAsCurrency}
@@ -33,13 +37,13 @@ SalaryScrubber.propTypes = {
   salary: React.PropTypes.number,
   suffix: React.PropTypes.string,
   onChange: React.PropTypes.func
-}
+};
 
 SalaryScrubber.defaultProps = {
   salary: 15000,
   suffix: '',
   onChange: function() {}
-}
+};
 
 function _formatAsCurrency(value) {
   let processed = String(value).split('');
