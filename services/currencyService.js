@@ -3,10 +3,9 @@
 function currencyService() {
   return {
     formatAsCurrency: function(value) {
-      let processed = String(Math.round(value)).split('');
-      processed.splice(String(value).length - 3, 0, ',');
-      processed = processed.join('');
-      return '$' + processed;
+      let strNum = String(value);
+      let offset = strNum.length - 3;
+      return '$' + strNum.substr(0, offset) + ',' + strNum.substr(offset, strNum.length);
     }
   };
 }
