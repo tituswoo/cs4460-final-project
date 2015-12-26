@@ -26,7 +26,7 @@ class SalaryScrubber extends React.Component {
         </p>
         <Slider min={15000} max={350000} step={5000}
           defaultValue={this.props.salary}
-          tipFormatter={currencyService.formatAsCurrency}
+          tipFormatter={null}
           onChange={this._onChange.bind(this)}/>
       </div>
     );
